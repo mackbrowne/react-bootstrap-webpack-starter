@@ -1,48 +1,48 @@
 // @flow
 // Framework
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import Loadable from "react-loadable";
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Loadable from 'react-loadable';
 
 // Components
-import { Row, Col } from "reactstrap";
+import { Row, Col } from 'reactstrap';
 
-import LoadingComponent from "./shared/LoadingComponent";
+import LoadingComponent from './shared/LoadingComponent';
 
-import { AppContainer, Logo } from "./AppLayout.style";
+import { AppContainer, Logo } from './AppLayout.style';
 
-import logo from "./../img/logo.svg";
+import logo from './../img/logo.svg';
 
 const AsyncNavigationContainer = Loadable({
-  loader: () => import("./shared/navigation/NavigationContainer"),
+  loader: () => import('./shared/navigation/NavigationContainer'),
   loading: LoadingComponent
 });
 const AsyncHomeContainer = Loadable({
-  loader: () => import("./pages/home/HomeContainer"),
+  loader: () => import('./pages/home/HomeContainer'),
   loading: LoadingComponent
 });
 const AsyncPageOneContainer = Loadable({
-  loader: () => import("./pages/one/PageOneContainer"),
+  loader: () => import('./pages/one/PageOneContainer'),
   loading: LoadingComponent
 });
 const AsyncPageTwoContainer = Loadable({
-  loader: () => import("./pages/two/PageTwoContainer"),
+  loader: () => import('./pages/two/PageTwoContainer'),
   loading: LoadingComponent
 });
 const AsyncPageThreeContainer = Loadable({
-  loader: () => import("./pages/three/PageThreeContainer"),
+  loader: () => import('./pages/three/PageThreeContainer'),
   loading: LoadingComponent
 });
 const AsyncNotFound = Loadable({
-  loader: () => import("./pages/NotFound"),
+  loader: () => import('./pages/NotFound'),
   loading: LoadingComponent
 });
 
 const navigationItems = [
-  { label: "Home", path: "/" },
-  { label: "Page 1", path: "page1" },
-  { label: "Page 2", path: "page2" },
-  { label: "Page 3", path: "page3" }
+  { label: 'Home', path: '/' },
+  { label: 'Page 1', path: 'page1' },
+  { label: 'Page 2', path: 'page2' },
+  { label: 'Page 3', path: 'page3' }
 ];
 
 /**
@@ -77,7 +77,7 @@ const AppLayout = ({ children }) => (
           <footer className="py-1 text-center">
             <p>
               Created by: <a href="https://mackbrowne.com/">Mack Browne</a> and
-              adapted from{" "}
+              adapted from{' '}
               <a href="https://github.com/mackbrowne/beehive">Beehive</a>
             </p>
           </footer>

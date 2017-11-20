@@ -1,5 +1,5 @@
 // Actions
-const TOGGLE_NAVBAR = "UI/TOGGLE_NAVBAR";
+const TOGGLE_NAVBAR = 'UI/TOGGLE_NAVBAR';
 
 // Reducer
 export default function NavbarReducer(

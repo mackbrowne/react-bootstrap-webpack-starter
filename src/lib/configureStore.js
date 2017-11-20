@@ -1,14 +1,14 @@
 // Libraries
-import { createStore, applyMiddleware } from "redux";
-import createSagaMiddleware from "redux-saga";
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
 
 // Reducers
-import rootReducer from "./../actions/rootReducer";
+import rootReducer from './../actions/rootReducer';
 
 // Sagas
-import { initSaga } from "./../actions/ui/init";
+import { initSaga } from './../actions/ui/init';
 
-import isLocalHost from "./registerServiceWorker";
+import isLocalHost from './registerServiceWorker';
 
 export const combinedSagas = () => [initSaga];
 
@@ -34,7 +34,7 @@ export const configureStore = initialState => {
   if (isLocalHost) {
     const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION__;
     const debug =
-      typeof reduxDevTools === "function" ? reduxDevTools() : a => a;
+      typeof reduxDevTools === 'function' ? reduxDevTools() : a => a;
     // Actually create the store with the new middleware
     store = createStoreWithMiddleWare(rootReducer, initialState, debug);
   } else {

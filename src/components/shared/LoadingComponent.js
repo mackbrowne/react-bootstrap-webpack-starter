@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const LoadingComponent = ({ isLoading, error }) => {
   // Handle the loading state

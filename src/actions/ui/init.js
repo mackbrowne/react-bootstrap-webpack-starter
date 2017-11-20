@@ -1,8 +1,8 @@
 // Framework
-import { takeEvery } from "redux-saga/effects";
+import { takeEvery } from 'redux-saga/effects';
 
 // Actions
-const INIT = "UI/INIT";
+const INIT = 'UI/INIT';
 
 // Reducer
 export default function InitReducer(state = {}, action = {}) {
@@ -21,7 +21,7 @@ export const initApp = () => ({
 // Worker
 export function* initializeAsyncStateWorker(action) {
   try {
-    yield console.log("Init App");
+    yield console.log('Init App');
   } catch (err) {
     yield console.log(err);
   }

@@ -1,9 +1,9 @@
 // Framework
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 // Component to Contain
-import Home from "./HomeComponent";
+import Home from './HomeComponent';
 
 // Connect the STATE to the props fed into the component.
 export const mapStateToProps = state => {

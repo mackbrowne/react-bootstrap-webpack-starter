@@ -1,8 +1,8 @@
 // Framework
-import React from "react";
+import React from 'react';
 
 // Components
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col } from 'reactstrap';
 
 /**
  * Homepage for the app!

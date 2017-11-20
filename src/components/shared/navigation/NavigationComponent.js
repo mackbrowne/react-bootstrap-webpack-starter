@@ -1,6 +1,6 @@
 // Framework
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Components
 import {
@@ -11,7 +11,7 @@ import {
   Nav,
   NavItem,
   NavLink
-} from "reactstrap";
+} from 'reactstrap';
 
 /**
  * A list of field rows with a header.

@@ -1,7 +1,7 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import InitReducer from "./ui/init";
-import NavbarReducer from "./ui/navbar";
+import InitReducer from './ui/init';
+import NavbarReducer from './ui/navbar';
 
 const reducers = {
   init: InitReducer,

@@ -1,9 +1,9 @@
 // Framework
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 // Component to Contain
-import PageTwo from "./PageTwoComponent";
+import PageTwo from './PageTwoComponent';
 
 // Connect the STATE to the props fed into the component.
 export const mapStateToProps = state => {
