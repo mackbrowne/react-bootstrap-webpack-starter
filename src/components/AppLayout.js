@@ -5,11 +5,11 @@ import { Switch, Route } from "react-router-dom";
 import Loadable from "react-loadable";
 
 // Components
-import { Container, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
 import LoadingComponent from "./shared/LoadingComponent";
 
-import "./AppLayout.css";
+import { AppContainer, Logo } from "./AppLayout.style";
 
 import logo from "./../img/logo.svg";
 
@@ -52,10 +52,10 @@ const navigationItems = [
  */
 const AppLayout = ({ children }) => (
   <div className="App">
-    <Container>
+    <AppContainer>
       <Row className="bg-faded">
-        <Col xs={1}>
-          <img src={logo} alt="logo" />
+        <Col sm={2}>
+          <Logo src={logo} alt="logo" className="img-fluid" fluid />
         </Col>
         <Col>
           <AsyncNavigationContainer navigationItems={navigationItems} />
@@ -83,7 +83,7 @@ const AppLayout = ({ children }) => (
           </footer>
         </Col>
       </Row>
-    </Container>
+    </AppContainer>
   </div>
 );
 
