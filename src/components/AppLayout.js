@@ -1,20 +1,41 @@
 // Framework
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import Loadable from "react-loadable";
 
 // Components
 import { Container, Row, Col } from "reactstrap";
 
-import logo from "./../img/logo.svg";
-
-import NavigationContainer from "./shared/navigation/NavigationContainer";
-import HomeContainer from "./pages/home/HomeContainer";
-import PageOneContainer from "./pages/one/PageOneContainer";
-import PageTwoContainer from "./pages/two/PageTwoContainer";
-import PageThreeContainer from "./pages/three/PageThreeContainer";
-import NotFound from "./pages/NotFound";
+import LoadingComponent from "./shared/LoadingComponent";
 
 import "./AppLayout.css";
+
+import logo from "./../img/logo.svg";
+
+const AsyncNavigationContainer = Loadable({
+  loader: () => import("./shared/navigation/NavigationContainer"),
+  loading: LoadingComponent
+});
+const AsyncHomeContainer = Loadable({
+  loader: () => import("./pages/home/HomeContainer"),
+  loading: LoadingComponent
+});
+const AsyncPageOneContainer = Loadable({
+  loader: () => import("./pages/one/PageOneContainer"),
+  loading: LoadingComponent
+});
+const AsyncPageTwoContainer = Loadable({
+  loader: () => import("./pages/two/PageTwoContainer"),
+  loading: LoadingComponent
+});
+const AsyncPageThreeContainer = Loadable({
+  loader: () => import("./pages/three/PageThreeContainer"),
+  loading: LoadingComponent
+});
+const AsyncNotFound = Loadable({
+  loader: () => import("./pages/NotFound"),
+  loading: LoadingComponent
+});
 
 const navigationItems = [
   { label: "Home", path: "/" },
@@ -36,17 +57,17 @@ const AppLayout = ({ children }) => (
           <img src={logo} alt="logo" />
         </Col>
         <Col>
-          <NavigationContainer navigationItems={navigationItems} />
+          <AsyncNavigationContainer navigationItems={navigationItems} />
         </Col>
       </Row>
       <Row>
         <Col>
           <Switch>
-            <Route exact path="/" component={HomeContainer} />
-            <Route exact path="/page1" component={PageOneContainer} />
-            <Route exact path="/page2" component={PageTwoContainer} />
-            <Route exact path="/page3" component={PageThreeContainer} />
-            <Route path="*" component={NotFound} />
+            <Route exact path="/" component={AsyncHomeContainer} />
+            <Route exact path="/page1" component={AsyncPageOneContainer} />
+            <Route exact path="/page2" component={AsyncPageTwoContainer} />
+            <Route exact path="/page3" component={AsyncPageThreeContainer} />
+            <Route path="*" component={AsyncNotFound} />
           </Switch>
         </Col>
       </Row>
