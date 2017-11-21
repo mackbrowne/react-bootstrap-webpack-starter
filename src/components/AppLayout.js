@@ -7,14 +7,14 @@ import Loadable from 'react-loadable';
 // Components
 import { Row, Col } from 'reactstrap';
 
-import LoadingComponent from './shared/LoadingComponent';
+import LoadingComponent from './common/LoadingComponent';
 
 import { AppContainer, Logo } from './AppLayout.style';
 
 import logo from './../img/logo.svg';
 
 const AsyncNavigationContainer = Loadable({
-  loader: () => import('./shared/navigation/NavigationContainer'),
+  loader: () => import('./common/navigation/NavigationContainer'),
   loading: LoadingComponent
 });
 const AsyncHomeContainer = Loadable({
