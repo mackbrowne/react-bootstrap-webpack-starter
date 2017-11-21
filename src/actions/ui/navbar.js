@@ -1,13 +1,12 @@
 // Actions
-const TOGGLE_NAVBAR = 'UI/TOGGLE_NAVBAR';
+export const TOGGLE_NAVBAR = 'UI/TOGGLE_NAVBAR';
+
+export const DEFAULT_STATE = {
+  isOpen: false
+};
 
 // Reducer
-export default function NavbarReducer(
-  state = {
-    isOpen: false
-  },
-  action = {}
-) {
+export default function NavbarReducer(state = DEFAULT_STATE, action = '') {
   switch (action.type) {
     case TOGGLE_NAVBAR:
       return {

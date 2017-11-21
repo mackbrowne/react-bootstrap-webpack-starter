@@ -1,27 +1,36 @@
 // Framework
-import { takeEvery } from 'redux-saga/effects';
+import { takeEvery, put } from 'redux-saga/effects';
 
 // Actions
-const INIT = 'UI/INIT';
+export const INIT = 'UI/INIT';
+export const INIT_SUCCESS = 'UI/INIT_SUCCESS';
 
-// Reducer
-export default function InitReducer(state = {}, action = {}) {
+/*** Action Creators ***/
+export const initApp = () => ({
+  type: INIT
+});
+
+export const initAppSuccess = () => ({
+  type: INIT_SUCCESS
+});
+
+/*** Reducer ***/
+export const DEFAULT_STATE = {};
+
+export default function InitReducer(state = DEFAULT_STATE, action = {}) {
   switch (action.type) {
+    case INIT_SUCCESS:
     case INIT:
     default:
       return state;
   }
 }
 
-// Action Creator
-export const initApp = () => ({
-  type: INIT
-});
-
+/*** Sagas ***/
 // Worker
 export function* initializeAsyncStateWorker(action) {
   try {
-    yield console.log('Init App');
+    yield put(initAppSuccess());
   } catch (err) {
     yield console.log(err);
   }

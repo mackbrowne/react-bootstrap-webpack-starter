@@ -7,6 +7,7 @@
     "build": "react-scripts build",
     "build:serve": "./node_modules/.bin/serve -s build",
     "test": "react-scripts test --env=jsdom",
+    "test:coverage": "yarn test --coverage",
     "eject": "react-scripts eject",
     "flow": "flow",
     "flow:coverage": "flow-coverage-report -i 'src/**/*.js' -i 'src/**/*.jsx' -x 'src/test/**' -t html -t json -t text --threshold 90",
@@ -30,6 +31,8 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.2",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
     "eslint": "^4.11.0",
     "eslint-config-prettier": "^2.8.0",
     "eslint-plugin-prettier": "^2.3.1",
@@ -37,12 +40,21 @@
     "flow-bin": "^0.59.0",
     "flow-coverage-report": "^0.4.0",
     "husky": "^0.14.3",
+    "jest-styled-components": "^4.9.0",
     "lint-staged": "^5.0.0",
     "node-sass-chokidar": "^0.0.3",
     "prettier": "^1.8.2",
     "react-scripts": "^1.0.17",
+    "redux-saga-test-plan": "^3.3.0",
     "serve": "^6.4.1",
     "source-map-explorer": "^1.5.0"
+  },
+  "jest": {
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ]
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css,scss}": [
