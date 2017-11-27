@@ -21,6 +21,10 @@ const AsyncHomeContainer = Loadable({
   loader: () => import('./pages/home/HomeContainer'),
   loading: LoadingComponent
 });
+const AsyncLoginContainer = Loadable({
+  loader: () => import('./pages/login/LoginContainer'),
+  loading: LoadingComponent
+});
 const AsyncPageOneContainer = Loadable({
   loader: () => import('./pages/one/PageOneContainer'),
   loading: LoadingComponent
@@ -65,6 +69,7 @@ const AppLayout = ({ children }) => (
         <Col>
           <Switch>
             <Route exact path="/" component={AsyncHomeContainer} />
+            <Route exact path="/login" component={AsyncLoginContainer} />
             <Route exact path="/page1" component={AsyncPageOneContainer} />
             <Route exact path="/page2" component={AsyncPageTwoContainer} />
             <Route exact path="/page3" component={AsyncPageThreeContainer} />

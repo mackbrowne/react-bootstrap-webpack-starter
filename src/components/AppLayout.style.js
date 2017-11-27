@@ -1,6 +1,13 @@
 import styled, { keyframes } from 'styled-components';
 import { Container } from 'reactstrap';
 
+export const Breakpoints = {
+  sm: 'min-width: 576px',
+  md: 'min-width: 768px',
+  lg: 'min-width: 992px',
+  xl: 'min-width: 1200px'
+};
+
 export const AppContainer = styled(Container)`
   text-align: center;
 `;
