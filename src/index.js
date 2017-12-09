@@ -1,18 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
 // Client Imports
 import AppLayout from './components/AppLayout';
-import configureStore from './lib/configureStore';
+import configureStore, { history } from './lib/configureStore';
 
 // Initial Actions
 import { initApp } from './actions/ui/init';
 
 import registerServiceWorker from './lib/registerServiceWorker';
+import { ConnectedRouter } from 'react-router-redux';
 
 // Make redux initial store
 const store = configureStore();
@@ -21,9 +21,9 @@ const store = configureStore();
 const renderApp = () =>
   render(
     <Provider store={store}>
-      <BrowserRouter>
+      <ConnectedRouter history={history}>
         <AppLayout />
-      </BrowserRouter>
+      </ConnectedRouter>
     </Provider>,
     document.getElementById('root')
   );

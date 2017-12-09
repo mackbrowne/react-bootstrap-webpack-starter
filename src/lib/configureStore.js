@@ -1,6 +1,8 @@
 // Libraries
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { routerMiddleware } from 'react-router-redux';
+import createHistory from 'history/createBrowserHistory';
 
 // Reducers
 import rootReducer from './../actions/rootReducer';
@@ -15,6 +17,8 @@ export const combinedSagas = () => [initSaga];
 export const registerSagas = (sagaMiddleware, sagas) =>
   sagas.forEach(sagaMiddleware.run);
 
+export const history = createHistory();
+
 /**
  * Configures the initialization of a React store, applying middleware, and interfacing with
  * tooling.
@@ -23,10 +27,15 @@ export const registerSagas = (sagaMiddleware, sagas) =>
  * @returns {Store} Generates an enhanced Redux Store.
  */
 export const configureStore = initialState => {
+  // Create a history of your choosing (we're using a browser history in this case)
+  const routerReduxMiddleware = routerMiddleware(history);
   // Create saga middleware
   const sagaMiddleware = createSagaMiddleware();
   // Create a function that can apply the saga middleware to a StoreCreator
-  const sagaStoreEnhancer = applyMiddleware(sagaMiddleware);
+  const sagaStoreEnhancer = applyMiddleware(
+    sagaMiddleware,
+    routerReduxMiddleware
+  );
   // Create a function that can create a store with the new middleware
   const createStoreWithMiddleWare = sagaStoreEnhancer(createStore);
   // Determine whether debug mode should be attached
