@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-toggle/style.css';
 
 // Client Imports
 import AppLayout from './components/AppLayout';
@@ -30,5 +31,4 @@ const renderApp = () =>
 
 store.dispatch(initApp());
 renderApp();
-
 registerServiceWorker();

@@ -21,8 +21,8 @@ const AsyncHomeContainer = Loadable({
   loader: () => import('./pages/home/HomeContainer'),
   loading: LoadingComponent
 });
-const AsyncPageOneContainer = Loadable({
-  loader: () => import('./pages/one/PageOneContainer'),
+const AsyncTodoListContainer = Loadable({
+  loader: () => import('./pages/todos/TodoListContainer'),
   loading: LoadingComponent
 });
 const AsyncPageTwoContainer = Loadable({
@@ -40,7 +40,7 @@ const AsyncNotFound = Loadable({
 
 const navigationItems = [
   { label: 'Home', path: '/' },
-  { label: 'Page 1', path: 'page1' },
+  { label: 'Todos', path: 'todos' },
   { label: 'Page 2', path: 'page2' },
   { label: 'Page 3', path: 'page3' }
 ];
@@ -65,7 +65,7 @@ const AppLayout = ({ children }) => (
         <Col>
           <Switch>
             <Route exact path="/" component={AsyncHomeContainer} />
-            <Route exact path="/page1" component={AsyncPageOneContainer} />
+            <Route exact path="/todos" component={AsyncTodoListContainer} />
             <Route exact path="/page2" component={AsyncPageTwoContainer} />
             <Route exact path="/page3" component={AsyncPageThreeContainer} />
             <Route path="*" component={AsyncNotFound} />

@@ -8,11 +8,9 @@ import createHistory from 'history/createBrowserHistory';
 import rootReducer from './../actions/rootReducer';
 
 // Sagas
-import { initSaga } from './../actions/ui/init';
+import { combinedSagas } from '../actions/rootReducer';
 
 import isLocalHost from './registerServiceWorker';
-
-export const combinedSagas = () => [initSaga];
 
 export const registerSagas = (sagaMiddleware, sagas) =>
   sagas.forEach(sagaMiddleware.run);

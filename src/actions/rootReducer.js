@@ -1,15 +1,17 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import InitReducer from './ui/init';
+import InitReducer, { initSaga } from './ui/init';
 import NavbarReducer from './ui/navbar';
+import TodoListReducer, { todosRouteSaga } from './todos/todoList';
 
-const reducers = {
+const rootReducer = combineReducers({
+  router: routerReducer,
   init: InitReducer,
   navbar: NavbarReducer,
-  router: routerReducer
-};
+  todos: TodoListReducer
+});
 
-const rootReducer = combineReducers(reducers);
+export const combinedSagas = () => [initSaga, todosRouteSaga];
 
 export default rootReducer;
