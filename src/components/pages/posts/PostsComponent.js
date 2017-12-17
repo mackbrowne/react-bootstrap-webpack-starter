@@ -10,7 +10,7 @@ import { Container, Row, Col } from 'reactstrap';
  * @param {Object} props All the properties passed to the React Component.
  * @returns {StatelessComponent} Stateless functional React component.
  */
-const PageThree = props => (
+const PostsComponent = props => (
   <Container fluid>
     <Row>
       <Col>
@@ -20,4 +20,4 @@ const PageThree = props => (
   </Container>
 );
 
-export default PageThree;
+export default PostsComponent;

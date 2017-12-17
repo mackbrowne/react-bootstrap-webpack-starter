@@ -43,6 +43,7 @@ const TodoListComponent = ({
         <ListGroup>
           {todos.map(({ id, title, done }) => (
             <TodoItem
+              key={id}
               tag="button"
               action
               onClick={() => {

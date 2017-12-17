@@ -3,11 +3,11 @@ import { Container, ListGroupItem } from 'reactstrap';
 import Toggle from 'react-toggle';
 
 export const TodoListContainer = styled(Container)`
-  height: 70vh;
+  height: 78vh;
   min-height: 20rem;
 `;
 
-export const FilterContainer = styled.p`
+export const FilterContainer = styled.div`
   text-align: right;
 `;
 

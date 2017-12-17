@@ -1,24 +1,24 @@
 // @flow
 // Framework
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 // Components
 import { Row, Col } from 'reactstrap';
 
+import PrivateRoute from './common/PrivateRoute/PrivateRouteContainer';
+import PublicRoute from './common/PublicRoute/PublicRouteContainer';
 import LoadingComponent from './common/LoadingComponent';
 
-import { AppContainer, Logo } from './AppLayout.style';
-
-import logo from './../img/logo.svg';
+import { AppContainer } from './AppLayout.style';
 
 const AsyncNavigationContainer = Loadable({
   loader: () => import('./common/navigation/NavigationContainer'),
   loading: LoadingComponent
 });
-const AsyncHomeContainer = Loadable({
-  loader: () => import('./pages/home/HomeContainer'),
+const AsyncLoginContainer = Loadable({
+  loader: () => import('./pages/login/LoginContainer'),
   loading: LoadingComponent
 });
 const AsyncTodoListContainer = Loadable({
@@ -29,21 +29,14 @@ const AsyncPageTwoContainer = Loadable({
   loader: () => import('./pages/two/PageTwoContainer'),
   loading: LoadingComponent
 });
-const AsyncPageThreeContainer = Loadable({
-  loader: () => import('./pages/three/PageThreeContainer'),
+const AsyncPostsContainer = Loadable({
+  loader: () => import('./pages/posts/PostsContainer'),
   loading: LoadingComponent
 });
 const AsyncNotFound = Loadable({
   loader: () => import('./pages/NotFound'),
   loading: LoadingComponent
 });
-
-const navigationItems = [
-  { label: 'Home', path: '/' },
-  { label: 'Todos', path: 'todos' },
-  { label: 'Page 2', path: 'page2' },
-  { label: 'Page 3', path: 'page3' }
-];
 
 /**
  * Main rendering entry point for the app.
@@ -53,22 +46,24 @@ const navigationItems = [
 const AppLayout = ({ children }) => (
   <div className="App">
     <AppContainer>
-      <Row className="bg-faded">
-        <Col sm={2}>
-          <Logo src={logo} alt="logo" className="img-fluid" fluid />
-        </Col>
-        <Col>
-          <AsyncNavigationContainer navigationItems={navigationItems} />
-        </Col>
-      </Row>
+      <AsyncNavigationContainer />
       <Row>
         <Col>
           <Switch>
-            <Route exact path="/" component={AsyncHomeContainer} />
-            <Route exact path="/todos" component={AsyncTodoListContainer} />
-            <Route exact path="/page2" component={AsyncPageTwoContainer} />
-            <Route exact path="/page3" component={AsyncPageThreeContainer} />
-            <Route path="*" component={AsyncNotFound} />
+            <Redirect exact from="/" to="/todos" />
+            <PublicRoute exact path="/login" component={AsyncLoginContainer} />
+            <PrivateRoute
+              exact
+              path="/todos"
+              component={AsyncTodoListContainer}
+            />
+            <PrivateRoute
+              exact
+              path="/page2"
+              component={AsyncPageTwoContainer}
+            />
+            <PrivateRoute exact path="/posts" component={AsyncPostsContainer} />
+            <PrivateRoute path="*" component={AsyncNotFound} />
           </Switch>
         </Col>
       </Row>
@@ -76,9 +71,8 @@ const AppLayout = ({ children }) => (
         <Col>
           <footer className="py-1 text-center">
             <p>
-              Created by: <a href="https://mackbrowne.com/">Mack Browne</a> and
-              adapted from{' '}
-              <a href="https://github.com/mackbrowne/beehive">Beehive</a>
+              Created by:{' '}
+              <a href="https://github.com/mackbrowne">Mackenzie Browne</a>
             </p>
           </footer>
         </Col>

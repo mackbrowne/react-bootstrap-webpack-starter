@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 // Component to Contain
-import PageThree from './PageThreeComponent';
+import PostsComponent from './PostsComponent';
 
 // Connect the STATE to the props fed into the component.
 export const mapStateToProps = state => {
@@ -16,8 +16,8 @@ export const mapDispatchToProps = dispatch => {
 };
 
 // Create higher-order component which feeds in specified props.
-const PageThreeContainer = connect(mapStateToProps, mapDispatchToProps)(
-  PageThree
+const PostsContainer = connect(mapStateToProps, mapDispatchToProps)(
+  PostsComponent
 );
 
-export default PageThreeContainer;
+export default PostsContainer;

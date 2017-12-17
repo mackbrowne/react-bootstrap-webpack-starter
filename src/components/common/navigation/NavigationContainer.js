@@ -5,11 +5,18 @@ import { bindActionCreators } from 'redux';
 // Component to Contain
 import Navigation from './NavigationComponent';
 import { toggleNavbar } from '../../../actions/ui/navbar';
+import { logout } from '../../../actions/auth/auth';
 
 // Connect the STATE to the props fed into the component.
-export const mapStateToProps = state => {
+export const mapStateToProps = ({
+  auth: { user: { name, company }, isLoggedIn },
+  navbar: { isOpen }
+}) => {
   return {
-    isOpen: state.navbar.isOpen
+    isLoggedIn,
+    name,
+    company,
+    isOpen
   };
 };
 
@@ -17,7 +24,8 @@ export const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      toggle: toggleNavbar
+      toggle: toggleNavbar,
+      logout
     },
     dispatch
   );

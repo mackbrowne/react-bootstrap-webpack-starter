@@ -10,8 +10,14 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  Row,
+  Col,
+  Button
 } from 'reactstrap';
+
+import { Logo } from './Navigation.style';
+import logo from './../../../img/logo.svg';
 
 /**
  * A list of field rows with a header.
@@ -20,30 +26,49 @@ import {
  * @returns {Element} Stateless functional React component.
  */
 const Navigation = ({
-  navigationItems = [],
+  navigationItems = [
+    { label: 'Posts', path: 'posts' },
+    { label: 'Albums', path: 'page3' },
+    { label: 'Todos', path: 'todos' }
+  ],
   toggle = () => {},
+  logout = () => {},
+  isLoggedIn = false,
+  name = '',
+  company = {},
   isOpen = true
-}) => (
-  <Navbar color="faded" light expand="md">
-    <NavbarBrand href="/">Limelight Interview</NavbarBrand>
-    <NavbarToggler onClick={toggle} />
-    <Collapse isOpen={isOpen} navbar>
-      <Nav className="ml-auto" navbar>
-        {navigationItems.map(({ label, path }, i) => (
-          <NavItem key={`nav-item-${i}`}>
-            <NavLink tag={Link} to={path}>
-              {label}
-            </NavLink>
-          </NavItem>
-        ))}
-        <NavItem>
-          <NavLink href="https://github.com/reactstrap/reactstrap">
-            Github
-          </NavLink>
-        </NavItem>
-      </Nav>
-    </Collapse>
-  </Navbar>
-);
+}) =>
+  isLoggedIn && (
+    <Row className="bg-faded">
+      <Col xs="12">
+        <Navbar color="faded" light expand="md">
+          <NavbarToggler onClick={toggle} />
+          <Collapse isOpen={isOpen} navbar>
+            <Nav navbar>
+              {navigationItems.map(({ label, path }, i) => (
+                <NavItem key={`nav-item-${i}`}>
+                  <NavLink tag={Link} to={path}>
+                    {label}
+                  </NavLink>
+                </NavItem>
+              ))}
+            </Nav>
+            <Nav navbar className="ml-auto">
+              <NavItem>
+                <NavLink tag={Button} color="link">
+                  {name} ({company.name})
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Button} color="link" onClick={logout}>
+                  Logout
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </Col>
+    </Row>
+  );
 
 export default Navigation;
