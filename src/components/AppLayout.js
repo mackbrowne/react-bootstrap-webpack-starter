@@ -1,7 +1,7 @@
 // @flow
 // Framework
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 // Components
@@ -25,8 +25,8 @@ const AsyncTodoListContainer = Loadable({
   loader: () => import('./pages/todos/TodoListContainer'),
   loading: LoadingComponent
 });
-const AsyncPageTwoContainer = Loadable({
-  loader: () => import('./pages/two/PageTwoContainer'),
+const AsyncAlbumsContainer = Loadable({
+  loader: () => import('./pages/albums/AlbumsContainer'),
   loading: LoadingComponent
 });
 const AsyncPostsContainer = Loadable({
@@ -59,8 +59,8 @@ const AppLayout = ({ children }) => (
             />
             <PrivateRoute
               exact
-              path="/page2"
-              component={AsyncPageTwoContainer}
+              path="/albums"
+              component={AsyncAlbumsContainer}
             />
             <PrivateRoute exact path="/posts" component={AsyncPostsContainer} />
             <PrivateRoute path="*" component={AsyncNotFound} />

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Container, Row } from 'reactstrap';
+import { Container } from 'reactstrap';
 
 export const LoginContainer = styled(Container)`
   padding-top: 15rem;

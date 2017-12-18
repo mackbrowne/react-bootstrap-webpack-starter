@@ -7,7 +7,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -15,9 +14,6 @@ import {
   Col,
   Button
 } from 'reactstrap';
-
-import { Logo } from './Navigation.style';
-import logo from './../../../img/logo.svg';
 
 /**
  * A list of field rows with a header.
@@ -28,7 +24,7 @@ import logo from './../../../img/logo.svg';
 const Navigation = ({
   navigationItems = [
     { label: 'Posts', path: 'posts' },
-    { label: 'Albums', path: 'page3' },
+    { label: 'Albums', path: 'albums' },
     { label: 'Todos', path: 'todos' }
   ],
   toggle = () => {},
@@ -36,6 +32,7 @@ const Navigation = ({
   isLoggedIn = false,
   name = '',
   company = {},
+  website = '',
   isOpen = true
 }) =>
   isLoggedIn && (
@@ -55,8 +52,13 @@ const Navigation = ({
             </Nav>
             <Nav navbar className="ml-auto">
               <NavItem>
+                <NavLink tag={Link} to={`http://${website}`} target="_blank">
+                  {name}
+                </NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink tag={Button} color="link">
-                  {name} ({company.name})
+                  ({company.name})
                 </NavLink>
               </NavItem>
               <NavItem>

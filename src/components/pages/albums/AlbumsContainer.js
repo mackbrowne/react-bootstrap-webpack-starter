@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 // Component to Contain
-import PageTwo from './PageTwoComponent';
+import AlbumsComponent from './AlbumsComponent';
 
 // Connect the STATE to the props fed into the component.
 export const mapStateToProps = state => {
@@ -16,6 +16,8 @@ export const mapDispatchToProps = dispatch => {
 };
 
 // Create higher-order component which feeds in specified props.
-const PageTwoContainer = connect(mapStateToProps, mapDispatchToProps)(PageTwo);
+const AlbumsContainer = connect(mapStateToProps, mapDispatchToProps)(
+  AlbumsComponent
+);
 
-export default PageTwoContainer;
+export default AlbumsContainer;

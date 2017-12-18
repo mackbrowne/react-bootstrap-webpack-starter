@@ -9,13 +9,14 @@ import { logout } from '../../../actions/auth/auth';
 
 // Connect the STATE to the props fed into the component.
 export const mapStateToProps = ({
-  auth: { user: { name, company }, isLoggedIn },
+  auth: { user: { name, company, website }, isLoggedIn },
   navbar: { isOpen }
 }) => {
   return {
     isLoggedIn,
     name,
     company,
+    website,
     isOpen
   };
 };

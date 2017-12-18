@@ -10,14 +10,14 @@ import { Container, Row, Col } from 'reactstrap';
  * @param {Object} props All the properties passed to the React Component.
  * @returns {StatelessComponent} Stateless functional React component.
  */
-const PageTwo = props => (
+const AlbumsComponent = props => (
   <Container fluid>
     <Row>
       <Col>
-        <p>Page 2</p>
+        <h1>Albums</h1>
       </Col>
     </Row>
   </Container>
 );
 
-export default PageTwo;
+export default AlbumsComponent;

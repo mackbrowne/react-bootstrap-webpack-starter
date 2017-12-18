@@ -14,7 +14,7 @@ const PostsComponent = props => (
   <Container fluid>
     <Row>
       <Col>
-        <p>Page 3</p>
+        <h1>Posts</h1>
       </Col>
     </Row>
   </Container>

@@ -12,7 +12,7 @@ import {
   Label,
   Input
 } from 'reactstrap';
-import { FixedAlert, LoginContainer } from './Login.style';
+import { LoginContainer } from './Login.style';
 /**
  * Homepage for the app!
  *
