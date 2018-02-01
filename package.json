@@ -29,7 +29,7 @@
     "reactstrap": "^5.0.0-alpha.4",
     "redux": "^3.7.2",
     "redux-saga": "^0.16.0",
-    "styled-components": "^3.1.4"
+    "styled-components": "^3.1.5"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.2",
