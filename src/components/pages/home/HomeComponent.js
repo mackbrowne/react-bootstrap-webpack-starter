@@ -4,7 +4,7 @@ import React from 'react';
 // Components
 import { Container, Row, Col } from 'reactstrap';
 
-import { BlueButton } from './StyledButton.style';
+import { BlueButton, RoundButton, RedButton } from './StyledButton.style';
 
 /**
  * Homepage for the app!
@@ -17,6 +17,16 @@ const Home = props => (
     <Row>
       <Col>
         <BlueButton>Simple Button</BlueButton>
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <RoundButton>Rounded Button</RoundButton>
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <RedButton>Red, Rounded Button</RedButton>
       </Col>
     </Row>
   </Container>
