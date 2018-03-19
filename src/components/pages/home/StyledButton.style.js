@@ -30,3 +30,7 @@ export const RedButton = RoundButton.extend`
 export const RotateButton = styled(RedButton)`
   animation: ${rotate360} 2s linear infinite;
 `;
+
+export const RotatingTitle = styled.h1`
+  animation: ${rotate360} 2s linear infinite;
+`;

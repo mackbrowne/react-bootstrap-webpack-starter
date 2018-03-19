@@ -8,7 +8,8 @@ import {
   BlueButton,
   RoundButton,
   RedButton,
-  RotateButton
+  RotateButton,
+  RotatingTitle
 } from './StyledButton.style';
 
 /**
@@ -37,6 +38,11 @@ const Home = props => (
     <Row>
       <Col>
         <RotateButton>Rotating....</RotateButton>
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <RotatingTitle>Rotating....</RotatingTitle>
       </Col>
     </Row>
   </Container>
