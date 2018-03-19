@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const rotate360 = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 export const BlueButton = styled.button.attrs({
   type: 'button',
@@ -15,4 +25,8 @@ export const RoundButton = BlueButton.extend`
 export const RedButton = RoundButton.extend`
   background-color: red;
   color: black;
+`;
+
+export const RotateButton = styled(RedButton)`
+  animation: ${rotate360} 2s linear infinite;
 `;
