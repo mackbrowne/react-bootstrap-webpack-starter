@@ -4,14 +4,7 @@ import React from 'react';
 // Components
 import { Container, Row, Col } from 'reactstrap';
 
-import {
-  BlueButton,
-  RoundButton,
-  RedButton,
-  RotateButton,
-  RotatingTitle,
-  MonolithButton
-} from './StyledButton.style';
+import { RotatingTitle, Button } from './StyledButton.style';
 
 /**
  * Homepage for the app!
@@ -23,22 +16,24 @@ const Home = props => (
   <Container fluid>
     <Row>
       <Col>
-        <BlueButton>Simple Button</BlueButton>
+        <Button>Simple Button</Button>
       </Col>
     </Row>
     <Row>
       <Col>
-        <RoundButton>Rounded Button</RoundButton>
+        <Button round="true">Rounded Button</Button>
       </Col>
     </Row>
     <Row>
       <Col>
-        <RedButton>Red, Rounded Button</RedButton>
+        <Button background="red" color="white" round="true">
+          Red, Rounded Button
+        </Button>
       </Col>
     </Row>
     <Row>
       <Col>
-        <RotateButton>Rotating....</RotateButton>
+        <Button rotate="true">Rotating....</Button>
       </Col>
     </Row>
     <Row>
@@ -48,14 +43,9 @@ const Home = props => (
     </Row>
     <Row>
       <Col>
-        <MonolithButton
-          rotate="true"
-          color="white"
-          background="red"
-          round="true"
-        >
+        <Button rotate="true" color="white" background="red" round="true">
           Monolith
-        </MonolithButton>
+        </Button>
       </Col>
     </Row>
   </Container>
