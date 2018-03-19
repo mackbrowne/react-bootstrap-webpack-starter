@@ -72,7 +72,7 @@ const AppLayout = ({ children }) => (
           </Switch>
         </Col>
       </Row>
-      <Row>
+      {/* <Row>
         <Col>
           <footer className="py-1 text-center">
             <p>
@@ -82,7 +82,7 @@ const AppLayout = ({ children }) => (
             </p>
           </footer>
         </Col>
-      </Row>
+      </Row> */}
     </AppContainer>
   </div>
 );

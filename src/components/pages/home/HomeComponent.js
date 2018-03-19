@@ -4,6 +4,8 @@ import React from 'react';
 // Components
 import { Container, Row, Col } from 'reactstrap';
 
+import { BlueButton } from './StyledButton.style';
+
 /**
  * Homepage for the app!
  *
@@ -14,13 +16,9 @@ const Home = props => (
   <Container fluid>
     <Row>
       <Col>
-        <button
-          type="button"
-          name="styled-button"
-          style={{ color: 'white', backgroundColor: 'blue' }}
-        >
+        <BlueButton type="button" name="styled-button">
           Simple Button
-        </button>
+        </BlueButton>
       </Col>
     </Row>
   </Container>
