@@ -48,7 +48,14 @@ const Home = props => (
     </Row>
     <Row>
       <Col>
-        <MonolithButton rotate="true">Monolith</MonolithButton>
+        <MonolithButton
+          rotate="true"
+          color="white"
+          background="red"
+          round="true"
+        >
+          Monolith
+        </MonolithButton>
       </Col>
     </Row>
   </Container>

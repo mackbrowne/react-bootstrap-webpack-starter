@@ -41,4 +41,7 @@ export const MonolithButton = styled.button.attrs({
   name: 'styled-button'
 })`
   animation: ${props => props.rotate ? `${rotate360} 2s linear infinite` : `none`};
+  color: ${props => props.color};
+  background-color: ${props => props.background};
+  border-radius ${props => (props.round ? '40px' : '0')};
 `;
