@@ -16,9 +16,7 @@ const Home = props => (
   <Container fluid>
     <Row>
       <Col>
-        <BlueButton type="button" name="styled-button">
-          Simple Button
-        </BlueButton>
+        <BlueButton>Simple Button</BlueButton>
       </Col>
     </Row>
   </Container>
