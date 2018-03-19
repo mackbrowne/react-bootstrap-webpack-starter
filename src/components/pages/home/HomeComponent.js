@@ -14,7 +14,11 @@ const Home = props => (
   <Container fluid>
     <Row>
       <Col>
-        <button type="button" name="styled-button">
+        <button
+          type="button"
+          name="styled-button"
+          style={{ color: 'white', backgroundColor: 'blue' }}
+        >
           Simple Button
         </button>
       </Col>
