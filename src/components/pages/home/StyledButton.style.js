@@ -1,3 +1,4 @@
+/* eslint-disable */
 import styled, { keyframes } from 'styled-components';
 
 const rotate360 = keyframes`
@@ -33,4 +34,11 @@ export const RotateButton = styled(RedButton)`
 
 export const RotatingTitle = styled.h1`
   animation: ${rotate360} 2s linear infinite;
+`;
+
+export const MonolithButton = styled.button.attrs({
+  type: 'button',
+  name: 'styled-button'
+})`
+  animation: ${props => props.rotate ? `${rotate360} 2s linear infinite` : `none`};
 `;

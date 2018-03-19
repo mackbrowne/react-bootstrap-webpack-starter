@@ -9,7 +9,8 @@ import {
   RoundButton,
   RedButton,
   RotateButton,
-  RotatingTitle
+  RotatingTitle,
+  MonolithButton
 } from './StyledButton.style';
 
 /**
@@ -43,6 +44,11 @@ const Home = props => (
     <Row>
       <Col>
         <RotatingTitle>Rotating....</RotatingTitle>
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <MonolithButton rotate="true">Monolith</MonolithButton>
       </Col>
     </Row>
   </Container>
