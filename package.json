@@ -44,7 +44,7 @@
     "husky": "^0.14.3",
     "jest-styled-components": "^4.9.0",
     "lint-staged": "^6.0.0",
-    "node-sass-chokidar": "^1.2.0",
+    "node-sass-chokidar": "^1.2.1",
     "prettier": "^1.8.2",
     "react-scripts": "^1.0.17",
     "redux-saga-test-plan": "^3.3.0",
