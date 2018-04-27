@@ -1,5 +1,6 @@
 // Framework
 import { takeEvery, put } from 'redux-saga/effects';
+import { nextPage } from './places';
 
 // Actions
 export const INIT = 'UI/INIT';
@@ -31,6 +32,7 @@ export default function InitReducer(state = DEFAULT_STATE, action = {}) {
 export function* initializeAsyncStateWorker(action) {
   try {
     yield put(initAppSuccess());
+    yield put(nextPage());
   } catch (err) {
     yield console.log(err);
   }
