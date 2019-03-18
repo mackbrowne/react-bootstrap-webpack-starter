@@ -23,7 +23,7 @@
     "react-dom": "^16.1.1",
     "react-loadable": "^5.3.1",
     "react-redux": "^5.0.6",
-    "react-router": "^4.2.0",
+    "react-router": "^5.0.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.8",
     "reactstrap": "^5.0.0-alpha.4",
