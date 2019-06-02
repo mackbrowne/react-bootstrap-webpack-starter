@@ -49,7 +49,7 @@
     "react-scripts": "^1.0.17",
     "redux-saga-test-plan": "^3.3.0",
     "serve": "^6.4.1",
-    "source-map-explorer": "^1.5.0"
+    "source-map-explorer": "^2.0.0"
   },
   "jest": {
     "coverageReporters": [
