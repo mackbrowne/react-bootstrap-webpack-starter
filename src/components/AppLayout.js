@@ -1,4 +1,3 @@
-// @flow
 // Framework
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
@@ -7,30 +6,30 @@ import Loadable from 'react-loadable';
 // Components
 import { Row, Col } from 'reactstrap';
 
-import LoadingComponent from './common/LoadingComponent';
+import LoadingComponent from './common/Loading';
 
 import { AppContainer, Logo } from './AppLayout.style';
 
 import logo from './../img/logo.svg';
 
-const AsyncNavigationContainer = Loadable({
-  loader: () => import('./common/navigation/NavigationContainer'),
+const AsyncNavigation = Loadable({
+  loader: () => import('./common/Navigation'),
   loading: LoadingComponent
 });
-const AsyncHomeContainer = Loadable({
-  loader: () => import('./pages/home/HomeContainer'),
+const AsyncHome = Loadable({
+  loader: () => import('./pages/Home'),
   loading: LoadingComponent
 });
-const AsyncPageOneContainer = Loadable({
-  loader: () => import('./pages/one/PageOneContainer'),
+const AsyncPageOne = Loadable({
+  loader: () => import('./pages/One'),
   loading: LoadingComponent
 });
-const AsyncPageTwoContainer = Loadable({
-  loader: () => import('./pages/two/PageTwoContainer'),
+const AsyncPageTwo = Loadable({
+  loader: () => import('./pages/Two'),
   loading: LoadingComponent
 });
-const AsyncPageThreeContainer = Loadable({
-  loader: () => import('./pages/three/PageThreeContainer'),
+const AsyncPageThree = Loadable({
+  loader: () => import('./pages/Three'),
   loading: LoadingComponent
 });
 const AsyncNotFound = Loadable({
@@ -50,7 +49,7 @@ const navigationItems = [
  *
  * @returns {Element} Stateless functional React component.
  */
-const AppLayout = ({ children }) => (
+const AppLayout = () => (
   <div className="App">
     <AppContainer>
       <Row className="bg-faded">
@@ -58,16 +57,16 @@ const AppLayout = ({ children }) => (
           <Logo src={logo} alt="logo" className="img-fluid" fluid />
         </Col>
         <Col>
-          <AsyncNavigationContainer navigationItems={navigationItems} />
+          <AsyncNavigation navigationItems={navigationItems} />
         </Col>
       </Row>
       <Row>
         <Col>
           <Switch>
-            <Route exact path="/" component={AsyncHomeContainer} />
-            <Route exact path="/page1" component={AsyncPageOneContainer} />
-            <Route exact path="/page2" component={AsyncPageTwoContainer} />
-            <Route exact path="/page3" component={AsyncPageThreeContainer} />
+            <Route exact path="/" component={AsyncHome} />
+            <Route exact path="/page1" component={AsyncPageOne} />
+            <Route exact path="/page2" component={AsyncPageTwo} />
+            <Route exact path="/page3" component={AsyncPageThree} />
             <Route path="*" component={AsyncNotFound} />
           </Switch>
         </Col>
