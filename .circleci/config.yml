@@ -2,11 +2,12 @@ version: 2.1
 orbs:
   snyk: snyk/snyk@0.0.8
   cypress: cypress-io/cypress@1
+  lighthouse-check: foo-software/lighthouse-check@0.0.6
 jobs:
   build:
     docker:
       - image: circleci/node:12.9.1-browsers
-
+    executor: lighthouse-check/default
     working_directory: ~/repo
     steps:
       - checkout
@@ -45,4 +46,14 @@ jobs:
       - snyk/scan:
           fail-on-issues: false
           monitor-on-build: false
-          severity-threshold: high
+          severity-threshold: hig
+
+      - lighthouse-check/audit:
+          urls: "https://localhost:300"
+
+      - lighthouse-check/validate-status:
+          minAccessibilityScore: "50"
+          minBestPracticesScore: "50"
+          minPerformanceScore: "99"
+          minProgressiveWebAppScore: "50"
+          minSeoScore: "50"
