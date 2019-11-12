@@ -7,7 +7,10 @@ describe('root reducer', () => {
   it('should return the initial state', () => {
     const expected = {
       init: InitReducer(),
-      navbar: NavbarReducer()
+      navbar: NavbarReducer(),
+      router: {
+        location: null
+      }
     };
     expect(rootReducer()).toEqual(expected);
   });
