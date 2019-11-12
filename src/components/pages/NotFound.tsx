@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Components
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const NotFound = () => (
   <Container className="not-found">

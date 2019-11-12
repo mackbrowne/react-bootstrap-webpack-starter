@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 // Components
-import { Row, Col } from 'reactstrap';
+import { Row, Col } from 'react-bootstrap';
 
 import LoadingComponent from './common/Loading';
 

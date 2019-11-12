@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { Container } from 'reactstrap';
+import { Container, Image } from 'react-bootstrap';
 
 export const AppContainer = styled(Container)`
   text-align: center;
@@ -16,7 +16,7 @@ to {
 `;
 
 // Here we create a component that will rotate everything we pass in over two seconds
-export const Logo = styled.img`
+export const Logo = styled(Image)`
   animation: ${rotate360} 20s linear infinite;
   height: 80px;
 `;

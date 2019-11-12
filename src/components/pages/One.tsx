@@ -2,7 +2,7 @@
 import React from 'react';
 
 // Components
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 /**
  * Page 1 page for the app!
@@ -10,14 +10,14 @@ import { Container, Row, Col } from 'reactstrap';
  * @param {Object} props All the properties passed to the React Component.
  * @returns {StatelessComponent} Stateless functional React component.
  */
-const PageTwo = props => (
-  <Container fluid>
-    <Row>
-      <Col>
-        <p>Page 2</p>
-      </Col>
-    </Row>
-  </Container>
-);
-
-export default PageTwo;
+export default function PageOne() {
+  return (
+    <Container fluid>
+      <Row>
+        <Col>
+          <p>Page 1</p>
+        </Col>
+      </Row>
+    </Container>
+  );
+}

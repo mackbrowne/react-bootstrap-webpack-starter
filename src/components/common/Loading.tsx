@@ -1,6 +1,12 @@
 import React from 'react';
 
-export default function LoadingComponent({ isLoading, error }) {
+export default function LoadingComponent({
+  isLoading,
+  error
+}: {
+  isLoading: boolean,
+  error: any
+}) {
   // Handle the loading state
   if (isLoading) {
     return <div>Loading...</div>;
