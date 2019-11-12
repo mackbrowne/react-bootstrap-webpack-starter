@@ -11,10 +11,10 @@
     "eject": "react-scripts eject",
     "flow": "flow",
     "flow:coverage": "flow-coverage-report -i 'src/**/*.js' -i 'src/**/*.jsx' -x 'src/test/**' -t html -t json -t text --threshold 90",
-    "lint": "./node_modules/.bin/eslint .",
-    "lint:fix": "./node_modules/.bin/eslint . --fix",
+    "lint": "eslint src/**/*.js",
     "analyze": "source-map-explorer build/static/js/main.*",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "size": "yarn build && size-limit"
   },
   "dependencies": {
     "bootstrap": "4.1.0",
@@ -32,10 +32,9 @@
     "styled-components": "^3.2.6"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.2",
+    "@size-limit/preset-app": "^2.1.6",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
-    "eslint": "^4.11.0",
     "eslint-config-prettier": "^2.8.0",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.5.1",
@@ -46,7 +45,7 @@
     "lint-staged": "^7.0.5",
     "node-sass-chokidar": "^1.2.2",
     "prettier": "^1.8.2",
-    "react-scripts": "^1.0.17",
+    "react-scripts": "^3.2.0",
     "redux-saga-test-plan": "^3.3.0",
     "serve": "^6.4.1",
     "source-map-explorer": "^1.5.0"
@@ -62,6 +61,23 @@
     "src/**/*.{js,jsx,json,css,scss}": [
       "./node_modules/.bin/eslint --fix",
       "git add"
+    ]
+  },
+  "size-limit": [
+    {
+      "path": "build/static/**/*.{js,css,svg,woff,woff2,png,ttf,html}"
+    }
+  ],
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   }
 }
