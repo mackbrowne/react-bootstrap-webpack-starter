@@ -1,0 +1,48 @@
+version: 2.1
+orbs:
+  snyk: snyk/snyk@0.0.8
+  cypress: cypress-io/cypress@1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:12.9.1-browsers
+
+    working_directory: ~/repo
+    steps:
+      - checkout
+
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+      - run:
+          name: Lint Code For Errors
+          command: yarn lint
+
+      - run:
+          name: Check Size of Packages
+          command: yarn size
+
+      - run:
+          name: Run Unit Tests
+          command: yarn test
+
+      - run:
+          name: Run Cypress Tests
+          command: yarn ci:cypress-run
+
+      - snyk/scan:
+          fail-on-issues: false
+          monitor-on-build: false
+          severity-threshold: high

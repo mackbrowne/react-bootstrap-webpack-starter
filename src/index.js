@@ -12,7 +12,7 @@ import configureStore, { history } from './lib/configureStore';
 import { initApp } from './actions/ui/init';
 
 import registerServiceWorker from './lib/registerServiceWorker';
-import { ConnectedRouter } from 'react-router-redux';
+import { Router } from 'react-router-dom';
 
 // Make redux initial store
 const store = configureStore();
@@ -21,9 +21,9 @@ const store = configureStore();
 const renderApp = () =>
   render(
     <Provider store={store}>
-      <ConnectedRouter history={history}>
+      <Router history={history}>
         <AppLayout />
-      </ConnectedRouter>
+      </Router>
     </Provider>,
     document.getElementById('root')
   );
