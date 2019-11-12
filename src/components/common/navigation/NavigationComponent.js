@@ -37,7 +37,10 @@ const Navigation = ({
           </NavItem>
         ))}
         <NavItem>
-          <NavLink href="https://github.com/reactstrap/reactstrap">
+          <NavLink
+            href="https://github.com/mackbrowne/react-bootstrap-webpack-starter"
+            target="_blank"
+          >
             Github
           </NavLink>
         </NavItem>
