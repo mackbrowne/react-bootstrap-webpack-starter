@@ -1,41 +1,22 @@
 // Framework
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Loadable from 'react-loadable';
+
+import loadable from '@loadable/component';
 
 // Components
 import { Row, Col } from 'react-bootstrap';
-
-import LoadingComponent from './common/Loading';
 
 import { AppContainer, Logo } from './AppLayout.style';
 
 import logo from './../img/logo.svg';
 
-const AsyncNavigation = Loadable({
-  loader: () => import('./common/Navigation'),
-  loading: LoadingComponent
-});
-const AsyncHome = Loadable({
-  loader: () => import('./pages/Home'),
-  loading: LoadingComponent
-});
-const AsyncPageOne = Loadable({
-  loader: () => import('./pages/One'),
-  loading: LoadingComponent
-});
-const AsyncPageTwo = Loadable({
-  loader: () => import('./pages/Two'),
-  loading: LoadingComponent
-});
-const AsyncPageThree = Loadable({
-  loader: () => import('./pages/Three'),
-  loading: LoadingComponent
-});
-const AsyncNotFound = Loadable({
-  loader: () => import('./pages/NotFound'),
-  loading: LoadingComponent
-});
+const AsyncNavigation = loadable(() => import('./common/Navigation'));
+const AsyncHome = loadable(() => import('./pages/Home'));
+const AsyncPageOne = loadable(() => import('./pages/One'));
+const AsyncPageTwo = loadable(() => import('./pages/Two'));
+const AsyncPageThree = loadable(() => import('./pages/Three'));
+const AsyncNotFound = loadable(() => import('./pages/NotFound'));
 
 const navigationItems = [
   { label: 'Home', path: '/' },
