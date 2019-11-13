@@ -1,11 +1,11 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import Home from '../Home';
+import Photos from '../Photos';
 
-describe('<Home /> Snapshot', () => {
+describe('<Photos /> Snapshot', () => {
   it('renders snapshot with no props', () => {
-    const wrapper = mount(<Home />);
+    const wrapper = mount(<Photos />);
     expect(wrapper).toMatchSnapshot();
   });
 });

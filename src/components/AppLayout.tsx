@@ -12,7 +12,7 @@ import { AppContainer, Logo } from './AppLayout.style';
 import logo from './../img/logo.svg';
 
 const AsyncNavigation = loadable(() => import('./common/Navigation'));
-const AsyncHome = loadable(() => import('./pages/Home'));
+const Photos = loadable(() => import('./pages/Photos'));
 const AsyncNotFound = loadable(() => import('./pages/NotFound'));
 
 const navigationItems = [{ label: 'Home', path: '/' }];
@@ -34,7 +34,7 @@ const AppLayout = () => (
         </Col>
       </Row>
       <Switch>
-        <Route exact path="/" component={AsyncHome} />
+        <Route exact path="/" component={Photos} />
         <Route path="*" component={AsyncNotFound} />
       </Switch>
       <Row>

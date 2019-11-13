@@ -19,7 +19,6 @@
   "dependencies": {
     "@loadable/component": "^5.10.3",
     "axios": "^0.19.0",
-    "axios-hooks": "^1.7.1",
     "bootstrap": "^4.3.1",
     "react": "^16.11.0",
     "react-bootstrap": "^1.0.0-beta.14",
