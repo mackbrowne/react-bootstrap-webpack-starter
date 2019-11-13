@@ -23,7 +23,7 @@ export interface NavProps {
 export default function Navigation({ navigationItems = [] }: NavProps) {
   return (
     <Navbar color="faded" bg="light" expand="md">
-      <Navbar.Brand href="/">react-bootstrap</Navbar.Brand>
+      <Navbar.Brand href="/">Flickr Photo Viewer</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto" navbar>
@@ -34,7 +34,7 @@ export default function Navigation({ navigationItems = [] }: NavProps) {
           ))}
           <Nav.Item>
             <Nav.Link
-              href="https://github.com/mackbrowne/react-bootstrap-webpack-starter"
+              href="https://github.com/mackbrowne/react-bootstrap-webpack-starter/tree/interview-cygni"
               target="_blank"
             >
               Github

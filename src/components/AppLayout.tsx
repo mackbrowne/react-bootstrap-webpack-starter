@@ -13,17 +13,9 @@ import logo from './../img/logo.svg';
 
 const AsyncNavigation = loadable(() => import('./common/Navigation'));
 const AsyncHome = loadable(() => import('./pages/Home'));
-const AsyncPageOne = loadable(() => import('./pages/One'));
-const AsyncPageTwo = loadable(() => import('./pages/Two'));
-const AsyncPageThree = loadable(() => import('./pages/Three'));
 const AsyncNotFound = loadable(() => import('./pages/NotFound'));
 
-const navigationItems = [
-  { label: 'Home', path: '/' },
-  { label: 'Page 1', path: 'page1' },
-  { label: 'Page 2', path: 'page2' },
-  { label: 'Page 3', path: 'page3' }
-];
+const navigationItems = [{ label: 'Home', path: '/' }];
 
 /**
  * Main rendering entry point for the app.
@@ -41,24 +33,15 @@ const AppLayout = () => (
           <AsyncNavigation navigationItems={navigationItems} />
         </Col>
       </Row>
-      <Row>
-        <Col>
-          <Switch>
-            <Route exact path="/" component={AsyncHome} />
-            <Route exact path="/page1" component={AsyncPageOne} />
-            <Route exact path="/page2" component={AsyncPageTwo} />
-            <Route exact path="/page3" component={AsyncPageThree} />
-            <Route path="*" component={AsyncNotFound} />
-          </Switch>
-        </Col>
-      </Row>
+      <Switch>
+        <Route exact path="/" component={AsyncHome} />
+        <Route path="*" component={AsyncNotFound} />
+      </Switch>
       <Row>
         <Col>
           <footer className="py-1 text-center">
             <p>
-              Created by: <a href="https://mackbrowne.com/">Mack Browne</a> and
-              adapted from{' '}
-              <a href="https://github.com/mackbrowne/beehive">Beehive</a>
+              Created by: <a href="https://mackbrowne.com/">Mack Browne</a>
             </p>
           </footer>
         </Col>

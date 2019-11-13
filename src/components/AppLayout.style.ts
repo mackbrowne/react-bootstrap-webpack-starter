@@ -1,7 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 import { Container, Image } from 'react-bootstrap';
 
-export const AppContainer = styled(Container)`
+export const AppContainer = styled(Container).attrs({
+  fluid: true
+})`
   text-align: center;
 `;
 

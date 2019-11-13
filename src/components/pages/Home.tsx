@@ -1,10 +1,11 @@
 // Framework
 import React from 'react';
 import useAxios from 'axios-hooks';
+import { up } from 'styled-breakpoints';
 
 // Components
-import { Container, Row, Col } from 'react-bootstrap';
-import { Image } from 'react-bootstrap';
+import { Row, Col, Card } from 'react-bootstrap';
+import styled from 'styled-components';
 
 type GalleryPhoto = {
   farm: string,
@@ -38,21 +39,40 @@ export default function Home() {
   if (galleryLoading) return <p>Loading...</p>;
   if (galleryError) return <p>Error!</p>;
 
+  const CardImg = styled(Card.Img).attrs({ variant: 'top' })`
+    width: 100%;
+    object-fit: cover;
+
+    ${up('md')} {
+      height: 25rem;
+    }
+  `;
+
+  const CardTitle = styled(Card.Title)`
+    text-align: right;
+    text-shadow: 0.075em 0.08em 0.1em rgba(0, 0, 0, 1);
+  `;
+
+  const {
+    photos: { photo: photoList }
+  } = galleryData;
+  console.log(photoList);
+
   return (
-    <Container fluid>
-      <Row>
-        <Col>
-          {galleryData.photos.photo.map(
-            ({ farm, server, id, secret, title }: GalleryPhoto) => (
-              <Image
-                key={id}
-                src={`https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`}
-                alt={title}
-              />
-            )
-          )}
+    <Row>
+      {photoList.map(({ farm, server, id, secret, title }: GalleryPhoto) => (
+        <Col md={4} xl={2} key={id} className="p-1">
+          <Card className="text-white">
+            <CardImg
+              src={`https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`}
+              alt={title}
+            />
+            <Card.ImgOverlay>
+              <CardTitle>{title.length ? title : 'Untitled'}</CardTitle>
+            </Card.ImgOverlay>
+          </Card>
         </Col>
-      </Row>
-    </Container>
+      ))}
+    </Row>
   );
 }
