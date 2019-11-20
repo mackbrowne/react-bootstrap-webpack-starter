@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 
 // Components
-import { Row, Col } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import Axios from 'axios';
 import PhotoCard, { GalleryPhoto } from '../common/PhotoCard';
+import Loader from '../common/Loader';
 
 const BASE_URL = 'https://www.flickr.com/services/rest/?';
 const BASE_PARAMS = {
-  api_key: '3433323375a1c4cb9baa5d2ade6a9685',
+  api_key: 'aa9bd4bc5372aef541bf068bb7c3ee19',
   gallery_id: '72157690638331410',
   method: 'flickr.galleries.getPhotos',
   format: 'json',
@@ -29,9 +30,13 @@ export default function Photos() {
   const [hasNextPage, setHasNextPage] = useState(true);
   const [page, setPage] = useState(1);
 
-  const fetchData = async (params: any) => {
+  const fetchData = async () => {
     try {
       if (!loading) {
+        const params = `${new URLSearchParams({
+          ...BASE_PARAMS,
+          page: `${page}`
+        })}`;
         setLoading(true);
         const {
           data: {
@@ -56,26 +61,13 @@ export default function Photos() {
   return (
     <InfiniteScroll
       pageStart={1}
-      loadMore={() => {
-        fetchData(
-          `${new URLSearchParams({
-            ...BASE_PARAMS,
-            page: `${page}`
-          })}`
-        );
-      }}
+      loadMore={fetchData}
       hasMore={hasNextPage}
-      loader={
-        <div className="loader" key={0}>
-          Loading ...
-        </div>
-      }
+      loader={<Loader key={0} />}
     >
       <Row>
         {photos.map((photo: GalleryPhoto) => (
-          <Col md={4} xl={2} key={photo.id} className="p-1">
-            <PhotoCard photo={photo} />
-          </Col>
+          <PhotoCard key={photo.id} photo={photo} />
         ))}
       </Row>
     </InfiniteScroll>

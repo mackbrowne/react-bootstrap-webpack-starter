@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
-import { Card } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
+
+const CardCol = styled(Col).attrs({
+  className: 'p-1',
+  md: 4,
+  xl: 2
+})``;
 
 const CardImg = styled(Card.Img).attrs({ variant: 'top' })`
   width: 100%;
@@ -30,14 +36,16 @@ export default ({
 }: {
   photo: GalleryPhoto
 }) => (
-  <Card className="text-white">
-    <CardImg
-      src={`https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`}
-      alt={title}
-      className="photo"
-    />
-    <Card.ImgOverlay>
-      <CardTitle>{title.length ? title : 'Untitled'}</CardTitle>
-    </Card.ImgOverlay>
-  </Card>
+  <CardCol>
+    <Card className="text-white">
+      <CardImg
+        src={`https://farm${farm}.staticflickr.com/${server}/${id}_${secret}.jpg`}
+        alt={title}
+        className="photo"
+      />
+      <Card.ImgOverlay>
+        <CardTitle>{title.length ? title : 'Untitled'}</CardTitle>
+      </Card.ImgOverlay>
+    </Card>
+  </CardCol>
 );
