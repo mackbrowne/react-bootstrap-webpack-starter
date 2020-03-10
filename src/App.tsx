@@ -1,98 +1,24 @@
 import React from "react";
-import styled from "styled-components";
-import { Container, Row, Col, Badge, ListGroup } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 // import logo from './logo.svg';
 import "./App.css";
-
-const PillGroup = styled(ListGroup).attrs({
-  horizontal: true,
-  className: "d-flex flex-wrap"
-})``;
-
-const Pill = styled(ListGroup.Item).attrs({
-  as: Badge,
-  variant: "light"
-})`
-  margin: 1px;
-  border: #6c757d 1px solid;
-`;
-
-const Title = styled.h1.attrs({
-  className: "mt-2"
-})``;
-
-const TitleLabel = styled.h2.attrs({
-  className: "my-4"
-})`
-  font-size: 1.5rem;
-`;
-
-const SubTitle = styled.h2.attrs({
-  className: "mt-3"
-})``;
-
-const Summary = styled.p.attrs({
-  className: "mb-1"
-})``;
-
-const Company = ({ name, location }) => (
-  <Row>
-    <Col as="h3" className="mb-0">
-      {name}
-    </Col>
-    <Col as="h5" className="mb-0" xs="auto">
-      {location}
-    </Col>
-  </Row>
-);
-
-const Position = ({ title, time, duties }) => (
-  <>
-    <Row>
-      <Col as="h4" className="my-2">
-        {title}
-      </Col>
-      <Col as="h5" className="my-2" xs="auto">
-        {time}
-      </Col>
-    </Row>
-    <ul className="pl-3 mt-0 mb-2">
-      {duties.map((duty, index) => (
-        <li key={`${title}-${index}`}>{duty}</li>
-      ))}
-    </ul>
-  </>
-);
-
-const Pills = ({ title, list }) => (
-  <>
-    <SubTitle>{title}</SubTitle>
-    <PillGroup>
-      {list.map((listItem, index) => (
-        <Pill key={`${title}-${index}`}>{listItem}</Pill>
-      ))}
-    </PillGroup>
-  </>
-);
-
-const SideList = ({ title, list }) => (
-  <>
-    <SubTitle>{title}</SubTitle>
-    <ul className="list-unstyled p-0 m-0">
-      {list.map((item, index) => (
-        <li key={`${title}-${index}`}>{item}</li>
-      ))}
-    </ul>
-  </>
-);
-
-const ExperienceList = styled(ListGroup).attrs({ variant: "flush" })``;
-const Experience = styled(ListGroup.Item).attrs({ className: "pl-0" })``;
+import {
+  Title,
+  TitleLabel,
+  Summary,
+  SubTitle,
+  ExperienceList,
+  Experience,
+  Company,
+  SideList,
+  Pills,
+  Position
+} from "./App.style.js";
 
 export default function App() {
   return (
-    <Container className="pt-5">
+    <Container className="px-0">
       <Row>
         <Col>
           <Row className="d-flex justify-content-between pr-5">
@@ -108,11 +34,10 @@ export default function App() {
           </Row>
 
           <Summary>
-            Product-focused nerd with 10 years industry experience. Organized,
-            lifelong learner motivated by difficult challenges. Self-driven, and
-            enjoys working independently and with teams. Uses a curated
-            collection of libraries and automation tools to make development /
-            testing / deployment more efficient.
+            Organized, lifelong learner motivated by difficult challenges.
+            Self-driven, and enjoys working independently and with teams. Uses a
+            curated collection of libraries and automation tools to make
+            development / testing / deployment more efficient.
           </Summary>
         </Col>
       </Row>
@@ -126,9 +51,9 @@ export default function App() {
                 title="Senior Full Stack Developer - Scopus Core Team"
                 time="Feb 2020 - Present"
                 duties={[
+                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's for junior / intermediate developers.",
                   "Building a full design system and shared component library to unify the look and feel of all Scopus Products",
-                  "Involvement in major web stack migration to microservices and modern front-end technologies.",
-                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's for junior / intermediate developers."
+                  "Involvement in major web stack migration to microservices and modern front-end technologies."
                 ]}
               />
             </Experience>
@@ -184,6 +109,23 @@ export default function App() {
                   "Perform upgrades, maintinence or build new features to existing products.",
                   "Built Mobile Apps, Websites and Hardware projects involving GPS and Bluetooth",
                   "Clients included IBM, NYPD, Syfy/Space Channel, NBC, Hatch, and many small startups, nonprofits and charities in the Toronto area"
+                ]}
+              />
+            </Experience>
+          </ExperienceList>
+          <h2 className="mt-2 mb-0">Education</h2>
+          <ExperienceList>
+            <Experience>
+              <Company
+                name="University Of Ontario Institute of Technology"
+                location="Oshawa, Canada"
+              />
+              <Position
+                title="Bachelor Of Science with Honours"
+                time="2007 - 2012"
+                duties={[
+                  "Computer Science minor in Mathematics",
+                  "16 Month Internship in Web Application Development at IBM"
                 ]}
               />
             </Experience>
