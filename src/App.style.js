@@ -42,7 +42,7 @@ export const Company = ({ name, location }) => (
     <Col as="h3" className="mb-0">
       {name}
     </Col>
-    <Col as="h5" className="mb-0" xs="auto">
+    <Col as="h5" className="mb-0" md="auto">
       {location}
     </Col>
   </Row>
@@ -54,7 +54,7 @@ export const Position = ({ title, time, duties }) => (
       <Col as="h4" className="my-2">
         {title}
       </Col>
-      <Col as="h5" className="my-2" xs="auto">
+      <Col as="h5" className="my-2" md="auto">
         {time}
       </Col>
     </Row>
@@ -90,5 +90,5 @@ export const SideList = ({ title, list }) => (
 
 export const ExperienceList = styled(ListGroup).attrs({ variant: "flush" })``;
 export const Experience = styled(ListGroup.Item).attrs({
-  className: "pl-0 pb-1"
+  className: "pl-0"
 })``;

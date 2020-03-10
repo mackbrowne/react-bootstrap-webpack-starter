@@ -51,9 +51,9 @@ export default function App() {
                 title="Senior Full Stack Developer - Scopus Core Team"
                 time="Feb 2020 - Present"
                 duties={[
-                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's for junior / intermediate developers.",
-                  "Building a full design system and shared component library to unify the look and feel of all Scopus Products",
-                  "Involvement in major web stack migration to microservices and modern front-end technologies."
+                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's for to improve team skills.",
+                  "Involved in building a design system and shared component library to unify the user experience",
+                  "Involvement in major web stack migration to microservices and micro front-end technologies."
                 ]}
               />
             </Experience>
@@ -64,9 +64,9 @@ export default function App() {
                 time="Mar 2019 – Sep 2019"
                 duties={[
                   "Build internal tools from feedback to dramatically improve mobile QA testing speed.",
-                  "Improve user experience by building mobile-specific features as well as improving any mobile usability issues",
-                  "Configure automation pipelines for QA, builds and deployment.",
-                  "Facilitate cross-team collaboration to improve the mobile experience in all parts of the app."
+                  "Improved mobile user experience and created a standard method for mobile-specific features",
+                  "Design and build automation pipelines for test builds, productions builds and deployment.",
+                  "Facilitate cross-team collaboration to improve the mobile experience in all parts of the company."
                 ]}
               />
               <Position
@@ -88,8 +88,8 @@ export default function App() {
                 duties={[
                   "Support and maintain the existing Novus app which includes a user-facing website and a custom CMS.",
                   "Designed a maintainable, reproducable app template that can be used across the Ingle product line.  This dramatically reduced the amount of maintinence and bugs.",
-                  "Create new internal company app with data analytics, multiple sign-in routes and dynamic navigation features.",
-                  "Train interns and other employees on the team with pair programming and code reviews on each submission.",
+                  "Create custom internal app with analytics, multiple sign-in routes and dynamic navigation features.",
+                  "Train interns and other employees with pair programming and code reviews.",
                   'Promote extra curricular coding activities like running a team "Advent Of Code" scoreboard.'
                 ]}
               />
