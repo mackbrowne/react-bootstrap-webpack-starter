@@ -12,16 +12,21 @@ const PillGroup = styled(ListGroup).attrs({
 
 const Pill = styled(ListGroup.Item).attrs({
   as: Badge,
-  variant: "secondary"
+  variant: "light"
 })`
   margin: 1px;
-  // font-weight: lighter;
-  border-color: #6c757d;
+  border: #6c757d 1px solid;
 `;
 
 const Title = styled.h1.attrs({
   className: "mt-2"
 })``;
+
+const TitleLabel = styled.h2.attrs({
+  className: "my-4"
+})`
+  font-size: 1.5rem;
+`;
 
 const SubTitle = styled.h2.attrs({
   className: "mt-3"
@@ -90,14 +95,24 @@ export default function App() {
     <Container className="pt-5">
       <Row>
         <Col>
-          <Title>Mackenzie Browne</Title>
+          <Row className="d-flex justify-content-between pr-5">
+            <Col as={Title} md="auto">
+              Mackenzie Browne
+            </Col>
+            <Col as={TitleLabel} md="auto">
+              Full Stack and Mobile Developer
+            </Col>
+            <Col as={TitleLabel} md="auto">
+              Amsterdam
+            </Col>
+          </Row>
+
           <Summary>
-            Product-focused nerd with 10 years industry experience.
-            Professional, organized lifelong learner motivated by difficult and
-            interesting challenges. Self-driven, enthusiastic and love working
-            both independently and with teams. Uses a curated collection of
-            libraries and automation tools to make development / testing /
-            deployment as efficient as possible.
+            Product-focused nerd with 10 years industry experience. Organized,
+            lifelong learner motivated by difficult challenges. Self-driven, and
+            enjoys working independently and with teams. Uses a curated
+            collection of libraries and automation tools to make development /
+            testing / deployment more efficient.
           </Summary>
         </Col>
       </Row>
@@ -113,8 +128,7 @@ export default function App() {
                 duties={[
                   "Building a full design system and shared component library to unify the look and feel of all Scopus Products",
                   "Involvement in major web stack migration to microservices and modern front-end technologies.",
-                  "Mentoring and 1 on 1's for junior / intermediate developers.",
-                  "Performing technical and cultural interviews to grow the team."
+                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's for junior / intermediate developers."
                 ]}
               />
             </Experience>
@@ -124,21 +138,20 @@ export default function App() {
                 title="Lead Mobile Application Developer - Game"
                 time="Mar 2019 – Sep 2019"
                 duties={[
-                  "Improve the mobile app development and quality assurance experience by developing tools that improve the efficiency of internal teams.",
-                  "Improve user experience by building mobile-specific features as well as improving any mobile usability issues and bugs.",
+                  "Build internal tools from feedback to dramatically improve mobile QA testing speed.",
+                  "Improve user experience by building mobile-specific features as well as improving any mobile usability issues",
                   "Configure automation pipelines for QA, builds and deployment.",
-                  "Facilitate cross-team collaboration to improve the mobile experience in all parts of the app.",
-                  "Code mentor for several junior developers in the company."
+                  "Facilitate cross-team collaboration to improve the mobile experience in all parts of the app."
                 ]}
               />
               <Position
                 title="Senior Full Stack Developer - School Leader App"
                 time="Jun 2018 – Mar 2019"
                 duties={[
-                  "Full Stack Development using React, Node and GraphQL",
                   "Primary role is to develop new features and improve the Admin/Principal user experience.",
-                  "Create user management system to remove and invite new uses to an Principal's school",
-                  "Develop several in-house tools to improve productivity and integrate Github and CI communication through slack."
+                  "Create user management system to remove and invite new users to an Principal's school",
+                  "Develop several in-house tools to improve productivity including CI toosl and Slackbots",
+                  "Trained and mentored for several junior and intermediate developers in the company."
                 ]}
               />
             </Experience>
@@ -148,36 +161,21 @@ export default function App() {
                 title="Senior Frontend Developer"
                 time="Oct 2017 – Jun 2018"
                 duties={[
-                  "Support and maintain the existing Novus platform app. Includes a user-facing website and a supporting content management system.",
-                  "Designed and implemented a standardized method to building apps that can be reproduced for projects going forward. This dramatically reduced the amount of bugs and support needed to keep software running long-term.",
+                  "Support and maintain the existing Novus app which includes a user-facing website and a custom CMS.",
+                  "Designed a maintainable, reproducable app template that can be used across the Ingle product line.  This dramatically reduced the amount of maintinence and bugs.",
                   "Create new internal company app with data analytics, multiple sign-in routes and dynamic navigation features.",
-                  "Help develop skills of interns and other employees on the team with pair programming and code reviews on each submission.",
+                  "Train interns and other employees on the team with pair programming and code reviews on each submission.",
                   'Promote extra curricular coding activities like running a team "Advent Of Code" scoreboard.'
                 ]}
               />
             </Experience>
-            {/* <Experience>
-              <Company name="Bonsai" location="Toronto" />
-              <Position
-                title="Development Team Lead"
-                time="Apr 2017 – Sep 2017"
-                duties={[
-                  "Hire and Lead team of 8 developers",
-                  "Build custom e-commerce ios / android hybrid app",
-                  "Build a supporting CMS back-end to support the customer-facing app",
-                  "Setup agile team development practices",
-                  "Setup continuous integration with unit testing",
-                  "Gather and refine specifications and requirements based on technical needs"
-                ]}
-              />
-            </Experience> */}
             <Experience>
               <Company
-                name="Self Employed (9274022 Canada Inc.)"
+                name="Self Incorporated Freelance"
                 location="Canada, USA (On-Site and Remote)"
               />
               <Position
-                title="Freelance Full Stack and Mobile Developer"
+                title="Full Stack and Mobile Development"
                 time="August 2011 – June 2017"
                 duties={[
                   "Full-time contracting including initial pitch meetings all the way through to final product.",
@@ -207,13 +205,13 @@ export default function App() {
           <SideList
             title="Skills"
             list={[
-              "Beautiful customer-facing pages",
+              "Beautiful landing pages",
               "Responsive Design",
               "Agile and Kanban Methodology",
               "Git Flow",
               "Unit and E2E Testing",
               "Continuous Builds / Tests / Deploys",
-              "Native and Hybrid App Development",
+              "Native and Hybrid Apps",
               "Single Page Apps",
               "REST API Development"
             ]}
@@ -259,8 +257,9 @@ export default function App() {
               "VSCode",
               "Jenkins",
               "Vim",
-              "Eslint",
               "Prettier",
+              "lighthouse",
+              "axe",
               "cloc"
             ]}
           />
