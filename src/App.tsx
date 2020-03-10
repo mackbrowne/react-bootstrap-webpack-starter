@@ -113,7 +113,7 @@ export default function App() {
               />
             </Experience>
           </ExperienceList>
-          <h2 className="mt-2 mb-0">Education</h2>
+          <SubTitle>Education</SubTitle>
           <ExperienceList>
             <Experience>
               <Company
@@ -124,8 +124,9 @@ export default function App() {
                 title="Bachelor Of Science with Honours"
                 time="2007 - 2012"
                 duties={[
-                  "Computer Science minor in Mathematics",
-                  "16 Month Internship in Web Application Development at IBM"
+                  "Computer Science with minor in Mathematics",
+                  "16 Month Internship in Web Application Development at IBM",
+                  "Thesis involving concurrent, multi-core web crawling using Clojure"
                 ]}
               />
             </Experience>
