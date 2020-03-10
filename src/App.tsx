@@ -18,7 +18,7 @@ import {
 
 export default function App() {
   return (
-    <Container className="px-0">
+    <Container className="px-md-0">
       <Row>
         <Col>
           <Row className="d-flex justify-content-between pr-5">

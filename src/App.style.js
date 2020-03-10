@@ -4,7 +4,7 @@ import { Row, Col, Badge, ListGroup } from "react-bootstrap";
 
 export const PillGroup = styled(ListGroup).attrs({
   horizontal: true,
-  className: "d-flex flex-wrap"
+  className: "d-flex flex-wrap pb-2 pb-md-1"
 })``;
 
 export const Pill = styled(ListGroup.Item).attrs({
