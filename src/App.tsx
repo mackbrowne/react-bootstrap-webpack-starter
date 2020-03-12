@@ -53,7 +53,7 @@ export default function App() {
                 duties={[
                   "Perform technical interviews to grow the team.  Mentoring and 1 on 1's for to improve team skills",
                   "Involved in building a design system and shared component library to unify the user experience",
-                  "Involvement in major web stack migration to microservices and micro front-end technologies"
+                  "Involvement in major web stack migration to micro services and micro front-end technologies"
                 ]}
               />
             </Experience>
@@ -75,7 +75,7 @@ export default function App() {
                 duties={[
                   "Primary role is to develop new features and improve the Admin/Principal user experience",
                   "Create user management system to remove and invite new users to an Principal's school",
-                  "Develop several in-house tools to improve productivity including CI toosl and Slackbots",
+                  "Develop several in-house tools to improve productivity including CI tools and Slack bots",
                   "Trained and mentored for several junior and intermediate developers in the company"
                 ]}
               />
@@ -87,7 +87,7 @@ export default function App() {
                 time="Oct 2017 – Jun 2018"
                 duties={[
                   "Support and maintain the existing Novus app.  Includes a user-facing website and a custom CMS",
-                  "Designed a maintainable, reproducable app template that can be used across the Ingle product line.  This dramatically reduced the amount of maintinence and bugs",
+                  "Designed a maintainable, reproducible app template that can be used across the Ingle product line.  This dramatically reduced the amount of maintenance and bugs",
                   "Create custom company-facing dashboard app with multiple sign-in routes, analytics and tools",
                   "Train interns and other employees with pair programming and code reviews",
                   'Promote extra curricular coding activities like running a team "Advent Of Code" scoreboard.'
@@ -104,9 +104,9 @@ export default function App() {
                 time="August 2011 – June 2017"
                 duties={[
                   "Full-time contracting including initial pitch meetings all the way through to final product",
-                  "Perform interviews and hiring to advice how companies should hire their teams",
+                  "Perform interviews and hiring to advise how companies should hire their teams",
                   "Requirements gathering, design, proof of concept and mvp implementations",
-                  "Perform upgrades, maintinence or build new features to existing products",
+                  "Perform upgrades, maintenance or build new features to existing products",
                   "Built Mobile Apps, Websites and Hardware projects involving GPS and Bluetooth",
                   "Clients included IBM, NYPD, Syfy/Space Channel, NBC, Hatch, and many small startups, nonprofits and charities in the Toronto area"
                 ]}
@@ -212,6 +212,7 @@ export default function App() {
               "Javascript",
               "Typescript",
               "ES6",
+              "MongoDB",
               "Java",
               "Python",
               "GraphQL",
