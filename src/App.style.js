@@ -55,11 +55,11 @@ export const Position = ({ title, time, duties }) => (
       <Col as="h4" className="my-2">
         {title}
       </Col>
-      <Col as="h5" className="my-2" md="auto">
+      <Col as="h5" className="my-md-2" md="auto">
         {time}
       </Col>
     </Row>
-    <ul className="pl-3 mt-0 mb-2">
+    <ul className="pl-3 my-0">
       {duties.map((duty, index) => (
         <li key={`${title}-${index}`}>{duty}</li>
       ))}

@@ -18,7 +18,7 @@ import {
 
 export default function App() {
   return (
-    <Container className="px-md-0">
+    <Container className="px-md-0 py-5">
       <Row>
         <Col>
           <Row className="d-flex justify-content-between pr-5">
@@ -51,9 +51,9 @@ export default function App() {
                 title="Senior Full Stack Developer - Scopus Core Team"
                 time="Feb 2020 - Present"
                 duties={[
-                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's for to improve team skills.",
+                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's for to improve team skills",
                   "Involved in building a design system and shared component library to unify the user experience",
-                  "Involvement in major web stack migration to microservices and micro front-end technologies."
+                  "Involvement in major web stack migration to microservices and micro front-end technologies"
                 ]}
               />
             </Experience>
@@ -63,20 +63,20 @@ export default function App() {
                 title="Lead Mobile Application Developer - Game"
                 time="Mar 2019 – Sep 2019"
                 duties={[
-                  "Build internal tools from feedback to dramatically improve mobile QA testing speed.",
+                  "Build internal tools from feedback to dramatically improve mobile QA testing speed",
                   "Improved mobile user experience and created a standard method for mobile-specific features",
-                  "Design and build automation pipelines for test builds, productions builds and deployment.",
-                  "Facilitate cross-team collaboration to improve the mobile experience in all parts of the company."
+                  "Design and build automation pipelines for test builds, productions builds and deployment",
+                  "Facilitate cross-team collaboration to improve the mobile experience in all parts of the company"
                 ]}
               />
               <Position
                 title="Senior Full Stack Developer - School Leader App"
                 time="Jun 2018 – Mar 2019"
                 duties={[
-                  "Primary role is to develop new features and improve the Admin/Principal user experience.",
+                  "Primary role is to develop new features and improve the Admin/Principal user experience",
                   "Create user management system to remove and invite new users to an Principal's school",
                   "Develop several in-house tools to improve productivity including CI toosl and Slackbots",
-                  "Trained and mentored for several junior and intermediate developers in the company."
+                  "Trained and mentored for several junior and intermediate developers in the company"
                 ]}
               />
             </Experience>
@@ -86,10 +86,10 @@ export default function App() {
                 title="Senior Frontend Developer"
                 time="Oct 2017 – Jun 2018"
                 duties={[
-                  "Support and maintain the existing Novus app which includes a user-facing website and a custom CMS.",
-                  "Designed a maintainable, reproducable app template that can be used across the Ingle product line.  This dramatically reduced the amount of maintinence and bugs.",
-                  "Create custom internal app with analytics, multiple sign-in routes and dynamic navigation features.",
-                  "Train interns and other employees with pair programming and code reviews.",
+                  "Support and maintain the existing Novus app.  Includes a user-facing website and a custom CMS",
+                  "Designed a maintainable, reproducable app template that can be used across the Ingle product line.  This dramatically reduced the amount of maintinence and bugs",
+                  "Create custom company-facing dashboard app with multiple sign-in routes, analytics and tools",
+                  "Train interns and other employees with pair programming and code reviews",
                   'Promote extra curricular coding activities like running a team "Advent Of Code" scoreboard.'
                 ]}
               />
@@ -103,10 +103,10 @@ export default function App() {
                 title="Full Stack and Mobile Development"
                 time="August 2011 – June 2017"
                 duties={[
-                  "Full-time contracting including initial pitch meetings all the way through to final product.",
+                  "Full-time contracting including initial pitch meetings all the way through to final product",
                   "Perform interviews and hiring to advice how companies should hire their teams",
-                  "Requirements gathering, design, proof of concept and mvp implementations.",
-                  "Perform upgrades, maintinence or build new features to existing products.",
+                  "Requirements gathering, design, proof of concept and mvp implementations",
+                  "Perform upgrades, maintinence or build new features to existing products",
                   "Built Mobile Apps, Websites and Hardware projects involving GPS and Bluetooth",
                   "Clients included IBM, NYPD, Syfy/Space Channel, NBC, Hatch, and many small startups, nonprofits and charities in the Toronto area"
                 ]}
@@ -204,6 +204,20 @@ export default function App() {
               "lighthouse",
               "axe",
               "cloc"
+            ]}
+          />
+          <Pills
+            title="Languages"
+            list={[
+              "Javascript",
+              "Typescript",
+              "ES6",
+              "Java",
+              "Python",
+              "GraphQL",
+              "SQL",
+              "Clojure",
+              "C++"
             ]}
           />
         </Col>
