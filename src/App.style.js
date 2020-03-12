@@ -13,6 +13,7 @@ export const Pill = styled(ListGroup.Item).attrs({
 })`
   margin: 1px;
   border: #6c757d 1px solid;
+  font-weight: 400;
 `;
 
 export const Title = styled.h1.attrs({
