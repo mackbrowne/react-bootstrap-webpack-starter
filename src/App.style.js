@@ -1,15 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import { Row, Col, Badge, ListGroup } from "react-bootstrap";
+import React from 'react';
+import styled from 'styled-components';
+import { Row, Col, Badge, ListGroup } from 'react-bootstrap';
 
 export const PillGroup = styled(ListGroup).attrs({
   horizontal: true,
-  className: "d-flex flex-wrap pb-2 pb-md-1"
+  className: 'd-flex flex-wrap pb-2 pb-md-1'
 })``;
 
 export const Pill = styled(ListGroup.Item).attrs({
   as: Badge,
-  variant: "light"
+  variant: 'light'
 })`
   margin: 1px;
   border: #6c757d 1px solid;
@@ -17,25 +17,25 @@ export const Pill = styled(ListGroup.Item).attrs({
 `;
 
 export const Title = styled.h1.attrs({
-  className: "mt-2"
+  className: 'mt-2'
 })``;
 
 export const TitleLabel = styled.h2.attrs({
-  className: "my-4"
+  className: 'my-4'
 })`
   font-size: 1.5rem;
 `;
 
 export const SubTitle = styled.h2.attrs({
-  className: "mt-3"
+  className: 'mt-3'
 })``;
 
 export const Education = styled.h2.attrs({
-  className: "mt-3"
+  className: 'mt-3'
 })``;
 
 export const Summary = styled.p.attrs({
-  className: "mb-1"
+  className: 'mb-1'
 })``;
 
 export const Company = ({ name, location }) => (
@@ -89,7 +89,7 @@ export const SideList = ({ title, list }) => (
   </>
 );
 
-export const ExperienceList = styled(ListGroup).attrs({ variant: "flush" })``;
+export const ExperienceList = styled(ListGroup).attrs({ variant: 'flush' })``;
 export const Experience = styled(ListGroup.Item).attrs({
-  className: "pl-0"
+  className: 'pl-0'
 })``;

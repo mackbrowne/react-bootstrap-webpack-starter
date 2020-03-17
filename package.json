@@ -46,6 +46,10 @@
       "last 1 safari version"
     ]
   },
+  "prettier": {
+    "tabWidth": 2,
+    "singleQuote": true
+  },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"
