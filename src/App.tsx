@@ -63,20 +63,19 @@ export default function App() {
                 title="Lead Mobile Application Developer - Game"
                 time="Mar 2019 – Sep 2019"
                 duties={[
-                  'Build internal tools from feedback to dramatically improve mobile QA testing speed',
-                  'Improved mobile user experience and created a standard method for mobile-specific features',
-                  'Design and build automation pipelines for test builds, productions builds and deployment',
-                  'Facilitate cross-team collaboration to improve the mobile experience in all parts of the company'
+                  'Improve mobile user experience and design a standardized method for mobile-specific features',
+                  'Lead project to build internal tools from feedback to improve mobile QA testing speed',
+                  'Design and build standardized techniques, automation pipelines for tests, builds and deployment',
+                  'Facilitate cross-team collaboration to improve the mobile experience in all parts of the product'
                 ]}
               />
               <Position
                 title="Senior Full Stack Developer - School Leader App"
                 time="Jun 2018 – Mar 2019"
                 duties={[
-                  'Primary role is to develop new features and improve the Admin/Principal user experience',
-                  "Create user management system to remove and invite new users to an Principal's school",
+                  'Create new features and improve the School Administrator user experience.',
                   'Develop several in-house tools to improve productivity including CI tools and Slack bots',
-                  'Trained and mentored for several junior and intermediate developers in the company'
+                  'Perform lunch time tech talks. Train and mentor developers in 1 on 1 meetings'
                 ]}
               />
             </Experience>
@@ -89,8 +88,9 @@ export default function App() {
                   'Support and maintain the existing Novus app.  Includes a user-facing website and a custom CMS',
                   'Designed a maintainable, reproducible app template that can be used across the Ingle product line.  This dramatically reduced the amount of maintenance and bugs',
                   'Create custom company-facing dashboard app with multiple sign-in routes, analytics and tools',
-                  'Train interns and other employees with pair programming and code reviews',
-                  'Promote extra curricular coding activities like running a team "Advent Of Code" scoreboard.'
+                  'Train interns and other employees with pair programming and code reviews'
+                  // TODO: make this in projects
+                  // 'Promote extra curricular coding activities like running a team "Advent Of Code" scoreboard'
                 ]}
               />
             </Experience>
@@ -103,11 +103,10 @@ export default function App() {
                 title="Full Stack and Mobile Development"
                 time="August 2011 – June 2017"
                 duties={[
-                  'Full-time contracting including initial pitch meetings all the way through to final product',
-                  'Perform interviews and hiring to advise how companies should hire their teams',
-                  'Requirements gathering, design, proof of concept and mvp implementations',
-                  'Perform upgrades, maintenance or build new features to existing products',
-                  'Built Mobile Apps, Websites and Hardware projects involving GPS and Bluetooth',
+                  'Full-time contracting. Initial requirements meetings through to final product',
+                  'Built Mobile Apps, Websites and Hardware projects involving GPS, Bluetooth and VR',
+                  'Long term maintenance, upgrades or new features to existing products',
+                  'Perform interviews for hiring and develop strategies to grow teams over time',
                   'Clients included IBM, NYPD, Syfy/Space Channel, NBC, Hatch, and many small startups, nonprofits and charities in the Toronto area'
                 ]}
               />
@@ -131,32 +130,50 @@ export default function App() {
               />
             </Experience>
           </ExperienceList>
+          {/* <SubTitle>Projects</SubTitle>
+          <ExperienceList>
+            <Experience>
+              <Position
+                title="Syrup - Real-time Instant Messenger"
+                time="https://syrup.life - 2019"
+              />
+              <Pills
+                list={['React Native', 'Firebase', 'Hooks', 'NativeBase']}
+              />
+            </Experience>
+            <Experience>
+              <Position
+                title="Bachelor Of Science with Honours"
+                time="2007 - 2012"
+              />
+            </Experience>
+          </ExperienceList> */}
         </Col>
         <Col md={3}>
           <SideList
             title="Contact"
-            list={[
-              'info@mackbrowne.com',
-              '+31 061 773 5900',
-              'linkedin.com/in/mackbrowne'
-            ]}
+            list={['info@mackbrowne.com', '+31 061 773 5900']}
           />
           <SideList
             title="Portfolio"
-            list={['mackbrowne.com', 'github.com/mackbrowne']}
+            list={[
+              'mackbrowne.com',
+              'linkedin.com/in/mackbrowne',
+              'github.com/mackbrowne'
+            ]}
           />
           <SideList
             title="Skills"
             list={[
-              'Beautiful landing pages',
-              'Responsive Design',
-              'Agile and Kanban Methodology',
-              'Git Flow',
-              'Unit and E2E Testing',
-              'Continuous Builds / Tests / Deploys',
-              'Native and Hybrid Apps',
               'Single Page Apps',
-              'REST API Development'
+              'Native and Hybrid Apps',
+              'REST Development',
+              'Continuous Integration',
+              'Unit and E2E Testing',
+              'Customer Facing Pages',
+              'Responsive Design',
+              'Agile, Kanban and Scrum',
+              'Git Flow and Monorepos'
             ]}
           />
           <Pills
@@ -187,7 +204,7 @@ export default function App() {
               'JIRA',
               'CircleCI',
               'Google Play',
-              'Itunes Connect',
+              'Apple Developer',
               'Stripe',
               'Maps',
               'OAuth'
@@ -201,9 +218,8 @@ export default function App() {
               'Jenkins',
               'Vim',
               'Prettier',
-              'lighthouse',
-              'axe',
-              'cloc'
+              'Lighthouse',
+              'Axe'
             ]}
           />
           <Pills

@@ -49,7 +49,7 @@ export const Company = ({ name, location }) => (
   </Row>
 );
 
-export const Position = ({ title, time, duties }) => (
+export const Position = ({ title, time, duties = [] }) => (
   <>
     <Row>
       <Col as="h4" className="my-2">
@@ -67,9 +67,9 @@ export const Position = ({ title, time, duties }) => (
   </>
 );
 
-export const Pills = ({ title, list }) => (
+export const Pills = ({ title = null, list }) => (
   <>
-    <SubTitle>{title}</SubTitle>
+    {title && <SubTitle>{title}</SubTitle>}
     <PillGroup>
       {list.map((listItem, index) => (
         <Pill key={`${title}-${index}`}>{listItem}</Pill>
@@ -92,4 +92,8 @@ export const SideList = ({ title, list }) => (
 export const ExperienceList = styled(ListGroup).attrs({ variant: 'flush' })``;
 export const Experience = styled(ListGroup.Item).attrs({
   className: 'pl-0'
-})``;
+})`
+  // &:last-child {
+  //   border-bottom: 0;
+  // }
+`;
