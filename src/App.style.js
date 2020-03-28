@@ -27,11 +27,7 @@ export const TitleLabel = styled.h2.attrs({
 `;
 
 export const SubTitle = styled.h2.attrs({
-  className: 'mt-3'
-})``;
-
-export const Education = styled.h2.attrs({
-  className: 'mt-3'
+  className: 'mt-2'
 })``;
 
 export const Summary = styled.p.attrs({

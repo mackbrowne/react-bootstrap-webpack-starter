@@ -6,7 +6,7 @@ import './App.css';
 import {
   Title,
   TitleLabel,
-  Summary,
+  // Summary,
   SubTitle,
   ExperienceList,
   Experience,
@@ -18,7 +18,7 @@ import {
 
 export default function App() {
   return (
-    <Container className="px-md-0 py-5">
+    <Container className="px-md-0 py-3">
       <Row>
         <Col>
           <Row className="d-flex justify-content-between pr-5">
@@ -32,12 +32,12 @@ export default function App() {
               Amsterdam
             </Col>
           </Row>
-          <Summary>
+          {/* <Summary>
             Organized, lifelong learner motivated by difficult challenges.
             Self-driven, and enjoys working independently and with teams. Uses a
             curated collection of libraries and automation tools to make
             development / testing / deployment more efficient.
-          </Summary>
+          </Summary> */}
         </Col>
       </Row>
       <Row>
@@ -129,7 +129,7 @@ export default function App() {
               />
             </Experience>
           </ExperienceList>
-          {/* <SubTitle>Projects</SubTitle>
+          <SubTitle>Projects</SubTitle>
           <ExperienceList>
             <Experience>
               <Position
@@ -142,11 +142,12 @@ export default function App() {
             </Experience>
             <Experience>
               <Position
-                title="Bachelor Of Science with Honours"
-                time="2007 - 2012"
+                title="CoBeard-19 - Quarantine Beard Social Network"
+                time="2020"
               />
+              <Pills list={['ReactJS', 'Bootstrap', 'Firebase']} />
             </Experience>
-          </ExperienceList> */}
+          </ExperienceList>
         </Col>
         <Col md={3}>
           <SideList
