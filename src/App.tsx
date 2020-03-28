@@ -32,7 +32,6 @@ export default function App() {
               Amsterdam
             </Col>
           </Row>
-
           <Summary>
             Organized, lifelong learner motivated by difficult challenges.
             Self-driven, and enjoys working independently and with teams. Uses a

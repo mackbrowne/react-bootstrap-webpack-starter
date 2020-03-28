@@ -93,6 +93,9 @@ export const ExperienceList = styled(ListGroup).attrs({ variant: 'flush' })``;
 export const Experience = styled(ListGroup.Item).attrs({
   className: 'pl-0'
 })`
+  &:first-child {
+    padding-top: 0;
+  }
   // &:last-child {
   //   border-bottom: 0;
   // }
