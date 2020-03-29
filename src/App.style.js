@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import { Row } from 'react-bootstrap';
+
+export const CenterRow = styled(Row).attrs({
+  className: 'vh-100 d-flex align-items-center justify-content-center'
+})``;
 
 export const Title = styled.h1.attrs({
   className: 'mt-2'
