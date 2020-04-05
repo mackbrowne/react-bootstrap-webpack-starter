@@ -20,9 +20,8 @@ export default function App() {
   usePageViews();
   return (
     <Switch>
-      <Route exact path="/" component={Home} />
-      //todo figure out another way to do clean globally
       <Route exact path="/create" component={Create} />
+      <Route path="/" component={Home} />
     </Switch>
   );
 }

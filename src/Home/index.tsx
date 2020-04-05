@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { Container, Col, Fade, Navbar, Nav } from 'react-bootstrap';
 
 import { H1, H2, Row } from '../App.style';
 
 import AddSwear from '../common/AddSwear';
-import useIdea from './hooks/useIdea';
-import useClean from './hooks/useClean';
-import CensoredToggle from './utils/CensoredToggle';
+import useIdea from '../common/hooks/useIdea';
+import useClean from '../common/hooks/useClean';
+import CensoredToggle from '../common/CensoredToggle';
 
 export default function Home() {
   const {

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useRouteMatch } from 'react-router-dom';
 import { Container, Col, Fade, Navbar, Nav } from 'react-bootstrap';
 
 import { H1, H2, Row } from '../App.style';
 import AddSwear from '../common/AddSwear';
-import CensoredToggle from '../Home/utils/CensoredToggle';
-import useClean from '../Home/hooks/useClean';
+import CensoredToggle from '../common/CensoredToggle';
+import useClean from '../common/hooks/useClean';
 
 export default function Home() {
   const censored = useClean();
