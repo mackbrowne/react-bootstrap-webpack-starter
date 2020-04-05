@@ -2,38 +2,33 @@ import React, { useEffect, useState } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { Container, Col, Fade, Navbar, Nav } from 'react-bootstrap';
 
-import { H1, H2, Row } from '../../App.style';
-
-import AddSwear from './utils/AddSwear';
-import useIdea from './hooks/useIdea';
-import CensoredToggle from './utils/CensoredToggle';
+import { H1, H2, Row } from '../App.style';
+import AddSwear from '../common/AddSwear';
+import CensoredToggle from '../Home/utils/CensoredToggle';
+import useClean from '../Home/hooks/useClean';
 
 export default function Home() {
-  const {
-    data: { title, label },
-    isLoading
-  } = useIdea();
-  const { clean: censored } = useRouteMatch().params;
+  const censored = useClean();
 
   const [showFooter, setShowFooter] = useState(false);
   useEffect(() => {
     setTimeout(() => setShowFooter(true), censored ? 850 : 1500);
-  }, [isLoading, censored]);
+  }, [censored]);
 
   return (
     <>
       <Container>
         <Row>
-          <Fade in={!isLoading}>
+          <Fade in={true}>
             <Col>
               <H1>
                 <AddSwear
-                  sentence={title}
+                  sentence={'Add your own idea'}
                   swear={'fucking'}
                   censored={censored}
                 />
               </H1>
-              <H2>{label}</H2>
+              <H2>Input Label Goes here</H2>
             </Col>
           </Fade>
         </Row>
@@ -43,7 +38,7 @@ export default function Home() {
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav>
-              <CensoredToggle censored={censored} />
+              <CensoredToggle />
             </Nav>
           </Navbar.Collapse>
         </Navbar>
