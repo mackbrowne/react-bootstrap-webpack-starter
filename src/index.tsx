@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import * as firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/firestore';
@@ -32,7 +33,12 @@ firebase.initializeApp({
 });
 
 // Start App
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById('root')
+);
 
 firebase.analytics();
 

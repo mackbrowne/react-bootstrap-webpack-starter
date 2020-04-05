@@ -1,59 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Col, Fade, Navbar } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Switch, Route, useLocation } from 'react-router-dom';
+import { analytics } from 'firebase/app';
+import Home from './routes/Home';
 
-import { Title, TitleLabel, CenterRow } from './App.style.js';
+function usePageViews() {
+  const { pathname: page_location } = useLocation();
 
-import AddSwear from './utils/AddSwear';
-import useIdea from './hooks/useIdea';
+  useEffect(
+    () =>
+      analytics().logEvent('page_view', {
+        page_location
+      }),
+    [page_location]
+  );
+}
 
 export default function App() {
-  const {
-    data: { title, label },
-    isLoading
-  } = useIdea();
-
-  const [showFooter, setShowFooter] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setShowFooter(true), 1500);
-  }, [isLoading]);
-
-  const clean = window.location.pathname === '/clean';
+  usePageViews();
   return (
-    <>
-      <Container>
-        <CenterRow>
-          <Fade in={!isLoading}>
-            <Col>
-              <Title>
-                {clean ? (
-                  title
-                ) : (
-                  <AddSwear sentence={title} swear={'fucking'} />
-                )}
-              </Title>
-              <TitleLabel>{label}</TitleLabel>
-            </Col>
-          </Fade>
-        </CenterRow>
-      </Container>
-
-      <Fade in={showFooter}>
-        <Navbar fixed="bottom">
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              {clean ? (
-                <a href="/" style={{ color: '#da0404' }}>
-                  Dirty Version
-                </a>
-              ) : (
-                <a href="/clean">Clean Version</a>
-              )}
-            </Navbar.Text>
-          </Navbar.Collapse>
-        </Navbar>
-      </Fade>
-    </>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/:clean" component={Home} />
+    </Switch>
   );
 }
