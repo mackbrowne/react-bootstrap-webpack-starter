@@ -10,7 +10,7 @@ import CensoredToggle from '../common/CensoredToggle';
 
 export default function Home() {
   const {
-    data: { title, label },
+    data: { title, description },
     isLoading
   } = useIdea();
 
@@ -34,7 +34,7 @@ export default function Home() {
                   censored={censored}
                 />
               </H1>
-              <H2>{label}</H2>
+              <H2>{description}</H2>
             </Col>
           </Fade>
         </Row>
