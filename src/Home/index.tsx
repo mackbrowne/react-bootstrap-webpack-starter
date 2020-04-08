@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Col, Fade, Navbar, Nav } from 'react-bootstrap';
+import { Container, Col, Fade } from 'react-bootstrap';
 
 import { H1, H2, Row } from '../App.style';
 
 import AddSwear from '../common/AddSwear';
 import useIdea from '../common/hooks/useIdea';
 import useClean from '../common/hooks/useClean';
-import CensoredToggle from '../common/CensoredToggle';
 
 export default function Home() {
   const {
@@ -16,7 +15,7 @@ export default function Home() {
 
   const censored = useClean();
 
-  const [showFooter, setShowFooter] = useState(false);
+  const [, setShowFooter] = useState(false);
   useEffect(() => {
     setTimeout(() => setShowFooter(true), censored ? 850 : 1500);
   }, [isLoading, censored]);

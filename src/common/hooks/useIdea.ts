@@ -12,8 +12,8 @@ export default () => {
 
     const randomIdea = fallback =>
       ideasCollection
-        .where('approved', '==', true)
         .where(firestore.FieldPath.documentId(), '>=', ideasCollection.doc().id)
+        .where('approved', '==', true)
         .limit(1)
         .onSnapshot(result => {
           if (!result.empty) {

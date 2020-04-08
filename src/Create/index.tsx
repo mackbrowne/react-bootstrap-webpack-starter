@@ -1,30 +1,19 @@
-import React, { useEffect, useState, FormEvent, ChangeEvent } from 'react';
+import React, { useState, FormEvent, ChangeEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import {
-  Container,
-  Col,
-  Fade,
-  Collapse,
-  Navbar,
-  Nav,
-  Form,
-  Button
-} from 'react-bootstrap';
+import { Container, Col, Collapse, Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { firestore, auth } from 'firebase/app';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { H1, Row } from '../App.style';
 import AddSwear from '../common/AddSwear';
-import CensoredToggle from '../common/CensoredToggle';
 import useClean from '../common/hooks/useClean';
-import Footer from '../common/Footer';
 
 type RBRef = string & ((ref: Element | null) => void);
 
 export default function Create() {
   const history = useHistory();
-  const [user, userLoading, userError] = useAuthState(auth());
+  const [user] = useAuthState(auth());
   const { handleSubmit, register, errors } = useForm();
   const censored = useClean();
 
