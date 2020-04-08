@@ -213,20 +213,22 @@ export default function Create() {
       </Container>
       <Fade in={showFooter}>
         <Navbar fixed="bottom">
-          <Fade in={!!user}>
-            <div>
-              <Nav>
-                <Button variant="link" onClick={() => auth().signOut()}>
-                  Sign Out
-                </Button>
-              </Nav>
-            </div>
-          </Fade>
-          <Nav>
-            <Button variant="link" as={Link} to={censored ? '/?clean' : ''}>
-              Home
-            </Button>
-          </Nav>
+          <Navbar.Collapse className="justify-content-start">
+            <Nav>
+              <Button variant="link" as={Link} to={censored ? '/?clean' : ''}>
+                Home
+              </Button>
+            </Nav>
+            <Fade in={!!user}>
+              <div>
+                <Nav>
+                  <Button variant="link" onClick={() => auth().signOut()}>
+                    Sign Out
+                  </Button>
+                </Nav>
+              </div>
+            </Fade>
+          </Navbar.Collapse>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav>
