@@ -39,16 +39,6 @@ export default function Home() {
           </Fade>
         </Row>
       </Container>
-      <Fade in={showFooter}>
-        <Navbar fixed="bottom">
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Nav>
-              <CensoredToggle />
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-      </Fade>
     </>
   );
 }

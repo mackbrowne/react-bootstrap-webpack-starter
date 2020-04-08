@@ -18,6 +18,7 @@ import { H1, Row } from '../App.style';
 import AddSwear from '../common/AddSwear';
 import CensoredToggle from '../common/CensoredToggle';
 import useClean from '../common/hooks/useClean';
+import Footer from '../common/Footer';
 
 type RBRef = string & ((ref: Element | null) => void);
 
@@ -26,11 +27,6 @@ export default function Create() {
   const [user, userLoading, userError] = useAuthState(auth());
   const { handleSubmit, register, errors } = useForm();
   const censored = useClean();
-
-  const [showFooter, setShowFooter] = useState(false);
-  useEffect(() => {
-    setTimeout(() => setShowFooter(true), censored ? 850 : 1500);
-  }, [censored]);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -211,32 +207,6 @@ export default function Create() {
           </div>
         </Collapse>
       </Container>
-      <Fade in={showFooter}>
-        <Navbar fixed="bottom">
-          <Navbar.Collapse className="justify-content-start">
-            <Nav>
-              <Button variant="link" as={Link} to={censored ? '/?clean' : ''}>
-                Home
-              </Button>
-            </Nav>
-            <Fade in={!!user}>
-              <div>
-                <Nav>
-                  <Button variant="link" onClick={() => auth().signOut()}>
-                    Sign Out
-                  </Button>
-                </Nav>
-              </div>
-            </Fade>
-          </Navbar.Collapse>
-          <Navbar.Toggle />
-          <Navbar.Collapse className="justify-content-end">
-            <Nav>
-              <CensoredToggle />
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-      </Fade>
     </>
   );
 }

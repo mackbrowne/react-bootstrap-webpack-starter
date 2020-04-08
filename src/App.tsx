@@ -1,27 +1,19 @@
-import React, { useEffect } from 'react';
-import { Switch, Route, useLocation } from 'react-router-dom';
-import { analytics } from 'firebase/app';
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Create from './Create';
-
-function usePageViews() {
-  const { pathname: page_location } = useLocation();
-
-  useEffect(
-    () =>
-      analytics().logEvent('page_view', {
-        page_location
-      }),
-    [page_location]
-  );
-}
+import useAnalytics from './common/hooks/useAnalytics';
+import Footer from './common/Footer';
 
 export default function App() {
-  usePageViews();
+  useAnalytics();
   return (
-    <Switch>
-      <Route exact path="/create" component={Create} />
-      <Route path="/" component={Home} />
-    </Switch>
+    <>
+      <Switch>
+        <Route exact path="/create" component={Create} />
+        <Route path="/" component={Home} />
+      </Switch>
+      <Footer />
+    </>
   );
 }
