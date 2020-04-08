@@ -2,7 +2,7 @@ import React from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
 import styled from 'styled-components';
-import useClean from './hooks/useClean';
+import useClean from '../hooks/useClean';
 
 const Link = styled(Nav.Link).attrs({
   as: RouterLink,

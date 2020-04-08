@@ -2,8 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Home from './Home';
 import Create from './Create';
-import useAnalytics from './common/hooks/useAnalytics';
-import Footer from './common/Footer';
+import useAnalytics from './hooks/useAnalytics';
+import Footer from './components/Footer';
 
 export default function App() {
   useAnalytics();

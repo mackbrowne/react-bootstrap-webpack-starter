@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { auth } from 'firebase/app';
 import { Fade, Navbar, Nav, Button } from 'react-bootstrap';
 import CensoredToggle from './CensoredToggle';
-import useClean from './hooks/useClean';
+import useClean from '../hooks/useClean';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function Footer() {

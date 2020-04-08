@@ -3,9 +3,9 @@ import { Container, Col, Fade } from 'react-bootstrap';
 
 import { H1, H2, Row } from '../App.style';
 
-import AddSwear from '../common/AddSwear';
-import useIdea from '../common/hooks/useIdea';
-import useClean from '../common/hooks/useClean';
+import AddSwear from '../components/AddSwear';
+import useIdea from '../hooks/useIdea';
+import useClean from '../hooks/useClean';
 
 export default function Home() {
   const {

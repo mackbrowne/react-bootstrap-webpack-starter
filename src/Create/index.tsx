@@ -6,8 +6,8 @@ import { firestore, auth } from 'firebase/app';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { H1, Row } from '../App.style';
-import AddSwear from '../common/AddSwear';
-import useClean from '../common/hooks/useClean';
+import AddSwear from '../components/AddSwear';
+import useClean from '../hooks/useClean';
 
 type RBRef = string & ((ref: Element | null) => void);
 
