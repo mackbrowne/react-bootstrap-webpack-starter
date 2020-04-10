@@ -10,9 +10,9 @@ export default () => {
   useEffect(() => {
     const ideasCollection = firestore().collection('ideas');
 
-    const randomIdea = fallback =>
+    const randomIdea = (lowValue, operator, fallback) =>
       ideasCollection
-        .where(firestore.FieldPath.documentId(), '>=', ideasCollection.doc().id)
+        .where(firestore.FieldPath.documentId(), operator, lowValue)
         .where('approved', '==', true)
         .limit(1)
         .onSnapshot(result => {
@@ -30,7 +30,12 @@ export default () => {
           }
         });
 
-    randomIdea(randomIdea(() => console.error('No Results')));
+    const { id } = ideasCollection.doc();
+    randomIdea(
+      id,
+      '>=',
+      randomIdea(id, '<=', () => console.error('No Results'))
+    );
   }, []);
 
   return docState;

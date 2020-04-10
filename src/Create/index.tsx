@@ -4,6 +4,7 @@ import { Container, Col, Collapse, Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { firestore, auth } from 'firebase/app';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import slugify from 'slugify';
 
 import { H1, Row } from '../App.style';
 import AddSwear from '../components/AddSwear';
@@ -14,8 +15,43 @@ type RBRef = string & ((ref: Element | null) => void);
 export default function Create() {
   const history = useHistory();
   const [user] = useAuthState(auth());
-  const { handleSubmit, register, errors } = useForm();
   const censored = useClean();
+
+  const { handleSubmit, register, errors } = useForm();
+  const createIdea = handleSubmit(async ({ title, description, url }) => {
+    try {
+      const ideasCollection = firestore().collection('ideas');
+
+      let slug = slugify(title).toLowerCase();
+      let unique = false;
+      let modifier = 0;
+      do {
+        let result = await ideasCollection
+          .where('slug', '==', slug)
+          .limit(1)
+          .get();
+        if (result.empty) {
+          unique = true;
+        } else {
+          modifier++;
+          slug = `${slug}-${modifier}`;
+        }
+      } while (!unique);
+
+      const { id } = await ideasCollection.add({
+        title,
+        description,
+        url,
+        timestamp: new Date(),
+        user: user.uid,
+        slug,
+        approved: false
+      });
+      history.push(`/${id}`);
+    } catch ({ message }) {
+      console.error(message);
+    }
+  });
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -122,23 +158,7 @@ export default function Create() {
                     censored={censored || !user}
                   />
                 </H1>
-                <Form
-                  onSubmit={handleSubmit(async values => {
-                    try {
-                      const { id } = await firestore()
-                        .collection('ideas')
-                        .add({
-                          ...values,
-                          timestamp: new Date(),
-                          user: user.uid,
-                          approved: false
-                        });
-                      history.push(`/${id}`);
-                    } catch ({ message }) {
-                      console.error(message);
-                    }
-                  })}
-                >
+                <Form onSubmit={createIdea}>
                   <Form.Group controlId="createIdea">
                     <Form.Label>Idea</Form.Label>
                     <Form.Control

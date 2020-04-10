@@ -11,16 +11,18 @@ service cloud.firestore {
       }
 
       function hasValidData(){
-        return request.resource.data.user != null
-          && request.resource.data.title != null
-          && request.resource.data.description != null
-          && request.resource.data.timestamp != null
-          && request.resource.data.approved == false
-          && request.resource.data.user is string
+        return request.resource.data.user is string 
+          && request.resource.data.user != null
           && request.resource.data.title is string
+          && request.resource.data.title != null
           && request.resource.data.description is string
+          && request.resource.data.description != null
           && request.resource.data.timestamp is timestamp
+          && request.resource.data.timestamp != null
+          && request.resource.data.slug is string
+          && request.resource.data.slug != null
           && request.resource.data.approved is bool
+          && request.resource.data.approved == false
           && ownIdea();
       }
 

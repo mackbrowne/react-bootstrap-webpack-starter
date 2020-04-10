@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { auth } from 'firebase/app';
-import { Fade, Navbar, Nav, Button } from 'react-bootstrap';
+import { Fade, Navbar, Nav } from 'react-bootstrap';
 import CensoredToggle from './CensoredToggle';
 import useClean from '../hooks/useClean';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -19,54 +19,40 @@ export default function Footer() {
   return (
     <Fade in={showFooter}>
       <Navbar fixed="bottom">
-        <Navbar.Collapse className="justify-content-start">
+        <Nav className="mr-auto">
           {[
-            { name: 'Home', url: '/' },
-            { name: 'Create', url: '/create' }
+            { name: 'Home', pathname: '/' },
+            { name: 'Create', pathname: '/create' }
           ].map(
-            ({ name, url }) =>
-              history.location.pathname !== url && (
-                <Nav key={name}>
-                  <Button
-                    variant="link"
-                    as={Link}
-                    to={censored ? `${url}?clean` : url}
-                  >
-                    {name}
-                  </Button>
-                </Nav>
+            ({ name, pathname }) =>
+              history.location.pathname !== pathname && (
+                <Nav.Link
+                  key={pathname}
+                  as={NavLink}
+                  to={{
+                    pathname: pathname,
+                    search: censored && '?clean'
+                  }}
+                >
+                  {name}
+                </Nav.Link>
               )
           )}
-          {/* <Nav>
-            <Button variant="link" as={Link} to={censored ? '/?clean' : ''}>
-              Home
-            </Button>
-          </Nav>
-          <Nav>
-            <Button
-              variant="link"
-              as={Link}
-              to={censored ? 'create/?clean' : 'create'}
-            >
-              Create
-            </Button>
-          </Nav> */}
           <Fade in={!!user}>
             <div>
-              <Nav>
-                <Button variant="link" onClick={() => auth().signOut()}>
-                  Sign Out
-                </Button>
-              </Nav>
+              {/* <Button
+                variant="link"
+                onClick={() => auth().signOut()}
+              >
+                Sign Out
+              </Button> */}
+              <Nav.Link onClick={() => auth().signOut()}>Sign Out</Nav.Link>
             </div>
           </Fade>
-        </Navbar.Collapse>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Nav>
-            <CensoredToggle />
-          </Nav>
-        </Navbar.Collapse>
+        </Nav>
+        <Nav>
+          <CensoredToggle />
+        </Nav>
       </Navbar>
     </Fade>
   );
