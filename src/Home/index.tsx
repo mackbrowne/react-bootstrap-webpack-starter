@@ -15,17 +15,19 @@ export default function Home() {
 
   const censored = useClean();
 
-  const [, setShowFooter] = useState(false);
+  const [showTitle, setShowTitle] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
   useEffect(() => {
-    setTimeout(() => setShowFooter(true), censored ? 850 : 1500);
+    setTimeout(() => setShowTitle(true), 800);
+    setTimeout(() => setShowDescription(true), censored ? 1600 : 2400);
   }, [isLoading, censored]);
 
   return (
-    <>
-      <Container>
-        <Row>
-          <Fade in={!isLoading}>
-            <Col>
+    <Container>
+      <Row>
+        <Col>
+          <Fade in={showTitle}>
+            <div>
               <H1>
                 <AddSwear
                   sentence={title}
@@ -33,11 +35,15 @@ export default function Home() {
                   censored={censored}
                 />
               </H1>
-              <H2>{description}</H2>
-            </Col>
+            </div>
           </Fade>
-        </Row>
-      </Container>
-    </>
+          <Fade in={showDescription}>
+            <div>
+              <H2>{description}</H2>
+            </div>
+          </Fade>
+        </Col>
+      </Row>
+    </Container>
   );
 }

@@ -13,7 +13,7 @@ export default function Footer() {
 
   const [showFooter, setShowFooter] = useState(false);
   useEffect(() => {
-    setTimeout(() => setShowFooter(true), censored ? 850 : 1500);
+    setTimeout(() => setShowFooter(true), censored ? 2400 : 3200);
   }, [censored]);
 
   return (

@@ -13,7 +13,7 @@ export default () => {
     const randomIdea = (lowValue, operator, fallback) =>
       ideasCollection
         .where(firestore.FieldPath.documentId(), operator, lowValue)
-        .where('approved', '==', true)
+        // .where('approved', '==', true)
         .limit(1)
         .onSnapshot(result => {
           if (!result.empty) {

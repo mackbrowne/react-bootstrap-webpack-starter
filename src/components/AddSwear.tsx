@@ -17,7 +17,7 @@ const Swear = styled(ReactTextTransition).attrs(
 `;
 
 export default function AddSwear({ sentence, swear, censored }) {
-  const [delay, setDelay] = useState(850);
+  const [delay, setDelay] = useState(1600);
 
   useEffect(() => {
     setDelay(0);
