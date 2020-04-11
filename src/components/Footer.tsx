@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 import { auth } from 'firebase/app';
 import { Fade, Navbar, Nav } from 'react-bootstrap';
 import CensoredToggle from './CensoredToggle';
@@ -15,6 +15,7 @@ const BottomNavbar = styled(Navbar).attrs({
 
 export default function Footer() {
   const history = useHistory();
+  const { pathname } = useLocation();
   const censored = useClean();
   const [user, ,] = useAuthState(auth());
 
@@ -28,16 +29,17 @@ export default function Footer() {
       <BottomNavbar>
         <Nav className="mr-auto">
           {[
-            { name: 'Home', pathname: '/' },
-            { name: 'Create', pathname: '/create' }
+            { name: 'Home', url: '/', hidden: [] },
+            { name: 'Create', url: '/create', hidden: ['/login', '/sign-up'] }
           ].map(
-            ({ name, pathname }) =>
-              history.location.pathname !== pathname && (
+            ({ name, url, hidden }) =>
+              pathname !== url &&
+              !hidden.includes(pathname) && (
                 <Nav.Link
-                  key={pathname}
+                  key={url}
                   as={NavLink}
                   to={{
-                    pathname: pathname,
+                    pathname: url,
                     search: censored && '?clean'
                   }}
                 >

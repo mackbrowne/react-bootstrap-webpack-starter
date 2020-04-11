@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Row as BSRow } from 'react-bootstrap';
+import ReactTextTransition, { presets } from 'react-text-transition';
 
 export const MainRow = styled(BSRow).attrs({
   className:
@@ -15,3 +16,12 @@ export const H2 = styled.h2.attrs({
 })`
   font-size: 1.5rem;
 `;
+
+export const TextTransition = styled(ReactTextTransition).attrs(
+  ({ text, delay = 0 }) => ({
+    text,
+    delay,
+    spring: presets.stiff,
+    direction: 'down'
+  })
+)``;

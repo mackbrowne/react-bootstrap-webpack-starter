@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import nlp from 'compromise';
-import ReactTextTransition, { presets } from 'react-text-transition';
 import styled from 'styled-components';
+import { TextTransition } from '../App.style';
 
-const Swear = styled(ReactTextTransition).attrs(
-  ({ censored, swear, delay }) => ({
-    text: censored ? '' : swear,
-    delay,
-    spring: presets.stiff,
-    inline: true,
-    direction: 'down'
-  })
-)`
-  margin: 0 6px;
+const Swear = styled(TextTransition)`
   color: #da0404;
+
+  margin: 0 6px;
 `;
 
 export default function AddSwear({ sentence, swear, censored }) {
@@ -33,7 +26,7 @@ export default function AddSwear({ sentence, swear, censored }) {
   return (
     <>
       {firstHalf}
-      <Swear censored={censored} swear={swear} delay={delay} />
+      <Swear text={censored ? '' : swear} delay={delay} inline />
       {lastHalf}
     </>
   );
