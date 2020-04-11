@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { Row as BSRow } from 'react-bootstrap';
 
-export const Row = styled(BSRow).attrs({
-  className: 'vh-100 d-flex align-items-center justify-content-center'
+export const MainRow = styled(BSRow).attrs({
+  className:
+    'vh-100 d-flex py-5 align-items-center justify-content-center overflow-auto'
 })``;
 
 export const H1 = styled.h1.attrs({

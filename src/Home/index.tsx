@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Col, Fade } from 'react-bootstrap';
 
-import { H1, H2, Row } from '../App.style';
+import { H1, H2, MainRow } from '../App.style';
 
 import AddSwear from '../components/AddSwear';
 import useIdea from '../hooks/useIdea';
 import useClean from '../hooks/useClean';
 
+function timeout(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export default function Home() {
   const {
-    data: { title, description },
+    data: { title, description, url },
     isLoading
   } = useIdea();
 
@@ -18,23 +22,33 @@ export default function Home() {
   const [showTitle, setShowTitle] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
   useEffect(() => {
-    setTimeout(() => setShowTitle(true), 800);
-    setTimeout(() => setShowDescription(true), censored ? 1600 : 2400);
+    (async () => {
+      await timeout(800);
+      setShowTitle(true);
+      await timeout(censored ? 800 : 1600);
+      setShowDescription(true);
+    })();
   }, [isLoading, censored]);
 
   return (
     <Container>
-      <Row>
+      <MainRow>
         <Col>
           <Fade in={showTitle}>
             <div>
-              <H1>
-                <AddSwear
-                  sentence={title}
-                  swear={'fucking'}
-                  censored={censored}
-                />
-              </H1>
+              <a
+                href={url ? url : ''}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <H1>
+                  <AddSwear
+                    sentence={title}
+                    swear={'fucking'}
+                    censored={censored}
+                  />
+                </H1>
+              </a>
             </div>
           </Fade>
           <Fade in={showDescription}>
@@ -43,7 +57,7 @@ export default function Home() {
             </div>
           </Fade>
         </Col>
-      </Row>
+      </MainRow>
     </Container>
   );
 }

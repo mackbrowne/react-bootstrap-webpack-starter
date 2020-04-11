@@ -6,6 +6,13 @@ import CensoredToggle from './CensoredToggle';
 import useClean from '../hooks/useClean';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
+import styled from 'styled-components';
+const BottomNavbar = styled(Navbar).attrs({
+  fixed: 'bottom'
+})`
+  background-color: #fff;
+`;
+
 export default function Footer() {
   const history = useHistory();
   const censored = useClean();
@@ -18,7 +25,7 @@ export default function Footer() {
 
   return (
     <Fade in={showFooter}>
-      <Navbar fixed="bottom">
+      <BottomNavbar>
         <Nav className="mr-auto">
           {[
             { name: 'Home', pathname: '/' },
@@ -53,7 +60,7 @@ export default function Footer() {
         <Nav>
           <CensoredToggle />
         </Nav>
-      </Navbar>
+      </BottomNavbar>
     </Fade>
   );
 }

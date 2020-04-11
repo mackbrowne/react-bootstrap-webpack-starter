@@ -6,7 +6,7 @@ import { firestore, auth } from 'firebase/app';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import slugify from 'slugify';
 
-import { H1, Row } from '../App.style';
+import { H1, MainRow } from '../App.style';
 import AddSwear from '../components/AddSwear';
 import useClean from '../hooks/useClean';
 
@@ -76,146 +76,142 @@ export default function Create() {
   };
 
   return (
-    <>
-      <Container>
-        <Collapse in={!user}>
-          <div>
-            <Row>
-              <Col>
-                <H1>
-                  <AddSwear
-                    sentence={'Sign into your account'}
-                    swear={'fucking'}
-                    censored={censored || !!user}
+    <Container>
+      <Collapse in={!user}>
+        <div>
+          <MainRow>
+            <Col>
+              <H1>
+                <AddSwear
+                  sentence={'Sign into your account'}
+                  swear={'fucking'}
+                  censored={censored || !!user}
+                />
+              </H1>
+              <Form onSubmit={signUp}>
+                <Form.Group controlId="formBasicEmail">
+                  <Form.Label>Email address</Form.Label>
+                  <Form.Control
+                    onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                      setEmail(event.target.value)
+                    }
+                    type="email"
+                    placeholder="Enter email"
                   />
-                </H1>
-                <Form onSubmit={signUp}>
-                  <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
-                      onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                        setEmail(event.target.value)
-                      }
-                      type="email"
-                      placeholder="Enter email"
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                      onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                        setPassword(event.target.value)
-                      }
-                      type="password"
-                      placeholder="Password"
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="formBasicCheckbox">
-                    <Form.Label>
-                      Agree to{' '}
-                      <Link to="/terms-and-conditions">
-                        Terms and Conditions
-                      </Link>
-                    </Form.Label>
-                    {` `}
-                    <Form.Check
-                      checked={checked}
-                      onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                        setChecked(event.target.checked)
-                      }
-                      type="checkbox"
-                      inline
-                    />
-                  </Form.Group>
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                      setPassword(event.target.value)
+                    }
+                    type="password"
+                    placeholder="Password"
+                  />
+                </Form.Group>
+                <Form.Group controlId="formBasicCheckbox">
+                  <Form.Label>
+                    Agree to{' '}
+                    <Link to="/terms-and-conditions">Terms and Conditions</Link>
+                  </Form.Label>
+                  {` `}
+                  <Form.Check
+                    checked={checked}
+                    onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                      setChecked(event.target.checked)
+                    }
+                    type="checkbox"
+                    inline
+                  />
+                </Form.Group>
 
-                  <Button
-                    block
-                    variant="primary"
-                    type="submit"
-                    disabled={!checked || !email || !password}
-                  >
-                    Sign Up
-                  </Button>
-                  <Button block variant="link" onClick={login}>
-                    Already Have An Account?
-                  </Button>
-                  <Form.Group controlId="formErrors">
-                    <Form.Label>{error && <p>{error}</p>}</Form.Label>
-                  </Form.Group>
-                </Form>
-              </Col>
-            </Row>
-          </div>
-        </Collapse>
-        <Collapse in={!!user}>
-          <div>
-            <Row>
-              <Col>
-                <H1>
-                  <AddSwear
-                    sentence={'Add your own idea'}
-                    swear={'fucking'}
-                    censored={censored || !user}
+                <Button
+                  block
+                  variant="primary"
+                  type="submit"
+                  disabled={!checked || !email || !password}
+                >
+                  Sign Up
+                </Button>
+                <Button block variant="link" onClick={login}>
+                  Already Have An Account?
+                </Button>
+                <Form.Group controlId="formErrors">
+                  <Form.Label>{error && <p>{error}</p>}</Form.Label>
+                </Form.Group>
+              </Form>
+            </Col>
+          </MainRow>
+        </div>
+      </Collapse>
+      <Collapse in={!!user}>
+        <div>
+          <MainRow>
+            <Col>
+              <H1>
+                <AddSwear
+                  sentence={'Add your own idea'}
+                  swear={'fucking'}
+                  censored={censored || !user}
+                />
+              </H1>
+              <Form onSubmit={createIdea}>
+                <Form.Group controlId="createIdea">
+                  <Form.Label>Idea</Form.Label>
+                  <Form.Control
+                    name="title"
+                    placeholder="Enter Something..."
+                    required
+                    type="text"
+                    ref={
+                      register({
+                        required: 'Required'
+                      }) as RBRef
+                    }
                   />
-                </H1>
-                <Form onSubmit={createIdea}>
-                  <Form.Group controlId="createIdea">
-                    <Form.Label>Idea</Form.Label>
-                    <Form.Control
-                      name="title"
-                      placeholder="Enter Something..."
-                      required
-                      type="text"
-                      ref={
-                        register({
-                          required: 'Required'
-                        }) as RBRef
-                      }
-                    />
-                    <Form.Text className="text-muted">
-                      'Ride A Bike', 'Bake cakes' (No Swearing!)
-                    </Form.Text>
-                  </Form.Group>
-                  <Form.Group controlId="createDescription">
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control
-                      name="description"
-                      placeholder="Explain it more..."
-                      required
-                      type="text"
-                      ref={
-                        register({
-                          required: 'Required'
-                        }) as RBRef
-                      }
-                    />
-                  </Form.Group>
-                  <Form.Group controlId="createUrl">
-                    <Form.Label>Url (optional)</Form.Label>
-                    <Form.Control
-                      name="url"
-                      placeholder="https://"
-                      type="url"
-                      ref={register() as RBRef}
-                    />
-                    <Form.Text className="text-muted">
-                      Will open in a new window
-                    </Form.Text>
-                  </Form.Group>
-                  <Form.Group controlId="createErrors">
-                    <Form.Control.Feedback type="invalid">
-                      {JSON.stringify(errors)}
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                  <Button variant="primary" type="submit">
-                    Submit
-                  </Button>
-                </Form>
-              </Col>
-            </Row>
-          </div>
-        </Collapse>
-      </Container>
-    </>
+                  <Form.Text className="text-muted">
+                    'Ride A Bike', 'Bake cakes' (No Swearing!)
+                  </Form.Text>
+                </Form.Group>
+                <Form.Group controlId="createDescription">
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control
+                    name="description"
+                    placeholder="Explain it more..."
+                    required
+                    type="text"
+                    ref={
+                      register({
+                        required: 'Required'
+                      }) as RBRef
+                    }
+                  />
+                </Form.Group>
+                <Form.Group controlId="createUrl">
+                  <Form.Label>Url (optional)</Form.Label>
+                  <Form.Control
+                    name="url"
+                    placeholder="https://"
+                    type="url"
+                    ref={register() as RBRef}
+                  />
+                  <Form.Text className="text-muted">
+                    Will open in a new tab
+                  </Form.Text>
+                </Form.Group>
+                <Form.Group controlId="createErrors">
+                  <Form.Control.Feedback type="invalid">
+                    {JSON.stringify(errors)}
+                  </Form.Control.Feedback>
+                </Form.Group>
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+              </Form>
+            </Col>
+          </MainRow>
+        </div>
+      </Collapse>
+    </Container>
   );
 }

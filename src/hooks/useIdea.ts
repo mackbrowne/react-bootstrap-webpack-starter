@@ -4,7 +4,7 @@ import { firestore } from 'firebase/app';
 export default () => {
   const [docState, setDocState] = useState({
     isLoading: true,
-    data: { title: null, description: null }
+    data: { title: null, description: null, url: null }
   });
 
   useEffect(() => {
@@ -17,12 +17,13 @@ export default () => {
         .limit(1)
         .onSnapshot(result => {
           if (!result.empty) {
-            const { title, description } = result.docs[0].data();
+            const { title, description, url } = result.docs[0].data();
             setDocState({
               isLoading: false,
               data: {
                 title,
-                description
+                description,
+                url
               }
             });
           } else {
