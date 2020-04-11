@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Container, Col, Fade } from 'react-bootstrap';
+import wait from 'waait';
+
+import { IdeaContext } from '../context/Idea';
+import AddSwear from '../components/AddSwear';
+import useClean from '../hooks/useClean';
 
 import { H1, H2, MainRow } from '../App.style';
 
-import AddSwear from '../components/AddSwear';
-import useIdea from '../hooks/useIdea';
-import useClean from '../hooks/useClean';
-
-function timeout(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 export default function Home() {
+  // const {
+  //   data: { title, description, url },
+  //   isLoading
+  // } = useIdea();
   const {
     data: { title, description, url },
     isLoading
-  } = useIdea();
+  } = useContext(IdeaContext);
 
   const censored = useClean();
 
@@ -23,9 +24,9 @@ export default function Home() {
   const [showDescription, setShowDescription] = useState(false);
   useEffect(() => {
     (async () => {
-      await timeout(800);
+      await wait(800);
       setShowTitle(true);
-      await timeout(censored ? 800 : 1600);
+      await wait(censored ? 800 : 1600);
       setShowDescription(true);
     })();
   }, [isLoading, censored]);
