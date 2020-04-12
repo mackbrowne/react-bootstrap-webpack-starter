@@ -9,7 +9,7 @@ import copy from 'copy-to-clipboard';
 import wait from 'waait';
 
 import styled from 'styled-components';
-import { TextTransition } from '../App.style';
+import { TextTransition, DELAY } from '../App.style';
 import { IdeaContext } from '../context/Idea';
 const BottomNavbar = styled(Navbar).attrs({
   fixed: 'bottom'
@@ -28,18 +28,20 @@ export default function Footer() {
   const [showFooter, setShowFooter] = useState(false);
   const [copied, setCopied] = useState(false);
 
+  const CENSOR_DELAY = censored ? 0 : DELAY;
+
   useEffect(() => {
     (async () => {
-      await wait(censored ? 0 : 800);
-      await wait(1600);
+      await wait(CENSOR_DELAY);
+      await wait(DELAY * 3);
       setShowFooter(true);
     })();
-  }, [censored]);
+  }, [CENSOR_DELAY, censored]);
 
   const share = async () => {
     setCopied(true);
     copy(`${window.location.origin}/${slug}${search}`);
-    await wait(1600);
+    await wait(DELAY * 3);
     setCopied(false);
   };
 
@@ -81,7 +83,6 @@ export default function Footer() {
               </Nav.Link>
             </div>
           </Fade>
-          <Fade unmountOnExit in={!!user}></Fade>
         </Nav>
         <Nav>
           <CensoredToggle />

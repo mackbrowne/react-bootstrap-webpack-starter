@@ -7,10 +7,7 @@ import { IdeaContext } from '../context/Idea';
 import AddSwear from '../components/AddSwear';
 import useClean from '../hooks/useClean';
 
-import { H1, H2, H3, MainRow } from '../App.style';
-
-const DELAY = 600;
-const QUICK_DELAY = 100;
+import { H1, H2, H3, MainRow, DELAY, QUICK_DELAY } from '../App.style';
 
 export default function Home() {
   const {
@@ -84,7 +81,7 @@ export default function Home() {
             <div>
               <Button
                 variant="link"
-                className="float-right"
+                className="float-right text-decoration-none"
                 disabled={!showRandom}
                 onClick={async () => {
                   setShowRandom(false);

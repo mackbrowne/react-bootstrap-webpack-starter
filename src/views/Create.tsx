@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { Container, Col, Collapse, Form, Button } from 'react-bootstrap';
+import { Container, Col, Form, Button, Fade } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { firestore, auth } from 'firebase/app';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -64,7 +64,7 @@ export default function Create() {
 
   return (
     <Container>
-      <Collapse in={!!user}>
+      <Fade in={!!user}>
         <div>
           <MainRow>
             <Col>
@@ -123,7 +123,7 @@ export default function Create() {
             </Col>
           </MainRow>
         </div>
-      </Collapse>
+      </Fade>
     </Container>
   );
 }

@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { Container, Col, Form, Button, Collapse, Alert } from 'react-bootstrap';
+import {
+  Container,
+  Col,
+  Form,
+  Button,
+  Collapse,
+  Alert,
+  Fade
+} from 'react-bootstrap';
 import { auth } from 'firebase/app';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -18,7 +26,6 @@ export default function Create() {
   const { pathname, search } = useLocation();
   useEffect(() => {
     setError(null);
-    reset();
   }, [pathname, reset]);
 
   const [user, userLoading] = useAuthState(auth());
@@ -60,8 +67,8 @@ export default function Create() {
   );
 
   return (
-    !userLoading && (
-      <Container>
+    <Container>
+      <Fade appear in={!userLoading}>
         <div>
           <MainRow>
             <Col>
@@ -151,7 +158,7 @@ export default function Create() {
             </Col>
           </MainRow>
         </div>
-      </Container>
-    )
+      </Fade>
+    </Container>
   );
 }
