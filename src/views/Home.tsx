@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import { useParams, useHistory, useLocation } from 'react-router-dom';
 import { Container, Col, Fade, Button } from 'react-bootstrap';
 import wait from 'waait';
@@ -25,13 +25,22 @@ export default function Home() {
   const [showDescription, setShowDescription] = useState(false);
   const [showRandom, setShowRandom] = useState(false);
 
+  const clickRefresh = useCallback(async () => {
+    await wait();
+    setShowRandom(false);
+    await wait(QUICK_DELAY);
+    setShowDescription(false);
+    await wait(QUICK_DELAY);
+    setShowTitle(false);
+    slugParam ? replaceHistory(`/${search}`) : getIdea();
+  }, [getIdea, replaceHistory, search, slugParam]);
+
   useEffect(() => {
     getIdea(slugParam);
   }, [getIdea, slugParam]);
 
   useEffect(() => {
     (async () => {
-      await wait(DELAY);
       setShowTitle(true);
       await wait(CENSOR_DELAY);
       await wait(DELAY);
@@ -45,7 +54,7 @@ export default function Home() {
     <Container>
       <MainRow>
         <Col>
-          <Fade in={showTitle}>
+          <Fade in={showTitle} appear>
             <div>
               <H1>
                 <a
@@ -63,7 +72,7 @@ export default function Home() {
               </H1>
             </div>
           </Fade>
-          <Fade in={showDescription}>
+          <Fade in={showDescription} appear>
             <div>
               <H2>
                 <a
@@ -77,20 +86,13 @@ export default function Home() {
               </H2>
             </div>
           </Fade>
-          <Fade in={showRandom}>
+          <Fade in={showRandom} appear>
             <div>
               <Button
                 variant="link"
                 className="float-right text-decoration-none"
                 disabled={!showRandom}
-                onClick={async () => {
-                  setShowRandom(false);
-                  await wait(QUICK_DELAY);
-                  setShowDescription(false);
-                  await wait(QUICK_DELAY);
-                  setShowTitle(false);
-                  slugParam ? replaceHistory(`/${search}`) : getIdea();
-                }}
+                onClick={clickRefresh}
               >
                 <H3>...Something Else?</H3>
               </Button>

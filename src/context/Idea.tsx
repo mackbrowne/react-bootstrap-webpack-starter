@@ -1,5 +1,6 @@
 import React, { createContext, useState, useCallback } from 'react';
 import { firestore } from 'firebase/app';
+import { logPageView } from '../hooks/useAnalytics';
 type SetStateAction = (prevState: string) => void;
 type IdeaData = {
   title: string;
@@ -34,22 +35,34 @@ export const IdeaContext = createContext<defaultStateType & actions>({
 const IdeaProvider = ({ children }) => {
   const [docState, setDocState] = useState(defaultState);
 
-  const getIdea = useCallback(slug => {
+  const getIdea = useCallback(async slug => {
     setDocState(oldDocState => ({
       ...oldDocState,
       isLoading: true
     }));
 
     const ideasCollection = firestore().collection('ideas');
-
     const getOne = (targetField, operator, targetValue) =>
       ideasCollection
         .where(targetField, operator, targetValue)
         .limit(1)
         .get();
 
-    const onResult = result => {
-      console.log('result');
+    const getRandom = async () => {
+      const { id } = ideasCollection.doc();
+      const docId = firestore.FieldPath.documentId();
+
+      let result = await getOne(docId, '>=', id);
+      if (result.empty) result = await getOne(docId, '<=', id);
+      return result;
+    };
+
+    try {
+      let result;
+      if (slug) {
+        result = await getOne('slug', '==', slug);
+      }
+      if (!result || result.empty) result = await getRandom();
       if (result.empty) throw Error('no results');
 
       const data = result.docs[0].data() as IdeaData;
@@ -57,43 +70,10 @@ const IdeaProvider = ({ children }) => {
         isLoading: false,
         data
       });
-    };
-
-    (async () => {
-      const getRandom = async () => {
-        const { id } = ideasCollection.doc();
-        try {
-          const result = await getOne(
-            firestore.FieldPath.documentId(),
-            '>=',
-            id
-          );
-          onResult(result);
-        } catch {
-          const fallbackResult = await getOne(
-            firestore.FieldPath.documentId(),
-            '<=',
-            id
-          );
-          onResult(fallbackResult);
-        }
-      };
-
-      try {
-        if (slug) {
-          try {
-            const result = await getOne('slug', '==', slug);
-            onResult(result);
-          } catch (error) {
-            getRandom();
-          }
-        } else {
-          await getRandom();
-        }
-      } catch ({ message }) {
-        console.error(message);
-      }
-    })();
+      logPageView(`/${data.slug}`);
+    } catch ({ message }) {
+      console.error(message);
+    }
   }, []);
 
   return (
