@@ -56,7 +56,7 @@ export default function Create() {
         slug,
         approved: false
       });
-      history.push(`/${id}`);
+      history.push(`/slug`);
     } catch ({ message }) {
       console.error(message);
     }
