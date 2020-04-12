@@ -45,7 +45,7 @@ export default function Create() {
         };
 
   const submit = handleSubmit(
-    async ({ email, password, passwordAgain, termsAgreed }) => {
+    async ({ email, password, passwordAgain, termsAgreed = true }) => {
       try {
         if (isSignUp) {
           if (password !== passwordAgain) throw Error('Passwords do not match');
@@ -114,7 +114,7 @@ export default function Create() {
                         placeholder="Password Again"
                       />
                     </Form.Group>
-                    <Form.Group controlId="formBasicCheckbox">
+                    {/* <Form.Group controlId="formBasicCheckbox">
                       <Form.Label>
                         Agree to{' '}
                         <Link to="/terms-and-conditions">
@@ -127,7 +127,7 @@ export default function Create() {
                         type="checkbox"
                         inline
                       />
-                    </Form.Group>
+                    </Form.Group> */}
                   </div>
                 </Collapse>
                 <Button

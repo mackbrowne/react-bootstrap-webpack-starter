@@ -17,6 +17,10 @@ export const H2 = styled.h2.attrs({
   font-size: 1.5rem;
 `;
 
+export const H3 = styled.h3`
+  font-size: 1rem;
+`;
+
 export const TextTransition = styled(ReactTextTransition).attrs(
   ({ text, delay = 0 }) => ({
     text,

@@ -5,12 +5,16 @@ import { TextTransition } from '../App.style';
 
 const Swear = styled(TextTransition)`
   color: #da0404;
-
   margin: 0 6px;
 `;
 
-export default function AddSwear({ sentence, swear, censored }) {
-  const [delay, setDelay] = useState(1600);
+export default function AddSwear({
+  sentence,
+  swear,
+  censored,
+  delay: initialDelay = 1600
+}) {
+  const [delay, setDelay] = useState(initialDelay);
 
   useEffect(() => {
     setDelay(0);

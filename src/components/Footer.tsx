@@ -6,6 +6,7 @@ import CensoredToggle from './CensoredToggle';
 import useClean from '../hooks/useClean';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import copy from 'copy-to-clipboard';
+import wait from 'waait';
 
 import styled from 'styled-components';
 import { TextTransition } from '../App.style';
@@ -17,28 +18,30 @@ const BottomNavbar = styled(Navbar).attrs({
 `;
 
 export default function Footer() {
-  const { pathname } = useLocation();
-  const censored = useClean();
-  const [user, ,] = useAuthState(auth());
-
-  const [showFooter, setShowFooter] = useState(false);
-  useEffect(() => {
-    setTimeout(() => setShowFooter(true), censored ? 2400 : 3200);
-  }, [censored]);
-
-  const [copied, setCopied] = useState(false);
-
   const {
     data: { slug }
   } = useContext(IdeaContext);
-  const share = () => {
-    copy(window.location.href + slug);
-    setCopied(true);
-  };
+
+  const { pathname, search } = useLocation();
+  const censored = useClean();
+  const [user] = useAuthState(auth());
+  const [showFooter, setShowFooter] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
+    (async () => {
+      await wait(censored ? 0 : 800);
+      await wait(1600);
+      setShowFooter(true);
+    })();
+  }, [censored]);
+
+  const share = async () => {
+    setCopied(true);
+    copy(`${window.location.origin}/${slug}${search}`);
+    await wait(1600);
     setCopied(false);
-  }, [pathname]);
+  };
 
   return (
     <Fade in={showFooter}>
@@ -68,9 +71,17 @@ export default function Footer() {
               <Nav.Link onClick={() => auth().signOut()}>Sign Out</Nav.Link>
             </div>
           </Fade>
-          <Nav.Link onClick={share}>
-            <TextTransition text={copied ? 'Copied Link!' : 'Share'} />
-          </Nav.Link>
+          <Fade
+            unmountOnExit
+            in={!['/login', '/sign-up', '/create'].includes(pathname)}
+          >
+            <div>
+              <Nav.Link onClick={share}>
+                <TextTransition text={copied ? 'Copied Link!' : 'Share'} />
+              </Nav.Link>
+            </div>
+          </Fade>
+          <Fade unmountOnExit in={!!user}></Fade>
         </Nav>
         <Nav>
           <CensoredToggle />

@@ -1,24 +1,45 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { createContext, useState, useCallback } from 'react';
 import { firestore } from 'firebase/app';
+type SetStateAction = (prevState: string) => void;
+type IdeaData = {
+  title: string;
+  description: string;
+  url: string;
+  slug: string;
+};
 
 const defaultState = {
   isLoading: true,
   data: { title: null, description: null, url: null, slug: null }
 };
 
-type defaultStateType = {
-  isLoading: boolean;
-  data: { title: string; description: string; url: string; slug: string };
+const defaultActions = {
+  getIdea: slug => {}
 };
 
-export const IdeaContext = createContext<defaultStateType>(defaultState);
+type defaultStateType = {
+  isLoading: boolean;
+  data: IdeaData;
+};
+
+type actions = {
+  getIdea: (slug?: string) => void;
+};
+
+export const IdeaContext = createContext<defaultStateType & actions>({
+  ...defaultState,
+  ...defaultActions
+});
 
 const IdeaProvider = ({ children }) => {
-  const { slug: slugParam } = useParams();
   const [docState, setDocState] = useState(defaultState);
 
-  useEffect(() => {
+  const getIdea = useCallback(slug => {
+    setDocState(oldDocState => ({
+      ...oldDocState,
+      isLoading: true
+    }));
+
     const ideasCollection = firestore().collection('ideas');
 
     const getOne = (targetField, operator, targetValue) =>
@@ -28,53 +49,57 @@ const IdeaProvider = ({ children }) => {
         .get();
 
     const onResult = result => {
+      console.log('result');
       if (result.empty) throw Error('no results');
-      else {
-        const { title, description, url, slug } = result.docs[0].data();
-        console.log(slug);
-        setDocState({
-          isLoading: false,
-          data: {
-            title,
-            description,
-            url,
-            slug
-          }
-        });
-      }
+
+      const data = result.docs[0].data() as IdeaData;
+      setDocState({
+        isLoading: false,
+        data
+      });
     };
 
     (async () => {
-      try {
-        if (slugParam) {
-          const result = await getOne('slug', '==', slugParam);
+      const getRandom = async () => {
+        const { id } = ideasCollection.doc();
+        try {
+          const result = await getOne(
+            firestore.FieldPath.documentId(),
+            '>=',
+            id
+          );
           onResult(result);
-        } else {
-          const { id } = ideasCollection.doc();
+        } catch {
+          const fallbackResult = await getOne(
+            firestore.FieldPath.documentId(),
+            '<=',
+            id
+          );
+          onResult(fallbackResult);
+        }
+      };
+
+      try {
+        if (slug) {
           try {
-            const result = await getOne(
-              firestore.FieldPath.documentId(),
-              '>=',
-              id
-            );
+            const result = await getOne('slug', '==', slug);
             onResult(result);
-          } catch {
-            const fallbackResult = await getOne(
-              firestore.FieldPath.documentId(),
-              '<=',
-              id
-            );
-            onResult(fallbackResult);
+          } catch (error) {
+            getRandom();
           }
+        } else {
+          await getRandom();
         }
       } catch ({ message }) {
         console.error(message);
       }
     })();
-  }, [slugParam]);
+  }, []);
 
   return (
-    <IdeaContext.Provider value={docState}>{children}</IdeaContext.Provider>
+    <IdeaContext.Provider value={{ ...docState, getIdea }}>
+      {children}
+    </IdeaContext.Provider>
   );
 };
 

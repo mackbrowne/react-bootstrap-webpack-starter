@@ -1,35 +1,48 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Container, Col, Fade } from 'react-bootstrap';
+import { useParams, useHistory, useLocation } from 'react-router-dom';
+import { Container, Col, Fade, Button } from 'react-bootstrap';
 import wait from 'waait';
 
 import { IdeaContext } from '../context/Idea';
 import AddSwear from '../components/AddSwear';
 import useClean from '../hooks/useClean';
 
-import { H1, H2, MainRow } from '../App.style';
+import { H1, H2, H3, MainRow } from '../App.style';
+
+const DELAY = 600;
+const QUICK_DELAY = 100;
 
 export default function Home() {
-  // const {
-  //   data: { title, description, url },
-  //   isLoading
-  // } = useIdea();
   const {
-    data: { title, description, url },
-    isLoading
+    data: { title, description, url, slug },
+    getIdea
   } = useContext(IdeaContext);
 
+  const { replace: replaceHistory } = useHistory();
+  const { slug: slugParam } = useParams();
+  const { search } = useLocation();
   const censored = useClean();
+  const CENSOR_DELAY = censored ? 0 : DELAY;
 
   const [showTitle, setShowTitle] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
+  const [showRandom, setShowRandom] = useState(false);
+
+  useEffect(() => {
+    getIdea(slugParam);
+  }, [getIdea, slugParam]);
+
   useEffect(() => {
     (async () => {
-      await wait(800);
+      await wait(DELAY);
       setShowTitle(true);
-      await wait(censored ? 800 : 1600);
+      await wait(CENSOR_DELAY);
+      await wait(DELAY);
       setShowDescription(true);
+      await wait(DELAY);
+      setShowRandom(true);
     })();
-  }, [isLoading, censored]);
+  }, [CENSOR_DELAY, slug]);
 
   return (
     <Container>
@@ -37,24 +50,53 @@ export default function Home() {
         <Col>
           <Fade in={showTitle}>
             <div>
-              <a
-                href={url ? url : ''}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <H1>
+              <H1>
+                <a
+                  href={url ? url : ''}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-decoration-none"
+                >
                   <AddSwear
                     sentence={title}
                     swear={'fucking'}
                     censored={censored}
                   />
-                </H1>
-              </a>
+                </a>
+              </H1>
             </div>
           </Fade>
           <Fade in={showDescription}>
             <div>
-              <H2>{description}</H2>
+              <H2>
+                <a
+                  href={url ? url : ''}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-decoration-none"
+                >
+                  {description}
+                </a>
+              </H2>
+            </div>
+          </Fade>
+          <Fade in={showRandom}>
+            <div>
+              <Button
+                variant="link"
+                className="float-right"
+                disabled={!showRandom}
+                onClick={async () => {
+                  setShowRandom(false);
+                  await wait(QUICK_DELAY);
+                  setShowDescription(false);
+                  await wait(QUICK_DELAY);
+                  setShowTitle(false);
+                  slugParam ? replaceHistory(`/${search}`) : getIdea();
+                }}
+              >
+                <H3>...Something Else?</H3>
+              </Button>
             </div>
           </Fade>
         </Col>
