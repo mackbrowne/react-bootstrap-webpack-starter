@@ -47,7 +47,7 @@ export default function Create() {
         }
       } while (!unique);
 
-      const { id } = await ideasCollection.add({
+      await ideasCollection.add({
         title,
         description,
         url,
@@ -56,7 +56,7 @@ export default function Create() {
         slug,
         approved: false
       });
-      history.push(`/slug`);
+      history.push(`/${slug}`);
     } catch ({ message }) {
       console.error(message);
     }

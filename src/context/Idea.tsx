@@ -15,7 +15,7 @@ const defaultState = {
 };
 
 const defaultActions = {
-  getIdea: slug => {}
+  getIdea: async slug => {}
 };
 
 type defaultStateType = {

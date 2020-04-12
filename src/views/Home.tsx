@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react';
-import { useParams, useHistory, useLocation } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Container, Col, Fade, Button } from 'react-bootstrap';
 import wait from 'waait';
 
@@ -11,19 +11,28 @@ import { H1, H2, H3, MainRow, DELAY, QUICK_DELAY } from '../App.style';
 
 export default function Home() {
   const {
-    data: { title, description, url, slug },
+    data: { title, description, url },
     getIdea
   } = useContext(IdeaContext);
 
   const { replace: replaceHistory } = useHistory();
   const { slug: slugParam } = useParams();
-  const { search } = useLocation();
   const censored = useClean();
   const CENSOR_DELAY = censored ? 0 : DELAY;
 
   const [showTitle, setShowTitle] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
   const [showRandom, setShowRandom] = useState(false);
+
+  const showIdea = useCallback(async () => {
+    await getIdea(slugParam);
+    setShowTitle(true);
+    await wait(CENSOR_DELAY);
+    await wait(DELAY);
+    setShowDescription(true);
+    await wait(DELAY);
+    setShowRandom(true);
+  }, [CENSOR_DELAY, getIdea, slugParam]);
 
   const clickRefresh = useCallback(async () => {
     await wait();
@@ -32,23 +41,13 @@ export default function Home() {
     setShowDescription(false);
     await wait(QUICK_DELAY);
     setShowTitle(false);
-    slugParam ? replaceHistory(`/${search}`) : getIdea();
-  }, [getIdea, replaceHistory, search, slugParam]);
+    await showIdea();
+  }, [showIdea]);
 
   useEffect(() => {
-    getIdea(slugParam);
-  }, [getIdea, slugParam]);
-
-  useEffect(() => {
-    (async () => {
-      setShowTitle(true);
-      await wait(CENSOR_DELAY);
-      await wait(DELAY);
-      setShowDescription(true);
-      await wait(DELAY);
-      setShowRandom(true);
-    })();
-  }, [CENSOR_DELAY, slug]);
+    showIdea();
+    replaceHistory('/');
+  }, [replaceHistory, showIdea]);
 
   return (
     <Container>
