@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useCallback } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, useLocation } from 'react-router-dom';
 import { Container, Col, Fade, Button } from 'react-bootstrap';
 import wait from 'waait';
 
@@ -10,12 +10,10 @@ import useClean from '../hooks/useClean';
 import { H1, H2, H3, MainRow, DELAY, QUICK_DELAY } from '../App.style';
 
 export default function Home() {
-  const {
-    data: { title, description, url },
-    getIdea
-  } = useContext(IdeaContext);
+  const { title, description, url, getIdea, slug } = useContext(IdeaContext);
 
   const { replace: replaceHistory } = useHistory();
+  const { search } = useLocation();
   const { slug: slugParam } = useParams();
   const censored = useClean();
   const CENSOR_DELAY = censored ? 0 : DELAY;
@@ -25,35 +23,43 @@ export default function Home() {
   const [showRandom, setShowRandom] = useState(false);
 
   const showIdea = useCallback(async () => {
-    await getIdea(slugParam);
+    await wait(0);
     setShowTitle(true);
     await wait(CENSOR_DELAY);
     await wait(DELAY);
     setShowDescription(true);
     await wait(DELAY);
     setShowRandom(true);
-  }, [CENSOR_DELAY, getIdea, slugParam]);
+  }, [CENSOR_DELAY]);
 
   const clickRefresh = useCallback(async () => {
+    console.log('refresh');
     await wait();
     setShowRandom(false);
     await wait(QUICK_DELAY);
     setShowDescription(false);
     await wait(QUICK_DELAY);
     setShowTitle(false);
-    await showIdea();
-  }, [showIdea]);
+    if (slugParam) {
+      replaceHistory(`/${search}`);
+    } else {
+      await getIdea();
+    }
+  }, [getIdea, replaceHistory, search, slugParam]);
+
+  useEffect(() => {
+    getIdea(slugParam);
+  }, [getIdea, slugParam]);
 
   useEffect(() => {
     showIdea();
-    replaceHistory('/');
-  }, [replaceHistory, showIdea]);
+  }, [showIdea, slug]);
 
   return (
     <Container>
       <MainRow>
         <Col>
-          <Fade in={showTitle} appear>
+          <Fade in={showTitle}>
             <div>
               <H1>
                 <a
@@ -71,7 +77,7 @@ export default function Home() {
               </H1>
             </div>
           </Fade>
-          <Fade in={showDescription} appear>
+          <Fade in={showDescription}>
             <div>
               <H2>
                 <a
@@ -85,7 +91,7 @@ export default function Home() {
               </H2>
             </div>
           </Fade>
-          <Fade in={showRandom} appear>
+          <Fade in={showRandom}>
             <div>
               <Button
                 variant="link"

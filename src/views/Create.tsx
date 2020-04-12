@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Container, Col, Form, Button, Fade } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -10,14 +10,16 @@ import { H1, MainRow } from '../App.style';
 import AddSwear from '../components/AddSwear';
 import useClean from '../hooks/useClean';
 import { RBRef } from '../App.types';
+import { IdeaContext } from '../context/Idea';
 
 export default function Create() {
+  const { reset: resetIdea } = useContext(IdeaContext);
   const [user, userLoading] = useAuthState(auth());
-  const history = useHistory();
+  const { replace: replaceHistory, push: pushHistory } = useHistory();
   const { search } = useLocation();
   useEffect(() => {
-    !user && !userLoading && history.replace(`/sign-up${search}`);
-  }, [user, userLoading, history, search]);
+    !user && !userLoading && replaceHistory(`/sign-up${search}`);
+  }, [replaceHistory, search, user, userLoading]);
   const censored = useClean();
 
   const { handleSubmit, register, errors } = useForm();
@@ -56,7 +58,8 @@ export default function Create() {
         slug,
         approved: false
       });
-      history.push(`/${slug}`);
+      resetIdea();
+      pushHistory(`/${slug}${search}`);
     } catch ({ message }) {
       console.error(message);
     }

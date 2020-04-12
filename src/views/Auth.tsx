@@ -29,10 +29,10 @@ export default function Create() {
   }, [pathname, reset]);
 
   const [user, userLoading] = useAuthState(auth());
-  const history = useHistory();
+  const { replace: replaceHistory } = useHistory();
   useEffect(() => {
-    user && history.replace(`/${search}`);
-  }, [user, history, search]);
+    user && replaceHistory(`/create${search}`);
+  }, [replaceHistory, search, user]);
 
   const { isSignUp, submitButton, altButton, altUrl, authMethod } =
     pathname === '/sign-up'
@@ -56,10 +56,9 @@ export default function Create() {
       try {
         if (isSignUp) {
           if (password !== passwordAgain) throw Error('Passwords do not match');
-          if (!termsAgreed) throw Error('Must agree to terms');
+          // if (!termsAgreed) throw Error('Must agree to terms');
         }
         await auth()[authMethod](email, password);
-        history.push(`/create`);
       } catch ({ message }) {
         setError(message);
       }

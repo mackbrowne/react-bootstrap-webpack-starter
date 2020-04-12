@@ -18,9 +18,7 @@ const BottomNavbar = styled(Navbar).attrs({
 `;
 
 export default function Footer() {
-  const {
-    data: { slug }
-  } = useContext(IdeaContext);
+  const { slug } = useContext(IdeaContext);
 
   const { pathname, search } = useLocation();
   const censored = useClean();

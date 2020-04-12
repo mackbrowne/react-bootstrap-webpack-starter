@@ -11,20 +11,28 @@ type IdeaData = {
 
 const defaultState = {
   isLoading: true,
-  data: { title: null, description: null, url: null, slug: null }
+  title: null,
+  description: null,
+  url: null,
+  slug: null
 };
 
 const defaultActions = {
-  getIdea: async slug => {}
+  getIdea: async slug => {},
+  reset: () => {}
 };
 
 type defaultStateType = {
   isLoading: boolean;
-  data: IdeaData;
+  title: string;
+  description: string;
+  url: string;
+  slug: string;
 };
 
 type actions = {
   getIdea: (slug?: string) => void;
+  reset: () => void;
 };
 
 export const IdeaContext = createContext<defaultStateType & actions>({
@@ -35,11 +43,10 @@ export const IdeaContext = createContext<defaultStateType & actions>({
 const IdeaProvider = ({ children }) => {
   const [docState, setDocState] = useState(defaultState);
 
+  const reset = () => setDocState(defaultState);
+
   const getIdea = useCallback(async slug => {
-    setDocState(oldDocState => ({
-      ...oldDocState,
-      isLoading: true
-    }));
+    setDocState(oldState => ({ ...oldState, isLoading: true }));
 
     const ideasCollection = firestore().collection('ideas');
     const getOne = (targetField, operator, targetValue) =>
@@ -68,7 +75,7 @@ const IdeaProvider = ({ children }) => {
       const data = result.docs[0].data() as IdeaData;
       setDocState({
         isLoading: false,
-        data
+        ...data
       });
       logPageView(`/${data.slug}`);
     } catch ({ message }) {
@@ -77,7 +84,7 @@ const IdeaProvider = ({ children }) => {
   }, []);
 
   return (
-    <IdeaContext.Provider value={{ ...docState, getIdea }}>
+    <IdeaContext.Provider value={{ ...docState, getIdea, reset }}>
       {children}
     </IdeaContext.Provider>
   );
