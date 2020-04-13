@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Container, Col, Form, Button, Fade } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -10,10 +10,8 @@ import { H1, MainRow } from '../App.style';
 import AddSwear from '../components/AddSwear';
 import useClean from '../hooks/useClean';
 import { RBRef } from '../App.types';
-import { IdeaContext } from '../context/Idea';
 
 export default function Create() {
-  const { reset: resetIdea } = useContext(IdeaContext);
   const [user, userLoading] = useAuthState(auth());
   const { replace: replaceHistory, push: pushHistory } = useHistory();
   const { search } = useLocation();
@@ -58,7 +56,6 @@ export default function Create() {
         slug,
         approved: false
       });
-      resetIdea();
       pushHistory(`/${slug}${search}`);
     } catch ({ message }) {
       console.error(message);

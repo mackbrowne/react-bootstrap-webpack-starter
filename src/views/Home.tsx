@@ -10,7 +10,9 @@ import useClean from '../hooks/useClean';
 import { H1, H2, H3, MainRow, DELAY, QUICK_DELAY } from '../App.style';
 
 export default function Home() {
-  const { title, description, url, getIdea, slug } = useContext(IdeaContext);
+  const { title, description, url, getIdea, resetIdea, isLoading } = useContext(
+    IdeaContext
+  );
 
   const { replace: replaceHistory } = useHistory();
   const { search } = useLocation();
@@ -19,13 +21,14 @@ export default function Home() {
   const CENSOR_DELAY = censored ? 0 : DELAY;
 
   const [showTitle, setShowTitle] = useState(false);
+  const [showSwear, setShowSwear] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
   const [showRandom, setShowRandom] = useState(false);
 
   const showIdea = useCallback(async () => {
-    await wait(0);
     setShowTitle(true);
     await wait(CENSOR_DELAY);
+    setShowSwear(true);
     await wait(DELAY);
     setShowDescription(true);
     await wait(DELAY);
@@ -33,8 +36,6 @@ export default function Home() {
   }, [CENSOR_DELAY]);
 
   const clickRefresh = useCallback(async () => {
-    console.log('refresh');
-    await wait();
     setShowRandom(false);
     await wait(QUICK_DELAY);
     setShowDescription(false);
@@ -49,11 +50,13 @@ export default function Home() {
 
   useEffect(() => {
     getIdea(slugParam);
-  }, [getIdea, slugParam]);
+
+    return resetIdea;
+  }, [getIdea, slugParam, resetIdea]);
 
   useEffect(() => {
-    showIdea();
-  }, [showIdea, slug]);
+    !isLoading && showIdea();
+  }, [showIdea, isLoading]);
 
   return (
     <Container>
@@ -71,7 +74,7 @@ export default function Home() {
                   <AddSwear
                     sentence={title}
                     swear={'fucking'}
-                    censored={censored}
+                    censored={!showSwear || censored}
                   />
                 </a>
               </H1>

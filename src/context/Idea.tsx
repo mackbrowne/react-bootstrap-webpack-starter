@@ -19,7 +19,7 @@ const defaultState = {
 
 const defaultActions = {
   getIdea: async slug => {},
-  reset: () => {}
+  resetIdea: () => {}
 };
 
 type defaultStateType = {
@@ -32,7 +32,7 @@ type defaultStateType = {
 
 type actions = {
   getIdea: (slug?: string) => void;
-  reset: () => void;
+  resetIdea: () => void;
 };
 
 export const IdeaContext = createContext<defaultStateType & actions>({
@@ -43,7 +43,7 @@ export const IdeaContext = createContext<defaultStateType & actions>({
 const IdeaProvider = ({ children }) => {
   const [docState, setDocState] = useState(defaultState);
 
-  const reset = () => setDocState(defaultState);
+  const resetIdea = useCallback(() => setDocState(defaultState), []);
 
   const getIdea = useCallback(async slug => {
     setDocState(oldState => ({ ...oldState, isLoading: true }));
@@ -84,7 +84,7 @@ const IdeaProvider = ({ children }) => {
   }, []);
 
   return (
-    <IdeaContext.Provider value={{ ...docState, getIdea, reset }}>
+    <IdeaContext.Provider value={{ ...docState, getIdea, resetIdea }}>
       {children}
     </IdeaContext.Provider>
   );

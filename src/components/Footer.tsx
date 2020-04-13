@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { auth } from 'firebase/app';
 import { Fade, Navbar, Nav } from 'react-bootstrap';
@@ -23,28 +23,27 @@ export default function Footer() {
   const { pathname, search } = useLocation();
   const censored = useClean();
   const [user] = useAuthState(auth());
-  const [showFooter, setShowFooter] = useState(false);
+  const [showNavbar, setShowFooter] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const CENSOR_DELAY = censored ? 0 : DELAY;
+  const showFooter = useCallback(async () => {
+    await wait(DELAY * (censored ? 3 : 4));
+    setShowFooter(true);
+  }, [censored]);
 
-  useEffect(() => {
-    (async () => {
-      await wait(CENSOR_DELAY);
-      await wait(DELAY * 3);
-      setShowFooter(true);
-    })();
-  }, [CENSOR_DELAY, censored]);
-
-  const share = async () => {
+  const share = useCallback(async () => {
     setCopied(true);
     copy(`${window.location.origin}/${slug}${search}`);
     await wait(DELAY * 3);
     setCopied(false);
-  };
+  }, [search, slug]);
+
+  useEffect(() => {
+    showFooter();
+  }, [showFooter]);
 
   return (
-    <Fade in={showFooter}>
+    <Fade in={showNavbar}>
       <BottomNavbar>
         <Nav className="mr-auto">
           {[

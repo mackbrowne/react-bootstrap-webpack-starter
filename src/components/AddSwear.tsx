@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import nlp from 'compromise';
 import styled from 'styled-components';
 import { TextTransition } from '../App.style';
@@ -8,18 +8,7 @@ const Swear = styled(TextTransition)`
   margin: 0 6px;
 `;
 
-export default function AddSwear({
-  sentence,
-  swear,
-  censored,
-  delay: initialDelay = 1600
-}) {
-  const [delay, setDelay] = useState(initialDelay);
-
-  useEffect(() => {
-    setDelay(0);
-  }, []);
-
+export default function AddSwear({ sentence, swear, censored }) {
   const words = nlp(sentence);
 
   const lastNoun = words.nouns().last();
@@ -30,7 +19,7 @@ export default function AddSwear({
   return (
     <>
       {firstHalf}
-      <Swear text={censored ? '' : swear} delay={delay} inline />
+      <Swear text={censored ? '' : swear} inline />
       {lastHalf}
     </>
   );
