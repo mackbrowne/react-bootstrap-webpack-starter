@@ -59,6 +59,7 @@ export default function Create() {
           // if (!termsAgreed) throw Error('Must agree to terms');
         }
         await auth()[authMethod](email, password);
+        if (isSignUp) await auth().currentUser.sendEmailVerification();
       } catch ({ message }) {
         setError(message);
       }

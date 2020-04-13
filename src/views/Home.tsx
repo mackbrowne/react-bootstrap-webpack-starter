@@ -42,6 +42,7 @@ export default function Home() {
     await wait(QUICK_DELAY);
     setShowTitle(false);
     if (slugParam) {
+      await wait(DELAY);
       replaceHistory(`/${search}`);
     } else {
       await getIdea();

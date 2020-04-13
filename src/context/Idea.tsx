@@ -1,6 +1,7 @@
 import React, { createContext, useState, useCallback } from 'react';
 import { firestore } from 'firebase/app';
 import { logPageView } from '../hooks/useAnalytics';
+
 type SetStateAction = (prevState: string) => void;
 type IdeaData = {
   title: string;
@@ -49,11 +50,11 @@ const IdeaProvider = ({ children }) => {
     setDocState(oldState => ({ ...oldState, isLoading: true }));
 
     const ideasCollection = firestore().collection('ideas');
-    const getOne = (targetField, operator, targetValue) =>
-      ideasCollection
-        .where(targetField, operator, targetValue)
-        .limit(1)
-        .get();
+    const getOne = (targetField, operator, targetValue, approved = true) => {
+      let result = ideasCollection.where(targetField, operator, targetValue);
+      if (approved) result = result.where('approved', '==', true);
+      return result.limit(1).get();
+    };
 
     const getRandom = async () => {
       const { id } = ideasCollection.doc();
@@ -67,7 +68,7 @@ const IdeaProvider = ({ children }) => {
     try {
       let result;
       if (slug) {
-        result = await getOne('slug', '==', slug);
+        result = await getOne('slug', '==', slug, false);
       }
       if (!result || result.empty) result = await getRandom();
       if (result.empty) throw Error('no results');

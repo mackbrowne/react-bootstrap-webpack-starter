@@ -1,11 +1,11 @@
 {
-  "name": "react-bootstrap-typescript-starter",
+  "name": "what-to-do-in-quarantine",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "firebase deploy --project dafuq-do-i-do-in-quarentine",
+    "deploy": "firebase deploy --project what-to-do-in-quarantine",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -37,6 +37,7 @@
     "react-text-transition": "^1.0.2",
     "slugify": "^1.4.0",
     "styled-components": "^5.0.1",
+    "title-case": "^3.0.2",
     "typeface-roboto": "^0.0.75",
     "typescript": "^3.8.3",
     "waait": "^1.0.5"

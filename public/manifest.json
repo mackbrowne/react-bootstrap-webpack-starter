@@ -1,6 +1,6 @@
 {
-  "short_name": "DDIDIQ",
-  "name": "Dafuq do I do in quarentine?",
+  "short_name": "What Do I Do?",
+  "name": "What do I do in Quarantine?",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#212529",
   "background_color": "#ffffff"
 }

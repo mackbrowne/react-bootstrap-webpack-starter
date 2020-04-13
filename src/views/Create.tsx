@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { firestore, auth } from 'firebase/app';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import slugify from 'slugify';
+import { titleCase } from 'title-case';
 
 import { H1, MainRow } from '../App.style';
 import AddSwear from '../components/AddSwear';
@@ -48,7 +49,7 @@ export default function Create() {
       } while (!unique);
 
       await ideasCollection.add({
-        title,
+        title: titleCase(title),
         description,
         url,
         timestamp: new Date(),

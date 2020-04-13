@@ -48,12 +48,17 @@ export default function Footer() {
       <BottomNavbar>
         <Nav className="mr-auto">
           {[
-            { name: 'Home', url: '/', hidden: [] },
+            {
+              name: 'Home',
+              url: '/',
+              show: ['/create', '/login', '/sign-up']
+            },
             { name: 'Create', url: '/create', hidden: ['/login', '/sign-up'] }
           ].map(
-            ({ name, url, hidden }) =>
+            ({ name, url, hidden, show }) =>
               pathname !== url &&
-              !hidden.includes(pathname) && (
+              ((show && show.includes(pathname)) ||
+                (hidden && !hidden.includes(pathname))) && (
                 <Nav.Link
                   key={url}
                   as={NavLink}
