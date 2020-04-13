@@ -15,6 +15,7 @@ const BottomNavbar = styled(Navbar).attrs({
   fixed: 'bottom'
 })`
   background-color: #fff;
+  // background-color: #D4D4D4;
 `;
 
 export default function Footer() {
