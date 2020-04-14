@@ -12,7 +12,8 @@ import styled from 'styled-components';
 import { TextTransition, DELAY } from '../App.style';
 import { IdeaContext } from '../context/Idea';
 const BottomNavbar = styled(Navbar).attrs({
-  fixed: 'bottom'
+  fixed: 'bottom',
+  className: ''
 })`
   background-color: #fff;
   // background-color: #D4D4D4;
@@ -51,37 +52,42 @@ export default function Footer() {
             {
               name: 'Home',
               url: '/',
-              show: ['/create', '/login', '/sign-up']
+              show: ['/create', '/login', '/sign-up', '/about']
             },
-            { name: 'Create', url: '/create', hidden: ['/login', '/sign-up'] }
+            { name: 'Create', url: '/create', hidden: ['/login', '/sign-up'] },
+            { name: 'About', url: '/about', hidden: [] }
           ].map(
             ({ name, url, hidden, show }) =>
               pathname !== url &&
               ((show && show.includes(pathname)) ||
                 (hidden && !hidden.includes(pathname))) && (
-                <Nav.Link
-                  key={url}
-                  as={NavLink}
-                  to={{
-                    pathname: url,
-                    search: censored && '?clean'
-                  }}
-                >
-                  {name}
-                </Nav.Link>
+                <div key={url}>
+                  <Nav.Link
+                    active
+                    as={NavLink}
+                    to={{
+                      pathname: url,
+                      search: censored && '?clean'
+                    }}
+                  >
+                    {name}
+                  </Nav.Link>
+                </div>
               )
           )}
           <Fade unmountOnExit in={!!user}>
             <div>
-              <Nav.Link onClick={() => auth().signOut()}>Sign Out</Nav.Link>
+              <Nav.Link className="p-2" onClick={() => auth().signOut()}>
+                Sign Out
+              </Nav.Link>
             </div>
           </Fade>
           <Fade
             unmountOnExit
-            in={!['/login', '/sign-up', '/create'].includes(pathname)}
+            in={!['/login', '/sign-up', '/create', '/about'].includes(pathname)}
           >
             <div>
-              <Nav.Link onClick={share}>
+              <Nav.Link className="p-2" onClick={share}>
                 <TextTransition text={copied ? 'Copied Link!' : 'Share'} />
               </Nav.Link>
             </div>

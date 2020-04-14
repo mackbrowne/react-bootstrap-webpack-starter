@@ -7,7 +7,7 @@ import useClean from '../hooks/useClean';
 const CleanLink = styled(Nav.Link).attrs({
   as: RouterLink,
   replace: true,
-  className: 'text-decoration-none'
+  className: 'text-decoration-none p-2'
 })``;
 
 const DirtyLink = styled(CleanLink)`

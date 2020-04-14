@@ -12,6 +12,9 @@ import AddSwear from '../components/AddSwear';
 import useClean from '../hooks/useClean';
 import { RBRef } from '../App.types';
 
+const forbiddenRoutes = slug =>
+  ['sign-up', 'login', 'create', 'about'].includes(slug);
+
 export default function Create() {
   const [user, userLoading] = useAuthState(auth());
   const { replace: replaceHistory, push: pushHistory } = useHistory();
@@ -40,7 +43,7 @@ export default function Create() {
           .where('slug', '==', slug)
           .limit(1)
           .get();
-        if (result.empty) {
+        if (result.empty && !forbiddenRoutes(slug)) {
           unique = true;
         } else {
           modifier++;
