@@ -51,9 +51,12 @@ const IdeaProvider = ({ children }) => {
 
     const ideasCollection = firestore().collection('ideas');
     const getOne = (targetField, operator, targetValue, approved = true) => {
-      let result = ideasCollection.where(targetField, operator, targetValue);
+      let result = ideasCollection as firebase.firestore.Query;
       if (approved) result = result.where('approved', '==', true);
-      return result.limit(1).get();
+      return result
+        .where(targetField, operator, targetValue)
+        .limit(1)
+        .get();
     };
 
     const getRandom = async () => {
