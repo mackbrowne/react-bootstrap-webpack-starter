@@ -35,7 +35,7 @@ export const Education = styled.h2.attrs({
 })``;
 
 export const Summary = styled.p.attrs({
-  className: 'mb-1'
+  className: 'mb-1 font-weight-light'
 })``;
 
 export const Company = ({ name, location }) => (

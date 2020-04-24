@@ -21,6 +21,7 @@
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.13.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
     "styled-components": "^5.0.1",
     "typeface-roboto": "^0.0.75",
@@ -30,7 +31,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "print-pdf": "chrome-headless-render-pdf --include-background --url=http://localhost:3000 --pdf=public/resume.pdf --url=http://localhost:3000 --pdf=public/MackenzieBrowneResume.pdf",
-    "deploy": "yarn build && firebase deploy",
+    "deploy": "firebase deploy",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
