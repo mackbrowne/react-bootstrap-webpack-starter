@@ -50,7 +50,7 @@ export default function Resume() {
                 title="Senior Full Stack Developer - Scopus Core Team"
                 time="Feb 2020 - Present"
                 duties={[
-                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's for to improve team skills",
+                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's to improve team skills",
                   'Involved in building a design system and shared component library to unify the user experience',
                   'Involvement in major web stack migration to micro services and micro front-end technologies'
                 ]}
