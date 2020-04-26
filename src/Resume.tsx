@@ -151,14 +151,15 @@ export default function Resume() {
         <Col md={3}>
           <SideList
             title="Contact"
-            list={['info@mackbrowne.com', '+31 061 773 5900']}
+            list={['info@mackbrowne.com', 'linkedin.com/in/mackbrowne']}
           />
           <SideList
             title="Portfolio"
             list={[
-              'mackbrowne.com',
-              'linkedin.com/in/mackbrowne',
-              'github.com/mackbrowne'
+              'what-to-do-in-quarantine.web.app',
+              'syrup.life',
+              'github.com/mackbrowne',
+              'mackbrowne.com'
             ]}
           />
           <SideList
