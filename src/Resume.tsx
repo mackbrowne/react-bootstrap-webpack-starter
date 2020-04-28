@@ -207,7 +207,8 @@ export default function Resume() {
               'Apple Developer',
               'Stripe',
               'Maps',
-              'OAuth'
+              'OAuth',
+              'Unity'
             ]}
           />
           <Pills

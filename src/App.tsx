@@ -7,7 +7,7 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/cv" component={CoverLetter} />
+        <Route path="/cv" component={CoverLetter} />
         <Route
           exact
           path="/resume"
