@@ -16,26 +16,12 @@ export const Pill = styled(ListGroup.Item).attrs({
   font-weight: 400;
 `;
 
-export const Title = styled.h1.attrs({
-  className: 'mt-2'
-})``;
-
-export const TitleLabel = styled.h2.attrs({
-  className: 'my-4'
-})`
-  font-size: 1.5rem;
-`;
-
 export const SubTitle = styled.h2.attrs({
   className: 'mt-3'
 })``;
 
 export const Education = styled.h2.attrs({
   className: 'mt-3'
-})``;
-
-export const Summary = styled.p.attrs({
-  className: 'mb-1 font-weight-light'
 })``;
 
 export const Company = ({ name, location }) => (
@@ -49,7 +35,7 @@ export const Company = ({ name, location }) => (
   </Row>
 );
 
-export const Position = ({ title, time, duties = [] }) => (
+export const Position = ({ title, time, duties }) => (
   <>
     <Row>
       <Col as="h4" className="my-2">
@@ -67,7 +53,7 @@ export const Position = ({ title, time, duties = [] }) => (
   </>
 );
 
-export const Pills = ({ title = null, list }) => (
+export const Pills = ({ title = '', list }) => (
   <>
     {title && <SubTitle>{title}</SubTitle>}
     <PillGroup>

@@ -1,10 +1,8 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
+import { Summary } from '../App.style';
 import {
-  Title,
-  TitleLabel,
-  Summary,
   SubTitle,
   ExperienceList,
   Experience,
@@ -16,20 +14,9 @@ import {
 
 export default function Resume() {
   return (
-    <Container className="px-md-0 py-5">
+    <>
       <Row>
         <Col>
-          <Row className="d-flex justify-content-between pr-5">
-            <Col as={Title} md="auto">
-              Mackenzie Browne
-            </Col>
-            <Col as={TitleLabel} md="auto">
-              Full Stack and Mobile Developer
-            </Col>
-            <Col as={TitleLabel} md="auto">
-              Amsterdam
-            </Col>
-          </Row>
           <Summary>
             Organized, lifelong learner motivated by difficult challenges.
             Self-driven, and enjoys working independently and with teams. Uses a
@@ -155,12 +142,7 @@ export default function Resume() {
           />
           <SideList
             title="Portfolio"
-            list={[
-              'what-to-do-in-quarantine.web.app',
-              'syrup.life',
-              'github.com/mackbrowne',
-              'mackbrowne.com'
-            ]}
+            list={['syrup.life', 'github.com/mackbrowne', 'mackbrowne.com']}
           />
           <SideList
             title="Skills"
@@ -240,6 +222,6 @@ export default function Resume() {
           />
         </Col>
       </Row>
-    </Container>
+    </>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Summary } from '../Resume.style';
+import { Summary } from '../App.style';
 
 export default () => (
   <>

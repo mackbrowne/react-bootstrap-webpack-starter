@@ -1,5 +1,5 @@
 import React from 'react';
-import { Summary } from '../Resume.style';
+import { Summary } from '../App.style';
 
 export default () => (
   <>
@@ -9,7 +9,7 @@ export default () => (
       with 10 years of development experience throughout my career. I like to
       approach problems holistically and pragmatically, solving real issues and
       not just their symptoms. I also have experience in professional education
-      and have worked at a education-technology company similar to Squla.
+      and have worked at an education-technology company similar to Squla.
     </Summary>
     <br />
     <Summary>
