@@ -8,7 +8,9 @@
     "print-pdf": "chrome-headless-render-pdf --include-background --url=http://localhost:3000 --pdf=public/resume.pdf --url=http://localhost:3000 --pdf=public/MackenzieBrowneResume.pdf",
     "deploy": "firebase deploy",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -33,7 +35,8 @@
     "react-scripts": "^3.4.0",
     "styled-components": "^5.0.1",
     "typeface-roboto": "^0.0.75",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "snyk": "^1.321.0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -63,5 +66,6 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
-  }
+  },
+  "snyk": true
 }
