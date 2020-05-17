@@ -16,5 +16,6 @@
     "noImplicitAny": false,
     "jsx": "react"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "types": ["cypress", "@percy/cypress"]
 }
