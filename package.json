@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "print-pdf": "chrome-headless-render-pdf --include-background --url=http://localhost:3000 --pdf=public/resume.pdf --url=http://localhost:3000 --pdf=public/MackenzieBrowneResume.pdf",
     "deploy": "firebase deploy",
-    "test": "concurrently \"yarn start\" \"cypress\"",
+    "test": "concurrently \"yarn start\" \"cypress open\"",
     "test:ci": "percy exec -- cypress run --record",
     "ci": "start-server-and-test start http://localhost:3000 test:ci",
     "eject": "react-scripts eject"
@@ -33,7 +33,7 @@
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.0",
-    "styled-components": "^5.0.1",
+    "styled-components": "3",
     "typeface-roboto": "^0.0.75",
     "typescript": "^3.8.3"
   },

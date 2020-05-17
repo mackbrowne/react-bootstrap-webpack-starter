@@ -9,7 +9,7 @@ context('Example', () => {
   // https://on.cypress.io/interacting-with-elements
 
   it('Test', () => {
-    cy.get('body').snapshot();
     cy.percySnapshot()
+    cy.get('body').snapshot();
   })
 })
