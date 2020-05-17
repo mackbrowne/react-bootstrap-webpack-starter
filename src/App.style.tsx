@@ -12,6 +12,10 @@ export const CustomModal = styled(Modal.Dialog)`
       color: white;
     }
 
+    .close {
+      padding-right: 40px;
+    }
+
     .btn-secondary {
       background-color: white;
       color: gray;
