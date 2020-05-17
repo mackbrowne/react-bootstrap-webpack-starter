@@ -10,5 +10,6 @@ context('Example', () => {
 
   it('Test', () => {
     cy.get('body').snapshot();
+    cy.percySnapshot()
   })
 })

@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "print-pdf": "chrome-headless-render-pdf --include-background --url=http://localhost:3000 --pdf=public/resume.pdf --url=http://localhost:3000 --pdf=public/MackenzieBrowneResume.pdf",
     "deploy": "firebase deploy",
-    "test": "concurrently \"yarn start\" \"cypress run --record\"",
+    "test": "concurrently \"yarn start\" \"percy exec -- cypress run --record\"",
     "eject": "react-scripts eject"
   },
   "dependencies": {
@@ -66,6 +66,7 @@
   },
   "devDependencies": {
     "@cypress/snapshot": "^2.1.7",
+    "@percy/cypress": "^2.3.1",
     "concurrently": "^5.2.0",
     "cypress": "^4.5.0"
   }
