@@ -7,7 +7,7 @@
     "build": "react-scripts build",
     "print-pdf": "chrome-headless-render-pdf --include-background --url=http://localhost:3000 --pdf=public/resume.pdf --url=http://localhost:3000 --pdf=public/MackenzieBrowneResume.pdf",
     "deploy": "firebase deploy",
-    "test": "react-scripts test",
+    "test": "concurrently \"yarn start\" \"cypress open\"",
     "eject": "react-scripts eject"
   },
   "dependencies": {
@@ -63,5 +63,10 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "devDependencies": {
+    "@cypress/snapshot": "^2.1.7",
+    "concurrently": "^5.2.0",
+    "cypress": "^4.5.0"
   }
 }
