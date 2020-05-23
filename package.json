@@ -19,7 +19,7 @@
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.1",
     "@types/react": "^16.9.23",
-    "@types/react-dom": "^16.9.5",
+    "@types/react-dom": "^16.9.8",
     "@types/styled-components": "^5.0.1",
     "bootstrap": "^4.4.1",
     "chrome-headless-render-pdf": "^1.8.4",
