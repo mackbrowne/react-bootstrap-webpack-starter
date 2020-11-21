@@ -18,12 +18,11 @@ export default function Resume() {
       <Row>
         <Col>
           <Summary>
-            Organized, lifelong learner motivated by difficult challenges.
-            Self-driven, and enjoys working independently and with teams. Uses a
-            curated collection of libraries and automation tools to make
-            development / testing / deployment more efficient. Approaches
-            problems holistically and pragmatically, solving real issues and not
-            just symptoms.
+            Organized, lifelong learner who likes difficult challenges.
+            Self-motivated, enjoys working independently and with teams. Uses a
+            curated collection of tools and automation to make development /
+            testing / deployment efficient. Approaches problems holistically and
+            pragmatically, solving real issues not just symptoms.
           </Summary>
         </Col>
       </Row>
@@ -32,13 +31,24 @@ export default function Resume() {
           <SubTitle>Experience</SubTitle>
           <ExperienceList>
             <Experience>
+              <Company name="Nationale Nederlanden" location="Amsterdam" />
+              <Position
+                title="Full Stack / Mobile Developer - Architecture and Innovation"
+                time="July 2020 - Present"
+                duties={[
+                  'Leadership in building a design system and shared component library in React Native',
+                  'Design and develop internal development tools and examples of testing for the company to re-use',
+                  'Perform technical and cultural interviews to grow our own and other teams across the company'
+                ]}
+              />
+            </Experience>
+            <Experience>
               <Company name="Elsevier" location="Amsterdam" />
               <Position
                 title="Senior Full Stack Developer - Scopus Core Team"
-                time="Feb 2020 - Present"
+                time="Feb 2020 - June 2020"
                 duties={[
                   "Perform technical interviews to grow the team.  Mentoring and 1 on 1's to improve team skills",
-                  'Involved in building a design system and shared component library to unify the user experience',
                   'Involvement in major web stack migration to micro services and micro front-end technologies'
                 ]}
               />
@@ -50,7 +60,7 @@ export default function Resume() {
                 time="Mar 2019 – Sep 2019"
                 duties={[
                   'Improve mobile user experience and design a standardized method for mobile-specific features',
-                  'Lead project to build internal tools from feedback to improve mobile QA testing speed',
+                  'Lead project to design and build internal tools from feedback to improve mobile QA testing speed',
                   'Design and build standardized techniques, automation pipelines for tests, builds and deployment',
                   'Facilitate cross-team collaboration to improve the mobile experience in all parts of the product'
                 ]}
@@ -59,7 +69,6 @@ export default function Resume() {
                 title="Senior Full Stack Developer - School Leader App"
                 time="Jun 2018 – Mar 2019"
                 duties={[
-                  'Create new features and improve the School Administrator user experience.',
                   'Develop several in-house tools to improve productivity including CI tools and Slack bots',
                   'Perform lunch time tech talks. Train and mentor developers in 1 on 1 meetings'
                 ]}
@@ -71,9 +80,8 @@ export default function Resume() {
                 title="Lead Frontend Developer"
                 time="Oct 2017 – Jun 2018"
                 duties={[
-                  'Support and maintain the existing Novus app.  Includes a user-facing website and a custom CMS',
-                  'Designed a maintainable, reproducible app template that can be used across the Ingle product line.  This dramatically reduced the amount of maintenance and bugs',
-                  'Create custom company-facing dashboard app with multiple sign-in routes, analytics and tools',
+                  'Support and maintain a commercial website, internal dashboard and CMS, authentication, analytics/testing.',
+                  'Designed a maintainable, reproducible white-labelled app template that can be used across the multiple product lines to dramatically reduced the amount of maintenance and bugs',
                   'Train interns and other employees with pair programming and code reviews'
                   // TODO: make this in projects
                   // 'Promote extra curricular coding activities like running a team "Advent Of Code" scoreboard'
@@ -89,11 +97,11 @@ export default function Resume() {
                 title="Full Stack, Mobile Developer and Architect"
                 time="August 2011 – June 2017"
                 duties={[
-                  'Full-time contracting. Initial requirements meetings through to final product',
+                  'Full-time contracting. Initial requirements meetings through to final product, including maintinence and upgrades',
                   'Built Mobile Apps, Websites and Hardware projects involving GPS, Bluetooth and VR',
-                  'Long term maintenance, upgrades or new features to existing products',
+                  // 'Long term maintenance, upgrades or new features to existing products',
                   'Perform interviews for hiring and develop strategies to grow teams over time',
-                  'Clients included IBM, NYPD, Syfy/Space Channel, NBC, Hatch, and many small startups, nonprofits and charities in the Toronto area'
+                  'Clients included IBM, NYPD, Syfy/Space Channel, NBC, Hatch, many small startups, nonprofits in Toronto'
                 ]}
               />
             </Experience>
@@ -109,9 +117,8 @@ export default function Resume() {
                 title="Bachelor Of Science with Honours"
                 time="2007 - 2012"
                 duties={[
-                  'Computer Science with minor in Mathematics',
-                  '16 Month Internship in Web Application Development at IBM',
-                  'Thesis involving concurrent, multi-core web crawling using Clojure'
+                  'Computer Science with minor in Mathematics. Thesis involving concurrent, multi-core web crawling',
+                  '16 Month Internship in Web Application Development at IBM'
                 ]}
               />
             </Experience>

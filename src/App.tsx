@@ -7,7 +7,7 @@ import { Title, TitleLabel } from './App.style';
 
 export default function App() {
   return (
-    <Container className="px-md-0 py-5">
+    <Container className="px-md-0 pt-5">
       <Row>
         <Col>
           <Row className="d-flex justify-content-between pr-5">
