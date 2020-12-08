@@ -24,7 +24,7 @@
     "bootstrap": "^4.4.1",
     "chrome-headless-render-pdf": "^1.8.4",
     "firebase": "^7.11.0",
-    "husky": "^4.2.3",
+    "husky": "^4.3.5",
     "lint-staged": "^10.0.8",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
