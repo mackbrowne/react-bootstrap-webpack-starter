@@ -7,6 +7,7 @@ import { Title, Summary } from '../App.style';
 import Miro from './Miro';
 import Squla from './Squla';
 import Github from './Github';
+import Expo from './Expo';
 
 export default function CoverLetter() {
   let { path } = useRouteMatch();
@@ -21,6 +22,7 @@ export default function CoverLetter() {
             <Route path={`${path}/miro`} component={Miro} />
             <Route path={`${path}/squla`} component={Squla} />
             <Route path={`${path}/github`} component={Github} />
+            <Route path={`${path}/expo`} component={Expo} />
             <Route
               path={path}
               component={() => (

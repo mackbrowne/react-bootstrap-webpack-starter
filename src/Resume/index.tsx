@@ -37,7 +37,7 @@ export default function Resume() {
                 time="July 2020 - Present"
                 duties={[
                   'Leadership in building a design system and shared component library in React Native',
-                  'Design and develop internal development tools and examples of testing for the company to re-use',
+                  'Design and Develop a re-usable, standardized CI/CD pipeline for testing and deployment',
                   'Perform technical and cultural interviews to grow our own and other teams across the company'
                 ]}
               />
@@ -48,8 +48,9 @@ export default function Resume() {
                 title="Senior Full Stack Developer - Scopus Core Team"
                 time="Feb 2020 - June 2020"
                 duties={[
-                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's to improve team skills",
-                  'Involvement in major web stack migration to micro services and micro front-end technologies'
+                  'Involvement in major web stack migration to micro services and micro front-end technologies',
+                  'Lead efforts to implement a shared design system for the brand',
+                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's to improve team skills"
                 ]}
               />
             </Experience>
