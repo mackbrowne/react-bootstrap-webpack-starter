@@ -4,12 +4,11 @@ import { Row, Col, Badge, ListGroup } from 'react-bootstrap';
 
 export const PillGroup = styled(ListGroup).attrs({
   horizontal: true,
-  className: 'd-flex flex-wrap pb-2 pb-md-1'
+  className: 'd-flex flex-wrap pb-2 pb-md-1',
 })``;
 
-export const Pill = styled(ListGroup.Item).attrs({
-  as: Badge,
-  variant: 'light'
+export const Pill = styled(Badge).attrs({
+  variant: 'light',
 })`
   margin: 1px;
   border: #6c757d 1px solid;
@@ -17,11 +16,11 @@ export const Pill = styled(ListGroup.Item).attrs({
 `;
 
 export const SubTitle = styled.h2.attrs({
-  className: 'mt-3'
+  className: 'mt-3',
 })``;
 
 export const Education = styled.h2.attrs({
-  className: 'mt-3'
+  className: 'mt-3',
 })``;
 
 export const Company = ({ name, location }) => (
@@ -77,7 +76,7 @@ export const SideList = ({ title, list }) => (
 
 export const ExperienceList = styled(ListGroup).attrs({ variant: 'flush' })``;
 export const Experience = styled(ListGroup.Item).attrs({
-  className: 'pl-0'
+  className: 'pl-0',
 })`
   &:first-child {
     padding-top: 0;

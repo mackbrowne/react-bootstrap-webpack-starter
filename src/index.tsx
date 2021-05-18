@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'typeface-roboto';
 import './index.scss';
@@ -19,7 +19,7 @@ const {
   REACT_APP_FIREBASE_STORAGE_BUCKET: storageBucket,
   REACT_APP_FIREBASE_MESSAGING_SENDER_ID: messagingSenderId,
   REACT_APP_FIREBASE_APP_ID: appId,
-  REACT_APP_FIREBASE_MEASUREMENT_ID: measurementId
+  REACT_APP_FIREBASE_MEASUREMENT_ID: measurementId,
 } = process.env;
 
 firebase.initializeApp({
@@ -30,7 +30,7 @@ firebase.initializeApp({
   storageBucket,
   messagingSenderId,
   appId,
-  measurementId
+  measurementId,
 });
 firebase.analytics();
 
