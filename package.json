@@ -9,7 +9,8 @@
     "deploy": "firebase deploy",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint": "eslint ."
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.12.0",
@@ -20,8 +21,14 @@
     "@types/react": "^17.0.5",
     "@types/react-dom": "^17.0.5",
     "@types/styled-components": "^5.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
     "bootstrap": "4.6.0",
     "chrome-headless-render-pdf": "^1.8.4",
+    "eslint": "^7.26.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
     "firebase": "^8.6.1",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
@@ -36,9 +43,6 @@
     "typeface-roboto": "^1.1.13",
     "typescript": "^4.2.4"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -52,12 +56,12 @@
     ]
   },
   "prettier": {
-    "tabWidth": 2,
-    "singleQuote": true
+    "singleQuote": true,
+    "tabWidth": 2
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
+    "src/**/*.{js,jsx,ts,tsx,json,css,md}": [
+      "eslint --fix"
     ]
   }
 }

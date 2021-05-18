@@ -1,42 +1,65 @@
-import React from 'react';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import CoverLetter from './CoverLetter';
-import Resume from './Resume';
-import { Container, Row, Col } from 'react-bootstrap';
-import { Title, TitleLabel } from './App.style';
+import { Button, Container, Row, Col, Form } from 'react-bootstrap';
+// import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+
+// import PageOne from './PageOne';
+
+import { Headline } from './App.style';
+
+const { Group, Label, Control, Text, Check } = Form;
 
 export default function App() {
   return (
     <Container className="px-md-0 pt-5">
       <Row>
-        <Col>
-          <Row className="d-flex justify-content-between pr-5">
-            <Col as={Title} md="auto">
-              Mackenzie Browne
-            </Col>
-            <Col as={TitleLabel} md="auto">
-              Full Stack and Mobile Developer
-            </Col>
-            <Col as={TitleLabel} md="auto">
-              Amsterdam
-            </Col>
-          </Row>
+        <Col className="text-center">
+          <h1>Help Us Welcome Boris.</h1>
+          <Headline>
+            Boris Volynov is the last surviving member of the first group
+            selected for human spaceflight.
+          </Headline>
+          <p>
+            We love space, and as we move towards a bold future with missions to
+            the Moon, Mars and beyond. It is important for us to remember where
+            we came from. And the people who helped us get there.
+          </p>
+          <p>Sadly, the first generation of explorers is passing away.</p>
+          INPUT GROUP CAPTCHA
+          <Form>
+            <Group controlId="formBasicInfo">
+              <Row>
+                <Col>
+                  <Form.Control placeholder="First name" />
+                </Col>
+                <Col>
+                  <Form.Control placeholder="Last name" />
+                </Col>
+              </Row>
+            </Group>
+            <Group controlId="formBasicEmail">
+              <Label>Email address</Label>
+              <Control type="email" placeholder="Enter email" />
+              <Text className="text-muted">
+                We&apos;ll never share your email with anyone else.
+              </Text>
+            </Group>
+            <Group controlId="formBasicPassword">
+              <Label>Password</Label>
+              <Control type="password" placeholder="Password" />
+            </Group>
+            <Group controlId="formBasicCheckbox">
+              <Check type="checkbox" label="Check me out" />
+            </Group>
+            <Button variant="dark" type="submit">
+              Submit
+            </Button>
+          </Form>
         </Col>
       </Row>
-      <Router>
+      {/* <Router>
         <Switch>
-          <Route path="/cv" component={CoverLetter} />
-          <Route
-            exact
-            path="/resume"
-            component={() => {
-              window.location.replace('/resume.pdf');
-              return null;
-            }}
-          />
-          <Route exact path="/" component={Resume} />
+          <Route exact path="/" component={PageOne} />
         </Switch>
-      </Router>
+      </Router> */}
     </Container>
   );
 }

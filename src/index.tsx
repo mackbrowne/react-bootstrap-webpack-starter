@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom';
 import firebase from 'firebase/app';
 import 'firebase/analytics';
@@ -10,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 // Start App
 ReactDOM.render(<App />, document.getElementById('root'));
 
-// Google Anlytics
+// Google Anlytic
 const {
   REACT_APP_FIREBASE_API_KEY: apiKey,
   REACT_APP_FIREBASE_AUTH_DOMAIN: authDomain,
