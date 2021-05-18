@@ -1,4 +1,6 @@
-# Mackenzie Browne's Resume
+# petition
+This is the petition to show interest in having an interview with Boris Volynov.
+
 
 [Live, Printable Version Found Here](https://mackenzie-browne-portfolio.web.app)
 
