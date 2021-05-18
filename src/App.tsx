@@ -4,6 +4,7 @@ import { Button, Container, Row, Col, Form } from 'react-bootstrap';
 // import PageOne from './PageOne';
 
 import { Headline } from './App.style';
+import { load } from 'recaptcha-v3';
 
 const { Group, Label, Control, Text, Check } = Form;
 
@@ -27,12 +28,7 @@ export default function App() {
           <Form>
             <Group controlId="formBasicInfo">
               <Row>
-                <Col>
-                  <Form.Control placeholder="First name" />
-                </Col>
-                <Col>
-                  <Form.Control placeholder="Last name" />
-                </Col>
+                  <Form.Control placeholder="Full Name" />
               </Row>
             </Group>
             <Group controlId="formBasicEmail">
@@ -41,10 +37,6 @@ export default function App() {
               <Text className="text-muted">
                 We&apos;ll never share your email with anyone else.
               </Text>
-            </Group>
-            <Group controlId="formBasicPassword">
-              <Label>Password</Label>
-              <Control type="password" placeholder="Password" />
             </Group>
             <Group controlId="formBasicCheckbox">
               <Check type="checkbox" label="Check me out" />
