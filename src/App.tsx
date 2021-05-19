@@ -2,9 +2,9 @@ import { Button, Container, Row, Col, Form } from 'react-bootstrap';
 // import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 // import PageOne from './PageOne';
-// import { useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Headline } from './App.style';
-// import ReCAPTCHA from 'react-google-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import firebase from 'firebase/app';
 
@@ -18,26 +18,30 @@ type formValues = {
 };
 
 export default function App() {
-  // const reCapRef = useRef<ReCAPTCHA>();
+  const reCapRef = useRef<ReCAPTCHA>();
   const { register, handleSubmit } = useForm<formValues>();
 
   console.log('process.env:', process.env); // CAPTCHA_KEY is undefined
 
   const signUp = handleSubmit(async ({ fullName, email, optIn }) => {
     try {
-      // const token = await reCapRef.current.executeAsync();
-      // console.log('token:', token);
-
+      const token = await reCapRef.current.executeAsync();
+      console.log('token:', token);
       const peopleCollection = firebase.firestore().collection('people');
+      if(token){
+        await peopleCollection.add({
+          fullName,
+          email,
+          optIn,
+          timestamp: new Date(),
+          token,
+        });
 
-      await peopleCollection.add({
-        fullName,
-        email,
-        optIn,
-        timestamp: new Date(),
-      });
-
-      alert('Thank You!');
+        alert('Thank You!');
+      } else {
+        
+      }
+      
     } catch ({ message }) {
       console.error(message);
     }
@@ -45,11 +49,11 @@ export default function App() {
 
   return (
     <Container className="px-md-0 pt-5">
-      {/* <ReCAPTCHA
-        sitekey={process.env.REACT_APP_CAPTCHA_KEY}
+      <ReCAPTCHA
+        sitekey={`6Ld9RdwaAAAAAHRr8cR58TN8KIiJoUJkZAJjDg_M`}
         size="invisible"
         ref={reCapRef}
-      /> */}
+      />
       <Row>
         <Col className="text-center">
           <h1>Help Us Welcome Boris.</h1>
