@@ -9,12 +9,18 @@ import { useForm } from "react-hook-form";
 
 const { Group, Label, Control, Text, Check } = Form;
 
+type formValues = {
+  fullName: string,
+  email: string
+}
+
 export default function App() {
   const reCapRef = useRef<ReCAPTCHA>();
-  const handleSubmit = (async (data) => {
-      const token = await reCapRef.current.executeAsync();
-      console.log('token:', token)
-  })
+  const { register, handleSubmit } = useForm<formValues>();
+  // const handleSubmit = (async (data) => {
+  //     const token = await reCapRef.current.executeAsync();
+  //     console.log('token:', token)
+  // })
   console.log('process.env:', process.env) // CAPTCHA_KEY is undefined
   return (
     <Container className="px-md-0 pt-5">
@@ -37,15 +43,25 @@ export default function App() {
           </p>
           <p>Sadly, the first generation of explorers is passing away.</p>
           INPUT GROUP CAPTCHA
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit(async (data) => {
+              const token = await reCapRef.current.executeAsync();
+              console.log('token:', token)
+          })}>
             <Group controlId="formBasicInfo">
               <Row>
-                  <Form.Control placeholder="Full Name" />
+                  <Form.Control 
+                    placeholder="Full Name" 
+                    {...register("fullName", { required: true })}
+                  />
               </Row>
             </Group>
             <Group controlId="formBasicEmail">
               <Label>Email address</Label>
-              <Control type="email" placeholder="Enter email" />
+              <Control 
+                type="email" 
+                placeholder="Enter email" 
+                {...register("email")}
+              />
               <Text className="text-muted">
                 We&apos;ll never share your email with anyone else.
               </Text>
