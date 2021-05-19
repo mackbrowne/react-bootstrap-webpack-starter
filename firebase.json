@@ -2,7 +2,15 @@
   "hosting": {
     "public": "build",
     "headers": [
-      { "source":"/service-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}] }
+      {
+        "source": "/service-worker.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache"
+          }
+        ]
+      }
     ],
     "ignore": [
       "firebase.json",
@@ -15,5 +23,9 @@
         "destination": "/index.html"
       }
     ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   }
 }
