@@ -2,15 +2,27 @@ import { Button, Container, Row, Col, Form } from 'react-bootstrap';
 // import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 // import PageOne from './PageOne';
-
+import { useState, useRef } from 'react';
 import { Headline } from './App.style';
-import { load } from 'recaptcha-v3';
+import ReCAPTCHA from "react-google-recaptcha";
+import { useForm } from "react-hook-form";
 
 const { Group, Label, Control, Text, Check } = Form;
 
 export default function App() {
+  const reCapRef = useRef<ReCAPTCHA>();
+  const handleSubmit = (async (data) => {
+      const token = await reCapRef.current.executeAsync();
+      console.log('token:', token)
+  })
+  console.log('process.env:', process.env) // CAPTCHA_KEY is undefined
   return (
     <Container className="px-md-0 pt-5">
+      <ReCAPTCHA 
+        sitekey={process.env.REACT_APP_CAPTCHA_KEY} 
+        size="invisible" 
+        ref={reCapRef}
+      />
       <Row>
         <Col className="text-center">
           <h1>Help Us Welcome Boris.</h1>
@@ -25,7 +37,7 @@ export default function App() {
           </p>
           <p>Sadly, the first generation of explorers is passing away.</p>
           INPUT GROUP CAPTCHA
-          <Form>
+          <Form onSubmit={handleSubmit}>
             <Group controlId="formBasicInfo">
               <Row>
                   <Form.Control placeholder="Full Name" />
