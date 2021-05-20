@@ -27,6 +27,8 @@ export default function App() {
     try {
       const token = await reCapRef.current.executeAsync();
       console.log('token:', token);
+      reCapRef.current.reset();
+
       const peopleCollection = firebase.firestore().collection('people');
       if(token){
         await peopleCollection.add({
@@ -39,7 +41,7 @@ export default function App() {
 
         alert('Thank You!');
       } else {
-        
+        alert('Try Again! You seem like a robot.. prove that you are human, by acting like one')
       }
       
     } catch ({ message }) {

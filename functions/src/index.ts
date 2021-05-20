@@ -1,35 +1,42 @@
-import * as functions from "firebase-functions";
-require('dotenv').config()
+import * as functions from 'firebase-functions';
+import * as dotenv from 'dotenv';
+import * as admin from 'firebase-admin';
+import axios from 'axios';
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+admin.initializeApp(functions.config().firebase);
+dotenv.config();
+
+const firestore = admin.firestore();
 
 exports.createUser = functions.firestore
-    .document('people/{personID}')
-    .onCreate((snap, context) => {
-      // Get an object representing the document
-      // e.g. {'name': 'Marie', 'age': 66}
-      async function validateHuman(token: string): Promise<boolean> {
-        const secret = process.env.CAPTCHA_SECRET_KEY
-        const response = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret${secret}&response${token}`,
-        {
-            method: 'POST'
-        })
-        const data = await response.json()
-        console.log('data:', data)
+  .document('people/{personID}')
+  .onCreate(async (snap, context) => {
+    const newValue = snap.data();
+    const isHuman = await validateHuman(newValue.token);
+    console.log('isHuman:', isHuman);
+    if (!isHuman) {
+      firestore.collection('people').doc(context.params.personID).delete();
+    }
+  });
 
-
-        return false;
+async function validateHuman(response: string): Promise<boolean> {
+  const secret = process.env.CAPTCHA_SECRET_KEY;
+  try {
+    const {
+      data,
+    } = await axios.post(
+      `https://www.google.com/recaptcha/api/siteverify`,
+      {
+        secret,
+        response,
       }
-      const newValue = snap.data();
+    );
+    console.log('Site Verify Response Received')
+    console.log('data: ',  data)
 
-      // access a particular field as you would any JS property
-      const name = newValue.name;
-
-      // perform desired operations ...
-    });
+    return data.success;
+  } catch ({ message }) {
+    console.log(message);
+    return false;
+  }
+}
