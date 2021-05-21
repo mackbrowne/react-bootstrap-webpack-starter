@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom';
 import firebase from 'firebase/app';
 import 'firebase/analytics';
+import "firebase/firestore"
 import 'typeface-roboto';
 import './index.scss';
 import App from './App';
@@ -32,6 +33,7 @@ firebase.initializeApp({
   measurementId,
 });
 firebase.analytics();
+firebase.firestore();
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

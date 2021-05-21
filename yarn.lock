@@ -9889,7 +9889,7 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -10084,6 +10084,14 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
+react-async-script@^1.1.1:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-async-script/-/react-async-script-1.2.0.tgz#ab9412a26f0b83f5e2e00de1d2befc9400834b21"
+  integrity sha512-bCpkbm9JiAuMGhkqoAiC0lLkb40DJ0HOEJIku+9JDjxX3Rcs+ztEOG13wbrOskt3n2DTrjshhaQ/iay+SnGg5Q==
+  dependencies:
+    hoist-non-react-statics "^3.3.0"
+    prop-types "^15.5.0"
+
 react-bootstrap@^1.6.0:
   version "1.6.0"
   resolved "https://registry.npmjs.org/react-bootstrap/-/react-bootstrap-1.6.0.tgz"
@@ -10151,6 +10159,19 @@ react-error-overlay@^6.0.9:
   version "6.0.9"
   resolved "https://registry.npmjs.org/react-error-overlay/-/react-error-overlay-6.0.9.tgz"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
+
+react-google-recaptcha@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-google-recaptcha/-/react-google-recaptcha-2.1.0.tgz#9f6f4954ce49c1dedabc2c532347321d892d0a16"
+  integrity sha512-K9jr7e0CWFigi8KxC3WPvNqZZ47df2RrMAta6KmRoE4RUi7Ys6NmNjytpXpg4HI/svmQJLKR+PncEPaNJ98DqQ==
+  dependencies:
+    prop-types "^15.5.0"
+    react-async-script "^1.1.1"
+
+react-hook-form@^7.6.2:
+  version "7.6.2"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.6.2.tgz#1996c61617f521d1294e0c7cfa7c7062ba546fce"
+  integrity sha512-cEmRwl33UvOvY3kVzkDOGAmNpOT1O03LtE8O79WArA3trBxLKLwOqF7zkGuj3oEe6YuzuyoM45WWjBwKCKKUHA==
 
 react-is@^16.3.2, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
@@ -10389,11 +10410,6 @@ readdirp@~3.5.0:
   integrity sha512-cMhu7c/8rdhkHXWsY+osBhfSy0JikwpHK/5+imo+LpeasTF8ouErHrlYkwT0++njiyuDvc7OFY5T3ukvZ8qmFQ==
   dependencies:
     picomatch "^2.2.1"
-
-recaptcha-v3@^1.9.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/recaptcha-v3/-/recaptcha-v3-1.9.1.tgz#a90af4d7901cd51bef9c4cae593d700a68a9b21b"
-  integrity sha512-5WEZAjG29FhUEnWrl9WzSGm52XKVDF6NBRv1WWOOzX2H3Xx2zU/XtvZdmpDu8lQYpfacCcDPTpGca5B5BEDWTA==
 
 recursive-readdir@2.2.2:
   version "2.2.2"
