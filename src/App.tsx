@@ -8,7 +8,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import firebase from 'firebase/app';
 
-const { Group, Control, Text, Check } = Form;
+const { Group, Control, Text } = Form;
 
 const { REACT_APP_CAPTCHA_KEY: captchaKey } = process.env;
 
@@ -23,7 +23,7 @@ export default function App() {
   const reCapRef = useRef<ReCAPTCHA>();
   const { register, handleSubmit } = useForm<formValues>();
 
-  const signUp = handleSubmit(async ({ fullName, email, optIn }) => {
+  const signUp = handleSubmit(async ({ fullName, email }) => {
     try {
       const token = await reCapRef.current.executeAsync();
       console.log('token:', token);
@@ -34,8 +34,7 @@ export default function App() {
         await peopleCollection.add({
           fullName,
           email,
-          optIn,
-          timestamp: new Date(),
+          timeStamp: new Date(),
           token,
         });
 
@@ -46,6 +45,7 @@ export default function App() {
         );
       }
     } catch ({ message }) {
+      alert('Something Failed, Please Try Again!');
       console.error(message);
     }
   });

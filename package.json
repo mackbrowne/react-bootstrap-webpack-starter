@@ -9,6 +9,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepare": "husky install",
+    "postinstall": "npm i --prefix functions",
     "lint": "eslint ."
   },
   "dependencies": {
