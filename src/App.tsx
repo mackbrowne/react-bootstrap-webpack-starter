@@ -2,13 +2,13 @@ import { Button, Container, Row, Col, Form } from 'react-bootstrap';
 // import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 // import PageOne from './PageOne';
-import { useRef } from 'react';
-import { Headline } from './App.style';
+import React, { useRef } from 'react';
+import { Headline, Message, Title } from './App.style';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import firebase from 'firebase/app';
 
-const { Group, Label, Control, Text, Check } = Form;
+const { Group, Control, Text, Check } = Form;
 
 const { REACT_APP_CAPTCHA_KEY: captchaKey } = process.env;
 
@@ -51,53 +51,60 @@ export default function App() {
   });
 
   return (
-    <Container className="px-md-0 pt-5">
+    <Container fluid="sm" className="align-middle">
       <ReCAPTCHA sitekey={captchaKey} size="invisible" ref={reCapRef} />
-      <Row>
+      <Row className=" vh-100 d-flex py-5 align-items-center justify-content-md-center overflow-auto">
         <Col className="text-center">
-          <h1>Help Us Welcome Boris.</h1>
-          <Headline>
-            Boris Volynov is the last surviving member of the first group
-            selected for human spaceflight.
-          </Headline>
-          <p>
-            We love space, and as we move towards a bold future with missions to
-            the Moon, Mars and beyond. It is important for us to remember where
-            we came from. And the people who helped us get there.
-          </p>
-          <p>Sadly, the first generation of explorers is passing away.</p>
-          INPUT GROUP CAPTCHA
-          <Form onSubmit={signUp}>
-            <Group controlId="formBasicInfo">
-              <Row>
+          <Title>Hi, let’s welcome Boris!</Title>
+          <Message>
+            <Headline>
+              Boris Volynov is the last living member of humanity’s first group
+              of space travelers.
+            </Headline>
+            <Headline>
+              As we step out of our cosmic cradle, it is important to remember
+              the pioneers who took the first steps. And their sacrifices along
+              the way.
+            </Headline>
+            <Headline>
+              Boris is one of these pioneers. And he has one heck of a story.
+            </Headline>
+            <Headline>
+              We would like to interview him for posterity. To preserve and
+              honor his legacy.
+            </Headline>
+
+            <Form onSubmit={signUp} className="mt-4">
+              <Group controlId="formBasicInfo">
                 <Form.Control
+                  size="lg"
                   placeholder="Full Name"
                   {...register('fullName', { required: true })}
                 />
-              </Row>
-            </Group>
-            <Group controlId="formBasicEmail">
-              <Label>Email address</Label>
-              <Control
-                type="email"
-                placeholder="Enter email"
-                {...register('email')}
-              />
-              <Text className="text-muted">
-                We&apos;ll never share your email with anyone else.
-              </Text>
-            </Group>
-            <Group controlId="formBasicCheckbox">
-              <Check
-                type="checkbox"
-                label="Check me out"
-                {...register('optIn')}
-              />
-            </Group>
-            <Button variant="dark" type="submit">
-              Submit
-            </Button>
-          </Form>
+              </Group>
+              <Group controlId="formBasicEmail">
+                <Control
+                  size="lg"
+                  type="email"
+                  placeholder="Enter email"
+                  {...register('email')}
+                />
+                <Text className="text-muted">
+                  We&apos;ll never share your email with anyone else.
+                </Text>
+              </Group>
+              {/* <Group controlId="formBasicCheckbox">
+                <Check
+                  type="checkbox"
+                  label="Check me out"
+                  {...register('optIn')}
+                />
+              </Group> */}
+              <Button size="lg" variant="dark" type="submit" className="mt-4" block>
+                Submit
+              </Button>
+            </Form>
+          </Message>
         </Col>
       </Row>
       {/* <Router>

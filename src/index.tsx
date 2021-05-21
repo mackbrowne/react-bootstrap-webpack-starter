@@ -3,6 +3,8 @@ import firebase from 'firebase/app';
 import 'firebase/analytics';
 import "firebase/firestore"
 import 'typeface-roboto';
+import "@fontsource/work-sans";
+import "@fontsource/playfair-display";
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
