@@ -2,13 +2,15 @@ import { Button, Container, Row, Col, Form } from 'react-bootstrap';
 // import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 // import PageOne from './PageOne';
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { Headline } from './App.style';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm } from 'react-hook-form';
 import firebase from 'firebase/app';
 
 const { Group, Label, Control, Text, Check } = Form;
+
+const { REACT_APP_CAPTCHA_KEY: captchaKey } = process.env;
 
 type formValues = {
   fullName: string;
@@ -21,8 +23,6 @@ export default function App() {
   const reCapRef = useRef<ReCAPTCHA>();
   const { register, handleSubmit } = useForm<formValues>();
 
-  console.log('process.env:', process.env); // CAPTCHA_KEY is undefined
-
   const signUp = handleSubmit(async ({ fullName, email, optIn }) => {
     try {
       const token = await reCapRef.current.executeAsync();
@@ -30,7 +30,7 @@ export default function App() {
       reCapRef.current.reset();
 
       const peopleCollection = firebase.firestore().collection('people');
-      if(token){
+      if (token) {
         await peopleCollection.add({
           fullName,
           email,
@@ -41,9 +41,10 @@ export default function App() {
 
         alert('Thank You!');
       } else {
-        alert('Try Again! You seem like a robot.. prove that you are human, by acting like one')
+        alert(
+          'Try Again! You seem like a robot.. prove that you are human, by acting like one'
+        );
       }
-      
     } catch ({ message }) {
       console.error(message);
     }
@@ -51,11 +52,7 @@ export default function App() {
 
   return (
     <Container className="px-md-0 pt-5">
-      <ReCAPTCHA
-        sitekey={`6Ld9RdwaAAAAAHRr8cR58TN8KIiJoUJkZAJjDg_M`}
-        size="invisible"
-        ref={reCapRef}
-      />
+      <ReCAPTCHA sitekey={captchaKey} size="invisible" ref={reCapRef} />
       <Row>
         <Col className="text-center">
           <h1>Help Us Welcome Boris.</h1>
@@ -70,9 +67,7 @@ export default function App() {
           </p>
           <p>Sadly, the first generation of explorers is passing away.</p>
           INPUT GROUP CAPTCHA
-          <Form
-            onSubmit={signUp}
-          >
+          <Form onSubmit={signUp}>
             <Group controlId="formBasicInfo">
               <Row>
                 <Form.Control

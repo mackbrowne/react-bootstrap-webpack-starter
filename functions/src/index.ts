@@ -20,19 +20,12 @@ exports.createUser = functions.firestore
   });
 
 async function validateHuman(response: string): Promise<boolean> {
-  const secret = process.env.CAPTCHA_SECRET_KEY;
   try {
-    const {
-      data,
-    } = await axios.post(
-      `https://www.google.com/recaptcha/api/siteverify`,
-      {
-        secret,
-        response,
-      }
+    const { secret } = functions.config().captcha;
+    const { data } = await axios.post(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${response}`
     );
-    console.log('Site Verify Response Received')
-    console.log('data: ',  data)
+    console.log('recaptcha response: ', data);
 
     return data.success;
   } catch ({ message }) {
