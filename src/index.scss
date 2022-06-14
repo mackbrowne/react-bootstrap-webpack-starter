@@ -1,5 +1,10 @@
 // Override default variables before the import
 // $body-bg: #eaf4ec;
+
+@import-normalize; /* bring in normalize.css styles */
+
+@import-typeface-roboto;
+
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
 

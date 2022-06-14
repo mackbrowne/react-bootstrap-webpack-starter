@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import firebase from 'firebase/app';
 import 'firebase/analytics';
-import 'typeface-roboto';
 import './index.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';

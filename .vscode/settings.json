@@ -1,12 +1,13 @@
 {
-    "cSpell.words": [
-        "Elsevier",
-        "Kanban",
-        "NYPD",
-        "Novus",
-        "Scopus",
-        "Syfy",
-        "mackbrowne",
-        "squla"
-    ]
+  "cSpell.words": [
+    "Elsevier",
+    "Kanban",
+    "NYPD",
+    "Novus",
+    "Scopus",
+    "Syfy",
+    "mackbrowne",
+    "squla"
+  ],
+  "scss.lint.unknownAtRules": "ignore"
 }
