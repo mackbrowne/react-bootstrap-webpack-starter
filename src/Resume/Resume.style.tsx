@@ -8,7 +8,8 @@ export const PillGroup = styled(ListGroup).attrs({
 })``;
 
 export const Pill = styled(Badge).attrs({
-  variant: 'light',
+  bg: 'light',
+  text: 'dark',
 })`
   margin: 1px;
   border: #6c757d 1px solid;
