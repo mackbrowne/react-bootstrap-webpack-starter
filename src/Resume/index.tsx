@@ -9,7 +9,7 @@ import {
   Company,
   SideList,
   Pills,
-  Position
+  Position,
 } from './Resume.style';
 
 export default function Resume() {
@@ -31,14 +31,27 @@ export default function Resume() {
           <SubTitle>Experience</SubTitle>
           <ExperienceList>
             <Experience>
+              <Company name="Workiva" location="Amsterdam" />
+              <Position
+                title="Senior Full Stack Engineer - Global Solutions"
+                time="October 2021 - June 2022"
+                duties={[
+                  'Work closely with Customers to discover new solutions and features that can benefit all',
+                  'Design, develop, test and deliver those solutions in a span of weeks',
+                  'Screen resumes and interview new employees to further grow the Europe engineering team',
+                  'Gather feedback from customers o further improve globalization',
+                ]}
+              />
+            </Experience>
+            <Experience>
               <Company name="Nationale Nederlanden" location="Amsterdam" />
               <Position
-                title="Full Stack / Mobile Developer - Architecture and Innovation"
-                time="July 2020 - Present"
+                title="Lead Mobile Developer - Architecture and Innovation"
+                time="July 2020 - September 2021"
                 duties={[
                   'Leadership in building a design system and shared component library in React Native',
                   'Design and Develop a re-usable, standardized CI/CD pipeline for testing and deployment',
-                  'Perform technical and cultural interviews to grow our own and other teams across the company'
+                  'Perform technical and cultural interviews to grow our own and other teams across the company',
                 ]}
               />
             </Experience>
@@ -50,7 +63,7 @@ export default function Resume() {
                 duties={[
                   'Involvement in major web stack migration to micro services and micro front-end technologies',
                   'Lead efforts to implement a shared design system for the brand',
-                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's to improve team skills"
+                  "Perform technical interviews to grow the team.  Mentoring and 1 on 1's to improve team skills",
                 ]}
               />
             </Experience>
@@ -63,7 +76,7 @@ export default function Resume() {
                   'Improve mobile user experience and design a standardized method for mobile-specific features',
                   'Lead project to design and build internal tools from feedback to improve mobile QA testing speed',
                   'Design and build standardized techniques, automation pipelines for tests, builds and deployment',
-                  'Facilitate cross-team collaboration to improve the mobile experience in all parts of the product'
+                  'Facilitate cross-team collaboration to improve the mobile experience in all parts of the product',
                 ]}
               />
               <Position
@@ -71,7 +84,7 @@ export default function Resume() {
                 time="Jun 2018 – Mar 2019"
                 duties={[
                   'Develop several in-house tools to improve productivity including CI tools and Slack bots',
-                  'Perform lunch time tech talks. Train and mentor developers in 1 on 1 meetings'
+                  'Perform lunch time tech talks. Train and mentor developers in 1 on 1 meetings',
                 ]}
               />
             </Experience>
@@ -83,7 +96,7 @@ export default function Resume() {
                 duties={[
                   'Support and maintain a commercial website, internal dashboard and CMS, authentication, analytics/testing.',
                   'Designed a maintainable, reproducible white-labelled app template that can be used across the multiple product lines to dramatically reduced the amount of maintenance and bugs',
-                  'Train interns and other employees with pair programming and code reviews'
+                  'Train interns and other employees with pair programming and code reviews',
                   // TODO: make this in projects
                   // 'Promote extra curricular coding activities like running a team "Advent Of Code" scoreboard'
                 ]}
@@ -102,7 +115,7 @@ export default function Resume() {
                   'Built Mobile Apps, Websites and Hardware projects involving GPS, Bluetooth and VR',
                   // 'Long term maintenance, upgrades or new features to existing products',
                   'Perform interviews for hiring and develop strategies to grow teams over time',
-                  'Clients included IBM, NYPD, Syfy/Space Channel, NBC, Hatch, many small startups, nonprofits in Toronto'
+                  'Clients included IBM, NYPD, Syfy/Space Channel, NBC, Hatch, many small startups, nonprofits in Toronto',
                 ]}
               />
             </Experience>
@@ -119,7 +132,7 @@ export default function Resume() {
                 time="2007 - 2012"
                 duties={[
                   'Computer Science with minor in Mathematics. Thesis involving concurrent, multi-core web crawling',
-                  '16 Month Internship in Web Application Development at IBM'
+                  '16 Month Internship in Web Application Development at IBM',
                 ]}
               />
             </Experience>
@@ -163,7 +176,7 @@ export default function Resume() {
               'Customer Facing Pages',
               'Responsive Design',
               'Agile, Kanban and Scrum',
-              'Git Flow and Monorepos'
+              'Git Flow and Monorepos',
             ]}
           />
           <Pills
@@ -183,7 +196,7 @@ export default function Resume() {
               'Expo',
               'Cordova',
               'MeteorJS',
-              'Angular'
+              'Angular',
             ]}
           />
           <Pills
@@ -198,7 +211,7 @@ export default function Resume() {
               'Stripe',
               'Maps',
               'OAuth',
-              'Unity'
+              'Unity',
             ]}
           />
           <Pills
@@ -210,7 +223,7 @@ export default function Resume() {
               'Vim',
               'Prettier',
               'Lighthouse',
-              'Axe'
+              'Axe',
             ]}
           />
           <Pills
@@ -225,7 +238,7 @@ export default function Resume() {
               'GraphQL',
               'SQL',
               'Clojure',
-              'C++'
+              'C++',
             ]}
           />
         </Col>
