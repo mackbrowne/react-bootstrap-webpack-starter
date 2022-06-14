@@ -39,7 +39,7 @@ export default function Resume() {
                   'Work closely with Customers to discover new solutions and features that can benefit all',
                   'Design, develop, test and deliver those solutions in a span of weeks',
                   'Screen resumes and interview new employees to further grow the Europe engineering team',
-                  'Gather feedback from customers o further improve globalization',
+                  'Gather feedback from customers to further improve globalization',
                 ]}
               />
             </Experience>

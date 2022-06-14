@@ -8,6 +8,10 @@
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap';
 
+// When switching from bootstrap 4->5 printing css was no longer included
+// This will re add the css required for printing resume to pdf
+@import '~bootstrap-print-css/css/bootstrap-print';
+
 body {
   margin: 0;
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
