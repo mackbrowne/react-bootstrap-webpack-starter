@@ -50,7 +50,7 @@ export default function Resume() {
                 time="July 2020 - September 2021"
                 duties={[
                   'Leadership in building a design system and shared component library in React Native',
-                  'Design and Develop a re-usable, standardized CI/CD pipeline for testing and deployment',
+                  'Design and Develop a re-usable, standardised CI/CD pipeline for testing and deployment',
                   'Perform technical and cultural interviews to grow our own and other teams across the company',
                 ]}
               />
@@ -73,9 +73,9 @@ export default function Resume() {
                 title="Lead Mobile Application Developer - Game"
                 time="Mar 2019 – Sep 2019"
                 duties={[
-                  'Improve mobile user experience and design a standardized method for mobile-specific features',
+                  'Improve mobile user experience and design a standardised method for mobile-specific features',
                   'Lead project to design and build internal tools from feedback to improve mobile QA testing speed',
-                  'Design and build standardized techniques, automation pipelines for tests, builds and deployment',
+                  'Design and build standardised techniques, automation pipelines for tests, builds and deployment',
                   'Facilitate cross-team collaboration to improve the mobile experience in all parts of the product',
                 ]}
               />
