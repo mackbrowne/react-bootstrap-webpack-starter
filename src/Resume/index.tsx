@@ -33,12 +33,12 @@ export default function Resume() {
             <Experience>
               <Company name="Shopify" location="Amsterdam" />
               <Position
-                title="Senior Engineer - Retail Expansion"
+                title="Senior Engineer - Retail"
                 time="June 2022 - Present"
                 duties={[
+                  'Develop new features and improve the Shopify POS system',
                   'Expand the Shopify POS system to more regions and tax jurisdictions',
-                  'Build solutions to improve Shopify retail experience all over the world',
-                  'Mobile application development with React Native',
+                  'Mobile application development with React Native and Kotlin Multiplatform',
                   'Web Development With ReactJS',
                   'Backend Development with Ruby on Rails',
                 ]}
