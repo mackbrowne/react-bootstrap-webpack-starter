@@ -42,3 +42,11 @@ h5 {
 li {
   font-weight: 300;
 }
+
+@media print {
+  // Force Bootstrap's md grid to apply regardless of print viewport width
+  .col-md-3 {
+    flex: 0 0 auto !important;
+    width: 25% !important;
+  }
+}

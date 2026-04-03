@@ -15,7 +15,7 @@ export default function App() {
               Mackenzie Browne
             </Col>
             <Col as={TitleLabel} md="auto">
-              Full Stack and Mobile Developer
+              Full Stack / Mobile Engineering Leader
             </Col>
             <Col as={TitleLabel} md="auto">
               Amsterdam
