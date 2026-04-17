@@ -27,7 +27,7 @@ export default function CoverLetter() {
               path={path}
               component={() => (
                 <Container className="px-md-0 py-5">
-                  <Row className="d-flex justify-content-between pr-5">
+                  <Row className="d-flex justify-content-between pe-5">
                     <Col as={Title} md="auto">
                       COMPANY NOT FOUND
                     </Col>

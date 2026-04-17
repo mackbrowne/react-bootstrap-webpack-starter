@@ -45,7 +45,7 @@ export const Position = ({ title, time, duties }) => (
         {time}
       </Col>
     </Row>
-    <ul className="pl-3 my-0">
+    <ul className="ps-3 my-0">
       {duties.map((duty, index) => (
         <li key={`${title}-${index}`}>{duty}</li>
       ))}
@@ -77,7 +77,7 @@ export const SideList = ({ title, list }) => (
 
 export const ExperienceList = styled(ListGroup).attrs({ variant: 'flush' })``;
 export const Experience = styled(ListGroup.Item).attrs({
-  className: 'pl-0',
+  className: 'ps-0',
 })`
   &:first-child {
     padding-top: 0;

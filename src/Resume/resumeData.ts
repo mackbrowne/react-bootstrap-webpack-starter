@@ -13,7 +13,7 @@ export const experience = [
     positions: [
       {
         title: 'Senior Engineer - Retail',
-        time: 'Jun 2022 – Feb 2026',
+        time: 'Jun 2022 – Mar 2026',
         duties: [
           'Fixed a critical KMM/JS type coercion bug in the receipt printer in the first week — then continued contributing to the broader KMM/React Native architecture, debugging state sync issues across the Kotlin business logic and JS UI layers.',
           'Rewrote the POS numeric keypad to use integer currency units, eliminating an entire class of currency symbol and backspace bugs and simplifying future maintenance.',
@@ -102,27 +102,12 @@ export const experience = [
     ],
   },
   {
-    company: 'Novus Health',
-    location: 'Toronto',
-    positions: [
-      {
-        title: 'Lead Frontend Developer',
-        time: 'Oct 2017 – Jun 2018',
-        duties: [
-          'Designed a standardised, reproducible white-label app template used across multiple product lines, dramatically reducing bugs and long-term maintenance overhead.',
-          'Supported and maintained the Novus platform including a user-facing website, CMS, authentication, and analytics.',
-          'Mentored interns and junior developers through pair programming and code review.',
-        ],
-      },
-    ],
-  },
-  {
     company: 'Self Incorporated Consultant',
     location: 'Canada & USA (On-Site and Remote)',
     positions: [
       {
         title: 'Full Stack, Mobile Developer & Architect',
-        time: 'August 2011 – June 2017',
+        time: 'August 2011 – June 2018',
         duties: [
           'Built a full passenger/driver ride-sharing mobile app with real-time geolocation for Transit Labs / RideCo.',
           'Developed an award-winning CMS for the Wynonna Earp TV series — geo-locked and time-locked to release content by region and episode air time, built in MeteorJS with advanced mobile-compatible parallax effects.',
@@ -152,10 +137,10 @@ export const education = [
   },
 ];
 
-export const contact = ['info@mackbrowne.com', 'linkedin.com/in/mackbrowne'];
+export const contact = ['info@mackbrowne.com'];
 
 export const portfolio = [
-  'syrup.life',
+  'linkedin.com/in/mackbrowne',
   'github.com/mackbrowne',
   'mackbrowne.com',
 ];

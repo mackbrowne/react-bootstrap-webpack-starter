@@ -10,7 +10,7 @@ export default function App() {
     <Container className="px-md-0 pt-5">
       <Row>
         <Col>
-          <Row className="d-flex justify-content-between pr-5">
+          <Row className="d-flex justify-content-between pe-5">
             <Col as={Title} md="auto">
               Mackenzie Browne
             </Col>
