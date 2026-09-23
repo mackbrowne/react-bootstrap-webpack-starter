@@ -1,16 +1,17 @@
 export const summary = `Staff-level engineer with 13+ years building production mobile and web systems across
-startups, scale-ups, and large enterprises. Specializes in React Native architecture,
-consumer-facing mobile apps, and the full journey from zero to shipped — including
-the CI/CD infrastructure, performance work, and developer tooling that makes teams
-fast and reliable. Currently leading mobile at Hunkemöller, building agent-verifiable
-mobile delivery; previously at Shopify on the POS platform across mobile, web, and
-DevOps. Based in Amsterdam, open to senior IC, staff, and engineering leadership
-roles.`;
+startups, scale-ups, and large enterprises. Increasingly focused on AI-native engineering
+workflows: designing the feedback loops, tooling, and guardrails that let AI coding agents
+build, verify, and test changes on real devices. Specializes in React Native architecture,
+consumer-facing mobile apps, and the full journey from zero to shipped — including the
+CI/CD infrastructure, testing, and developer tooling that make teams fast and reliable.
+Currently leading mobile at Hunkemöller; previously at Shopify on the POS platform across
+mobile, web, and DevOps. Based in Amsterdam, open to senior IC, staff, and engineering
+leadership roles.`;
 
 export const experience = [
   {
     company: 'Hunkemöller',
-    location: 'Netherlands (Hybrid)',
+    location: 'Hilversum',
     positions: [
       {
         title: 'Mobile Lead (Contract) - Hunkemöller App',
@@ -173,7 +174,7 @@ export const skills = [
   'Unit, E2E & Screenshot Testing',
   'Feature Flags & Remote Config',
   'Agile, Kanban and Scrum',
-  'AI-Assisted Development',
+  'AI Agent Workflows & Tooling',
 ];
 
 export const frameworks = [
