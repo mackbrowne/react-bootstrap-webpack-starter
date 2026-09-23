@@ -2,18 +2,36 @@ export const summary = `Staff-level engineer with 13+ years building production 
 startups, scale-ups, and large enterprises. Specializes in React Native architecture,
 consumer-facing mobile apps, and the full journey from zero to shipped — including
 the CI/CD infrastructure, performance work, and developer tooling that makes teams
-fast and reliable. Previously at Shopify, contributing to the POS platform across
-mobile, web, and DevOps. Based in Amsterdam, open to senior IC, staff, and engineering
-leadership roles.`;
+fast and reliable. Currently leading mobile at Hunkemöller, building agent-verifiable
+mobile delivery; previously at Shopify on the POS platform across mobile, web, and
+DevOps. Based in Amsterdam, open to senior IC, staff, and engineering leadership
+roles.`;
 
 export const experience = [
+  {
+    company: 'Hunkemöller',
+    location: 'Netherlands (Hybrid)',
+    positions: [
+      {
+        title: 'Mobile Lead (Contract) - Hunkemöller App',
+        time: 'May 2026 – Current',
+        duties: [
+          'Built and owned a greenfield mobile app in a shared TypeScript monorepo (React Native, Expo, expo-router), from repo setup through checkout, auth, offline handling, and deep linking, as one of the top contributors to the codebase.',
+          'Designed an agent-driven UI verification pipeline: an AI coding agent drives a live simulator over MCP, replays Maestro flows, and gates on pixel diffs against per-platform baselines. Tuned the anti-aliasing tolerance to eliminate false positives, so CI reliably catches even subtle visual regressions.',
+          'Prototyped a Figma-to-device design token pipeline connecting the design system directly to the app — designers publish a theme in Figma and a single sync command brings it on-device, removing the manual design-to-code handoff.',
+          'Contributed back to the React Native open-source ecosystem with a merged upstream fix to react-native-screens (the native tab layer behind Expo Router), unblocking E2E test automation for every app using the library.',
+          'Shipped on-demand headless E2E for iOS and Android on GitHub Actions — comment-triggered and kept off the required-check path so compute spend stays deliberate.',
+        ],
+      },
+    ],
+  },
   {
     company: 'Shopify',
     location: 'Amsterdam',
     positions: [
       {
         title: 'Senior Engineer - Retail',
-        time: 'Jun 2022 – Mar 2026',
+        time: 'Jun 2022 – Apr 2026',
         duties: [
           'Fixed a critical KMM/JS type coercion bug in the receipt printer in the first week — then continued contributing to the broader KMM/React Native architecture, debugging state sync issues across the Kotlin business logic and JS UI layers.',
           'Rewrote the POS numeric keypad to use integer currency units, eliminating an entire class of currency symbol and backspace bugs and simplifying future maintenance.',
@@ -170,6 +188,7 @@ export const frameworks = [
   'GraphQL',
   'Jest',
   'Detox',
+  'Maestro',
   'Cypress',
   'Bootstrap',
   'MeteorJS',
@@ -182,6 +201,7 @@ export const services = [
   'Crashlytics',
   'LaunchDarkly',
   'CircleCI',
+  'GitHub Actions',
   'Google Play',
   'Apple Developer',
   'TestFlight',
